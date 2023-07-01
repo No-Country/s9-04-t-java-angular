@@ -1,1 +1,5 @@
-<p>home works!</p>
+<div class="flex flex-col min-h-screen gap-3 p-4 bg-blue-200">
+
+  <app-workspace-card *ngFor="let item of workspaces" [workspace]="item"></app-workspace-card>
+
+</div>

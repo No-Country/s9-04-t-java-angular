@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  workspaces = [
+    {
+      title: 'titulo de espacio',
+      
+    }
+  ]
+
 }
