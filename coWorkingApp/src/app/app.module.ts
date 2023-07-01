@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './pages/home/home.component';
+import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-details.component';
+import { DetailsComponent } from './pages/workspace-details/details/details.component';
+import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    WorkspaceDetailsComponent,
+    DetailsComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
