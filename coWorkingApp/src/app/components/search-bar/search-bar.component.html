@@ -1,0 +1,22 @@
+<div class="flex flex-col p-4 shadow-md gap-3">
+  <div class="h-12 rounded-md bg-gray-200 flex items-center py-2 px-3">
+    <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
+    <input type="search" class="bg-transparent placeholder:text-[#000000] w-full" placeholder="Buscar en...">
+    <fa-icon [icon]="faSlidersH" class="pl-4 " (click)="openSearchFiltersComponent()"></fa-icon>
+  </div>
+  <div class="w-full flex gap-4 font-thin">
+    <div class="flex">
+      <p>Ordenar</p>
+      <fa-icon [icon]="faChevronDown" class="pl-2"></fa-icon>
+    </div>
+    <div class="w-full"></div>
+    <div class="flex">
+      <p>Lista</p>
+      <fa-icon [icon]="faTableList" class="pl-2"></fa-icon>
+    </div>
+    <div class="flex text-[#A7A7A7]">
+      <p>Mapa</p>
+      <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
+    </div>
+  </div>
+</div>
