@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-details.component';
 import { DetailsComponent } from './pages/workspace-details/details/details.component';
 import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     title: 'WOCO'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'workspace',
