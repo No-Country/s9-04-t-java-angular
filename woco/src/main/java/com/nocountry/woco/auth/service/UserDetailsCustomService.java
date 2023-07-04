@@ -11,6 +11,7 @@ import com.nocountry.woco.auth.model.response.AuthenticationResponse;
 import com.nocountry.woco.auth.model.response.UserResponse;
 import com.nocountry.woco.auth.security.RoleType;
 import com.nocountry.woco.model.mapper.GenericMapper;
+import com.nocountry.woco.service.impl.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -26,15 +27,22 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class UserDetailsCustomService implements UserDetailsService {
 
-    private final UserRepository userRepository;
-    private final GenericMapper mapper;
-    private final RoleRepository roleRepository;
-    private final JwtUtils jwtUtil;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
+    @Autowired
+    private JwtUtils jwtUtil;
+    @Autowired
+    private EmailService emailService;
     @Lazy
-    private final AuthenticationManager authenticationManager;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private GenericMapper mapper;
 
 
     @Override
@@ -60,10 +68,10 @@ public class UserDetailsCustomService implements UserDetailsService {
         result.setToken(jwtUtil.generateToken(userEntity));
 
         //MAIL VALIDATION WHEN AN USER IS CREATED
-        /*
+
         if (userEntity != null) {
-            emailService.sendEmailTo(userEntity.getEmail(), "welcome");
-        }*/
+            emailService.send(userEntity.getEmail());
+        }
         return result;
 
     }

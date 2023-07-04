@@ -25,9 +25,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
-    private final JwtRequestFilter jwtFilter;
-    private final AuthEntryPointJwt unauthorizedHandler;
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private JwtRequestFilter jwtFilter;
+
+    @Autowired
+    private AuthEntryPointJwt unauthorizedHandler;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -35,12 +40,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder managerBuilder) throws Exception {
+
+    public void configure(AuthenticationManagerBuilder managerBuilder) throws Exception {
         managerBuilder.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
     }
-
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
         return new CustomAccessDeniedHandler();
@@ -74,8 +78,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/register")
                 .permitAll()
-                .antMatchers("/h2-console/**")
-                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -87,15 +89,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
     }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(
-                "/v3/api-docs/**",
-                "/api/docs",
-                "/api/swagger-ui/index.html",
-                "/**/swagger-ui/**");
-    }
-
 
 }
