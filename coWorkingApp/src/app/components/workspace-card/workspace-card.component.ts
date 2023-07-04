@@ -13,4 +13,18 @@ export class WorkspaceCardComponent {
   faUser = faUser;
   faStar = faStar;
 
+  hoverCarousel(id: number) {
+    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${id}`);
+    if (workspaceThumbnail) {
+      workspaceThumbnail.classList.add('scale-[1.025]');
+    }
+  }
+
+  clearHover(id: number) {
+    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${id}`);
+    if (workspaceThumbnail) {
+      workspaceThumbnail.classList.remove('scale-[1.025]');
+    }
+  }
+
 }
