@@ -13,17 +13,29 @@ export class WorkspaceCardComponent {
   faUser = faUser;
   faStar = faStar;
 
-  hoverCarousel(id: number) {
-    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${id}`);
+  thumbnail: number = 0;
+  hoverCarouselInterval: any | undefined = undefined;
+
+  hoverCarousel(workspace: any) {
+    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${workspace.id}`);
     if (workspaceThumbnail) {
       workspaceThumbnail.classList.add('scale-[1.025]');
+      this.hoverCarouselInterval = setInterval(() => {
+        if (this.thumbnail === workspace.images.length - 1) {
+          this.thumbnail = 0;
+        } else {
+          this.thumbnail += 1;
+        }
+      }, 2000);
     }
   }
 
-  clearHover(id: number) {
-    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${id}`);
+  clearHover(workspace: any) {
+    let workspaceThumbnail = document.getElementById(`workspace-thumbnail-${workspace.id}`);
     if (workspaceThumbnail) {
       workspaceThumbnail.classList.remove('scale-[1.025]');
+      this.thumbnail = 0;
+      window.clearInterval(this.hoverCarouselInterval);
     }
   }
 
