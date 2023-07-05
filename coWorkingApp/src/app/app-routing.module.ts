@@ -5,6 +5,7 @@ import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-d
 import { DetailsComponent } from './pages/workspace-details/details/details.component';
 import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
 import { MapComponent } from './pages/map/map.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     path: 'map',
     component: MapComponent,
     title: 'User Location'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: 'workspace',
