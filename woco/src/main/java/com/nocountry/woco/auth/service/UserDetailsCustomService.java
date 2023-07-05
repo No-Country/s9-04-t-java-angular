@@ -24,6 +24,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -44,7 +45,6 @@ public class UserDetailsCustomService implements UserDetailsService {
     @Autowired
     private GenericMapper mapper;
 
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUsername(userName);
@@ -54,8 +54,9 @@ public class UserDetailsCustomService implements UserDetailsService {
         return new User(userEntity.getUsername(), userEntity.getPassword(), userEntity.getAuthorities());
     }
 
-    public UserResponse save(UserRequest userRequest) {
+    public UserResponse save(UserRequest userRequest) throws IOException {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         UserEntity userEntity = new UserEntity();
         userEntity.setFirstName(userRequest.getFirstName());
         userEntity.setLastName(userRequest.getLastName());
@@ -63,22 +64,22 @@ public class UserDetailsCustomService implements UserDetailsService {
         userEntity.setUsername(userRequest.getEmail());
         userEntity.setRoles(List.of(roleRepository.findByName(RoleType.ADMIN.getFullRoleName())));
         userEntity.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        UserResponse result = mapper.map(userEntity,UserResponse.class);
+
+
         userRepository.save(userEntity);
+        UserResponse result = mapper.map(userEntity, UserResponse.class);
+
         result.setToken(jwtUtil.generateToken(userEntity));
 
         //MAIL VALIDATION WHEN AN USER IS CREATED
-
         if (userEntity != null) {
             emailService.send(userEntity.getEmail());
         }
         return result;
-
     }
 
 
-    public AuthenticationResponse login(AuthenticationRequest authenticationRequest)
-            {
+    public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
         UserEntity user = userRepository.findByEmail(authenticationRequest.getUsername()).get();
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
@@ -86,5 +87,6 @@ public class UserDetailsCustomService implements UserDetailsService {
 
         return new AuthenticationResponse(user.getUsername(), jwtUtil.generateToken(user));
     }
+
 
 }

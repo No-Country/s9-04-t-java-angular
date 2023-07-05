@@ -3,16 +3,16 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/woco
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://dpg-ciil3hunqql0tc50rjrg-a.oregon-postgres.render.com:5432/woco
+    username: admin
+    password: p37jBUKPERETNhWJKiXokuKBTxaW3QWG
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   mail:
     host: smtp.gmail.com
     port: 587
@@ -24,3 +24,6 @@ spring:
           auth: true
           starttls:
             enable: true
+springdoc:
+  swagger-ui:
+    path=/api/docs:
