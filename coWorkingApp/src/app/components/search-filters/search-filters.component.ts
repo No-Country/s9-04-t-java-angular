@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { faClose} from '@fortawesome/free-solid-svg-icons';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-search-filters',
@@ -9,5 +10,12 @@ import { faClose} from '@fortawesome/free-solid-svg-icons';
 export class SearchFiltersComponent {
 
   faClose = faClose;
+  @Output() closeDialog: EventEmitter<void> = new EventEmitter<void>();
+
+  constructor(private overlayRef: OverlayRef) { }
+
+  cerrarDialogo() {
+    this.closeDialog.emit();
+  }
 
 }
