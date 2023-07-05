@@ -1,0 +1,54 @@
+<div class="flex flex-col p-4 shadow-md gap-3">
+  <div class="h-12 rounded-md bg-gray-200 flex items-center py-2 px-3">
+    <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
+    <input type="search" class="bg-transparent placeholder:text-[#000000] w-full" placeholder="Buscar en...">
+    <!-- <fa-icon [icon]="faSlidersH" class="pl-4 " (click)="openSearchFiltersComponent()"></fa-icon> -->
+    <!-- Modal toggle -->
+    <fa-icon [icon]="faSlidersH" data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button">
+  Toggle modal
+</fa-icon>
+  </div>
+  <div class="w-full flex gap-4 font-thin">
+    <div class="flex">
+      <p>Ordenar</p>
+      <fa-icon [icon]="faChevronDown" class="pl-2"></fa-icon>
+    </div>
+    <div class="w-full"></div>
+    <div class="flex">
+      <p>Lista</p>
+      <fa-icon [icon]="faTableList" class="pl-2"></fa-icon>
+    </div>
+    <div class="flex text-[#A7A7A7]">
+      <p>Mapa</p>
+      <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<!-- Main modal -->
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="fixed text-black top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow text-black">
+            <!-- Modal header -->
+            <div class="flex items-start justify-between p-4 border-b rounded-t">
+                <h3 class="text-xl font-semibold">
+                    Filtros
+                </h3>
+                <button type="button" class="rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center" data-modal-hide="defaultModal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+
+            <!-- Accordion -->
+
+            <app-search-filters></app-search-filters>
+
+        </div>
+    </div>
+</div>

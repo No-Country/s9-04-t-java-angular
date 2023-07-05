@@ -2,3 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '@angular/cdk/overlay-prebuilt.css';
+
+input {
+  outline: none !important;
+  border: none !important;
+}
+
+/* app-search-filters {
+  margin: 20px !important;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+  height: 80vh;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+} */
