@@ -1,0 +1,29 @@
+<div class="gap-3 overflow-hidden rounded-lg cursor-pointer bg-slate-400" (mouseenter)="hoverCarousel(workspace)" (mouseleave)="clearHover(workspace)">
+
+  <div class="relative bg-slate-500 h-[200px]">
+    <div class="absolute object-cover w-full h-full overflow-hidden">
+      <img id="workspace-thumbnail-{{workspace.id}}" class="object-cover w-full h-full duration-300" src="{{workspace.images[thumbnail]}}" alt="">
+    </div>
+    <div class="absolute flex w-full h-full p-4">
+      <div class="flex justify-between w-full mt-auto font-medium">
+        <div class="flex items-center gap-2 p-1 bg-gray-300 rounded-md">
+          <fa-icon class="text-sm" [icon]="faStar"></fa-icon>
+          <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
+        </div>
+        <div class="flex items-center gap-2 p-1 bg-gray-300 rounded-md">
+          <p class="text-xs">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-3 p-3">
+    <p class="text-sm font-bold">{{workspace.name}}</p>
+    <div class="flex flex-col gap-1 text-xs font-medium">
+      <p><fa-icon class="text-gray-500 me-2" [icon]="faUser"></fa-icon>{{workspace.capacidad}} {{workspace.capacidad > 1? 'personas' : 'persona'}}</p>
+      <p>asdas</p>
+      <p>{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+    </div>
+  </div>
+
+</div>
