@@ -11,6 +11,7 @@ import { SearchFiltersComponent } from './components/search-filters/search-filte
 import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-details.component';
 import { DetailsComponent } from './pages/workspace-details/details/details.component';
 import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
     SearchFiltersComponent,
     WorkspaceDetailsComponent,
     DetailsComponent,
-    ReservationComponent
+    ReservationComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
