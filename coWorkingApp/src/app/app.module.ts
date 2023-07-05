@@ -16,6 +16,7 @@ import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
 
@@ -31,7 +32,6 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe
   ],
@@ -40,7 +40,9 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     AppRoutingModule,
     FontAwesomeModule,
     OverlayModule,
-    CdkAccordionModule
+    CdkAccordionModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
