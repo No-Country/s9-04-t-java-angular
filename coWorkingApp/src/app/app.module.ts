@@ -27,13 +27,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
-<<<<<<< HEAD
     LoginComponent,
-    RegistroComponent
-=======
+    RegistroComponent,
     MapComponent,
     LoginComponent
->>>>>>> 51183b641e882060528cff771af2b948f09468df
   ],
   imports: [
     BrowserModule,
