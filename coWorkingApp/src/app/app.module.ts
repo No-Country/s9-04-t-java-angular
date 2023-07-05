@@ -12,6 +12,10 @@ import { SearchFiltersComponent } from './components/search-filters/search-filte
 import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-details.component';
 import { DetailsComponent } from './pages/workspace-details/details/details.component';
 import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
+import { MapComponent } from './pages/map/map.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistroComponent } from './pages/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +25,14 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
     SearchFiltersComponent,
     WorkspaceDetailsComponent,
     DetailsComponent,
-    ReservationComponent
+    ReservationComponent,
+<<<<<<< HEAD
+    LoginComponent,
+    RegistroComponent
+=======
+    MapComponent,
+    LoginComponent
+>>>>>>> 51183b641e882060528cff771af2b948f09468df
   ],
   imports: [
     BrowserModule,
