@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -26,7 +27,8 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    OverlayModule
+    OverlayModule,
+    CdkAccordionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

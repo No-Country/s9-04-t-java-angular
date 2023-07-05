@@ -1,19 +1,44 @@
-<div class="flex flex-col w-80">
-  <div class="flex">
-    <h1 class="font-bold">Filtros</h1>
-    <div class="w-full"></div>
-    <fa-icon [icon]="faClose" (click)="cerrarDialogo()"></fa-icon>
-  </div>
-  <div class="flex space-x-16">
 
-    <div class="flex">
-      <input type="checkbox" class="default:ring-2">
-      <label for="">Precio por dia</label>
-    </div>
-    <div class="flex">
-      <input type="checkbox">
-      <label for="">Precio por hs</label>
-    </div>
-  </div>
 
+<cdk-accordion class="example-accordion">
+  <cdk-accordion-item
+    *ngFor="let item of items; let index = index;"
+    #accordionItem="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-' + index"
+    [attr.aria-expanded]="accordionItem.expanded"
+    [attr.aria-controls]="'accordion-body-' + index">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem.toggle()">
+      {{ item }}
+      <div class="w-full"></div>
+      <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
+      <!-- <span class="example-accordion-item-description">
+        Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+      </span> -->
+    </div>
+    <div
+      class="example-accordion-item-body p-4"
+      role="region"
+      [style.display]="accordionItem.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-' + index"
+      [attr.aria-labelledby]="'accordion-header-' + index">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+      excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+      veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, quam aliquam ab error adipisci ad ratione accusantium magni! Pariatur, voluptate. Perferendis laudantium alias, repudiandae omnis necessitatibus neque. Fuga amet aliquid minima, neque at quaerat modi officiis minus ratione? Neque at, quis debitis quas corrupti reprehenderit expedita quibusdam optio possimus repellendus doloremque recusandae ex aspernatur itaque odio in, atque voluptatem porro libero non sapiente rem nemo numquam cumque. Odit suscipit quod mollitia, quidem voluptas ab labore alias vel, a autem ducimus laudantium dolorem nulla nemo! Expedita, sit necessitatibus eveniet accusamus esse rem debitis nostrum consequuntur temporibus earum at culpa architecto non, autem, impedit quasi? Commodi molestias, magnam ducimus error fugit necessitatibus esse nisi, natus perspiciatis iure inventore. Non suscipit ab optio quis impedit quia nobis repudiandae unde inventore quaerat aliquam cumque dicta ipsum, natus quas iusto laborum sed voluptatum eius fugiat nesciunt beatae blanditiis! Molestias quam non eius minima blanditiis harum, quibusdam quisquam libero dignissimos voluptas! Saepe culpa aut et dignissimos ab rem nam distinctio voluptatibus.
+    </div>
+  </cdk-accordion-item>
+</cdk-accordion>
+<div class="bg-[#DDDDDD] text-gray-400 flex p-4">
+  <div class="w-96">
+    <p class="w-full text-sm">999 lugares</p>
+    <a class="w-full text-sm underline" href="/">Borrar filtros</a>
+  </div>
+  <div class="w-full"></div>
+  <div>
+    <button class="bg-[#848484] text-white p-2 rounded-md w-40">Mostrar resultados</button>
+  </div>
 </div>

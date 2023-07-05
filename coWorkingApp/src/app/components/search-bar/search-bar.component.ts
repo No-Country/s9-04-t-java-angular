@@ -1,5 +1,5 @@
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
-import { Component, ViewChild } from '@angular/core';
+import { Overlay } from '@angular/cdk/overlay';
+import { Component } from '@angular/core';
 import { faSearch, faSlidersH, faLocationDot, faChevronDown, faTableList} from '@fortawesome/free-solid-svg-icons';
 import { SearchFiltersComponent } from '../search-filters/search-filters.component';
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -17,6 +17,10 @@ export class SearchBarComponent {
   faChevronDown = faChevronDown;
   faTableList = faTableList;
 
+  items = ['Ordenar', 'Precio', 'Distancia', 'Capacidad', 'Servicios'];
+  expandedIndex = 0;
+
+
   constructor(private overlay: Overlay) {}
 
   ngOnInit(): void {}
@@ -30,11 +34,12 @@ export class SearchBarComponent {
         .position()
         .global()
         .centerHorizontally()
-        .centerVertically(),
+        .centerVertically()
     });
     const dialogPortal = new ComponentPortal(SearchFiltersComponent);
     overlayRef.attach(dialogPortal);
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+
   }
 
 }
