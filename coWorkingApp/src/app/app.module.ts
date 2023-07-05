@@ -17,6 +17,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
+import { AverageRatingPipe } from './pipes/average-rating.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent
+    WorkspaceCardComponent,
+    AverageRatingPipe
   ],
   imports: [
     BrowserModule,
