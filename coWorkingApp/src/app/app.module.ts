@@ -16,6 +16,8 @@ import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 
+import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
+import { AverageRatingPipe } from './pipes/average-rating.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { RegistroComponent } from './pages/registro/registro.component';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent
+    LoginComponent,
+    WorkspaceCardComponent,
+    AverageRatingPipe
   ],
   imports: [
     BrowserModule,
