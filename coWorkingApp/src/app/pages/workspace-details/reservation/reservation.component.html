@@ -1,1 +1,155 @@
-<p>reservation works!</p>
+<div class="w-full  flex-col flex container mx-auto h-screen">
+    <div *ngIf="!detailsOpen">
+    <div class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px]">
+        <div>
+            <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Tu reserva</h5>
+            <p>Añade fechas y dantidad de personas para ver el precio total.</p>
+        </div>
+        <div class="flex  justify-between ">
+
+            <div>
+                <h5>Fechas</h5>
+                <p>1 al 5 de julio</p>
+            </div>
+            <button class="underline-offset-4 underline font-bold">Editar</button>
+        </div>
+        <div class="flex justify-between ">
+            <div>
+                <h5>Cantidad de personas</h5>
+                <p>1 nomada</p>
+            </div>
+            <button class="underline-offset-4 underline font-bold">Editar</button>
+        </div>
+        <div class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px] ">
+            <p class="m-auto justify-center text-center">
+                <fa-icon class="text-xl " [icon]="faCircleCheck"></fa-icon> Las fechas están disponibles
+            </p>
+        </div>
+    </div>
+
+    <div class="flex-col px-4 py-3 bg-[#F4F4F4] flex mb-4">
+        <div>
+            <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Detalles del precio</h5>
+        </div>
+        <div class="flex pt-6  justify-between  border-b border-dashed">
+            <div>
+                <h5>$99 por 7 dias</h5>
+                <p>Tarifa por servicio</p>
+            </div>
+
+            <div>
+                <h5>$499</h5>
+                <h5>$100</h5>
+            </div>
+        </div>
+        <div class="flex justify-between mt-2">
+            <div>
+                <h5>Total Precio ($ Pesos)</h5>
+            </div>
+            <p>$595</p>
+        </div>
+        <div class="flex justify-center underline underline-offset-2">
+            Más información
+        </div>
+
+    </div>
+
+    <div class="flex justify-center  rounded h-[40px] bg-[#CCCCCC] border border-[#676767]  w-[328px] m-auto cursor-pointer " *ngIf="!detailsOpen">
+        <p class="m-auto justify-center text-center">
+            Contactá al propietario <fa-icon class="text-sm" [icon]="faPhone"></fa-icon>
+        </p>
+    </div>
+</div>
+
+
+    <div class="container mx-auto w-full px-4" *ngIf="detailsOpen">
+        <div class="border-b pb-[16px] flex justify-between m-4">
+            <h5>Detalles de tu reserva</h5>
+            <fa-icon [icon]="faChevronDown"></fa-icon>
+        </div>
+    
+        <div class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px]   w-[328px] m-auto cursor-pointer ">
+            <p class="m-auto justify-center text-center">
+                Contactá al propietario <fa-icon class="text-sm" [icon]="faPhone"></fa-icon>
+            </p>
+        </div>
+    
+        <form class="flex flex-col  justify-center" [formGroup]="personalData" (ngSubmit)="onLoginFormSubmit()" >
+            <div class="border-b border-dashed flex flex-col gap-4 pb-4">
+                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold " #details>Datos personales</h5>
+    
+                <div class="flex-col flex ">
+                    <label for="email" class="mb-2">Email</label>
+                    <input type="email" class="py-2 border ps-4"  placeholder="mail@ejemplo.com">
+                    <div class="flex mt-2" >
+                    <input type="checkbox" class="text-start flex me-1"> <p> Recibir notificaciones y ofertas.</p>
+                    </div>
+                    
+                </div>
+    
+                <div class="flex-col flex">
+                    <label for="" class="mb-2">Nombre</label>
+                    <input type="text" class="py-2 border ps-4"  placeholder="ingresa tu nombre">
+                </div>
+    
+                <div class="flex-col flex">
+                    <label for="" class="mb-2">Apellido</label>
+                    <input type="text"  class="py-2 border ps-4" placeholder="ingresa tu apellido">
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-4 pt-4">
+                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Metodo de pago</h5>
+                <div class="flex-col flex">
+                    <label for="" class="mb-2">Nombre titular</label>
+                    <input type="text" class="py-2 border ps-4"  placeholder="Ingresa nombre">
+                </div>
+    
+                <div class="flex-col flex">
+                    <label for="" class="mb-2">Numero de tarjeta</label>
+                    <input type="text" class="py-2 border ps-4" placeholder="0000 0000 0000 0000">
+                </div>
+    
+                <div class="flex justify-between ">
+    
+    
+                    <div class="text-center">
+                        <label for="" class="text-center flex mb-2">CVC/CVV</label>
+                        <div class="border flex py-3  w-[156px]">
+                            <input type="{{ tipoContrasena }}" id="togglePassword"   placeholder="***" class="ps-4 w-full focus:outline-none focus:ring-0 " >
+                            <fa-icon [icon]="showPassword ?  faEyeLowVision : faEye" (click)="togglePasswordVisibility()" class="pe-4 cursor-pointer"></fa-icon>
+                        </div>
+                    </div>
+    
+                    <div class="text-center">
+                         <label for="" class="text-center flex mb-2">Vencimiento</label>
+                        <div class="border flex justify-between py-3  w-[156px]">
+                            <input type="text"  placeholder="12/10" class="ps-4 w-full focus:outline-none focus:ring-0">
+                            <fa-icon [icon]=" faCalendarCheck" class="pe-4"></fa-icon>
+                        </div>
+                    </div>
+    
+                    
+                </div>
+                <div class="flex  ">
+                <fa-icon [icon]="Check ? faToggleOn : faToggleOff" (click)="toggleCheck()" class="cursor-pointer text-2xl pe-1 flex justify-center" ></fa-icon><p >Guardar tarjeta para futuras compras.</p>
+                </div>
+            </div>
+        </form>
+    
+    </div>
+    <div class="flex justify-around bg-slate-600 py-2 mt-auto" >
+        <div class="flex-col m-auto">
+            <fa-icon class="text-sm" [icon]="faUser"></fa-icon> 1 nomada <span
+                class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
+            jul.
+            <h5>$595</h5>
+        </div>
+
+        <button class="bg-slate-500  w-[153px] h-[43px] rounded-md m-auto"
+            (click)="detailsOpen ? onSubmit() :  openFormDetails()" href="#details">Finalizar</button>
+
+    </div>
+
+</div>
+

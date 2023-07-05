@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { WorkspaceDetailsComponent } from './pages/workspace-details/workspace-details.component';
 import { DetailsComponent } from './pages/workspace-details/details/details.component';
 import { ReservationComponent } from './pages/workspace-details/reservation/reservation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
