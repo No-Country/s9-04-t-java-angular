@@ -29,7 +29,6 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
-    LoginComponent,
     RegistroComponent,
     MapComponent,
     LoginComponent,
