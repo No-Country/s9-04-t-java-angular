@@ -3,16 +3,21 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-ciil3hunqql0tc50rjrg-a.oregon-postgres.render.com:5432/woco
-    username: admin
-    password: p37jBUKPERETNhWJKiXokuKBTxaW3QWG
-    driver-class-name: org.postgresql.Driver
+    #url: jdbc:postgresql://dpg-ciil3hunqql0tc50rjrg-a.oregon-postgres.render.com:5432/woco
+    #username: admin
+    #password: p37jBUKPERETNhWJKiXokuKBTxaW3QWG
+    #driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/woco
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        #dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
   mail:
     host: smtp.gmail.com
     port: 587
