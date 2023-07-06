@@ -1,8 +1,6 @@
 package com.nocountry.woco.model.entity;
-
+import com.nocountry.woco.auth.model.entity.UserEntity;
 import lombok.*;
-import org.apache.catalina.User;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,11 +15,12 @@ public class Rating {
     private Long id;
 
     private int rating;
+
     private String comment;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
     @ManyToOne
     @JoinColumn(name = "cowork_id")
     private Cowork cowork;
