@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faArrowLeft, faShareNodes } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faShareNodes, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -11,6 +11,8 @@ export class WorkspaceDetailsComponent {
 
   faArrowLeft = faArrowLeft;
   faShareNodes = faShareNodes;
+  faLocationDot = faLocationDot;
+  faStar = faStar;
   faHeart = faHeart;
 
 }
