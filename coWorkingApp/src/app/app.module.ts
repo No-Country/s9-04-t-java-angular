@@ -32,8 +32,13 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     LoginComponent,
     RegistroComponent,
     MapComponent,
+<<<<<<< HEAD
+    LoginComponent
+=======
+    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe
+>>>>>>> frontend
   ],
   imports: [
     BrowserModule,

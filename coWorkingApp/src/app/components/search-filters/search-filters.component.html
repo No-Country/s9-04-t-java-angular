@@ -1,5 +1,3 @@
-
-
 <cdk-accordion class="example-accordion">
   <cdk-accordion-item
     *ngFor="let item of items; let index = index;"
@@ -27,11 +25,147 @@
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
       excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
       veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
-
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, quam aliquam ab error adipisci ad ratione accusantium magni! Pariatur, voluptate. Perferendis laudantium alias, repudiandae omnis necessitatibus neque. Fuga amet aliquid minima, neque at quaerat modi officiis minus ratione? Neque at, quis debitis quas corrupti reprehenderit expedita quibusdam optio possimus repellendus doloremque recusandae ex aspernatur itaque odio in, atque voluptatem porro libero non sapiente rem nemo numquam cumque. Odit suscipit quod mollitia, quidem voluptas ab labore alias vel, a autem ducimus laudantium dolorem nulla nemo! Expedita, sit necessitatibus eveniet accusamus esse rem debitis nostrum consequuntur temporibus earum at culpa architecto non, autem, impedit quasi? Commodi molestias, magnam ducimus error fugit necessitatibus esse nisi, natus perspiciatis iure inventore. Non suscipit ab optio quis impedit quia nobis repudiandae unde inventore quaerat aliquam cumque dicta ipsum, natus quas iusto laborum sed voluptatum eius fugiat nesciunt beatae blanditiis! Molestias quam non eius minima blanditiis harum, quibusdam quisquam libero dignissimos voluptas! Saepe culpa aut et dignissimos ab rem nam distinctio voluptatibus.
     </div>
   </cdk-accordion-item>
+
+  <!-- Item 1 -->
+
+  <cdk-accordion-item
+  #accordionItem="cdkAccordionItem"
+  class="example-accordion-item"
+  role="button"
+  tabindex="0"
+  [attr.id]="'accordion-header-1'"
+  [attr.aria-expanded]="accordionItem.expanded"
+  [attr.aria-controls]="'accordion-body-1'">
+  <div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem.toggle()">
+    <p>Ordenar</p>
+    <div class="w-full"></div>
+    <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
+  </div>
+  <div
+    class="example-accordion-item-body p-4 bg-green-300"
+    role="region"
+    [style.display]="accordionItem.expanded ? '' : 'none'"
+    [attr.id]="'accordion-body-1'"
+    [attr.aria-labelledby]="'accordion-header-1'">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+    excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+    veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+  </div>
+</cdk-accordion-item>
+
+<!-- Item 2 -->
+
+<cdk-accordion-item
+#accordionItem2="cdkAccordionItem"
+class="example-accordion-item"
+role="button"
+tabindex="0"
+[attr.id]="'accordion-header-2'"
+[attr.aria-expanded]="accordionItem2.expanded"
+[attr.aria-controls]="'accordion-body-2'">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem2.toggle()">
+  <p>Precio</p>
+  <div class="w-full"></div>
+  <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
+</div>
+<div
+  class="example-accordion-item-body p-4 bg-pink-300"
+  role="region"
+  [style.display]="accordionItem2.expanded ? '' : 'none'"
+  [attr.id]="'accordion-body-2'"
+  [attr.aria-labelledby]="'accordion-header-2'">
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+</div>
+</cdk-accordion-item>
+
+
+<!-- Item 3 -->
+
+<cdk-accordion-item
+#accordionItem3="cdkAccordionItem"
+class="example-accordion-item"
+role="button"
+tabindex="0"
+[attr.id]="'accordion-header-2'"
+[attr.aria-expanded]="accordionItem3.expanded"
+[attr.aria-controls]="'accordion-body-2'">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem3.toggle()">
+  <p>Distancia</p>
+  <div class="w-full"></div>
+  <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
+</div>
+<div
+  class="example-accordion-item-body p-4 bg-yellow-200"
+  role="region"
+  [style.display]="accordionItem3.expanded ? '' : 'none'"
+  [attr.id]="'accordion-body-2'"
+  [attr.aria-labelledby]="'accordion-header-2'">
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+</div>
+</cdk-accordion-item>
+
+<!-- Item 4 -->
+
+<cdk-accordion-item
+#accordionItem4="cdkAccordionItem"
+class="example-accordion-item"
+role="button"
+tabindex="0"
+[attr.id]="'accordion-header-2'"
+[attr.aria-expanded]="accordionItem4.expanded"
+[attr.aria-controls]="'accordion-body-2'">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem4.toggle()">
+  <p>Capacidad</p>
+  <div class="w-full"></div>
+  <fa-icon [icon]="faChevronDown">{{ accordionItem4.expanded ? 'close' : 'open' }}</fa-icon>
+</div>
+<div
+  class="example-accordion-item-body p-4 bg-yellow-200"
+  role="region"
+  [style.display]="accordionItem4.expanded ? '' : 'none'"
+  [attr.id]="'accordion-body-4'"
+  [attr.aria-labelledby]="'accordion-header-4'">
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+</div>
+</cdk-accordion-item>
+
+<!-- Item 5 -->
+
+<cdk-accordion-item
+#accordionItem5="cdkAccordionItem"
+class="example-accordion-item"
+role="button"
+tabindex="0"
+[attr.id]="'accordion-header-5'"
+[attr.aria-expanded]="accordionItem5.expanded"
+[attr.aria-controls]="'accordion-body-5'">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem5.toggle()">
+  <p>Servicios</p>
+  <div class="w-full"></div>
+  <fa-icon [icon]="faChevronDown">{{ accordionItem5.expanded ? 'close' : 'open' }}</fa-icon>
+</div>
+<div
+  class="example-accordion-item-body p-4 bg-yellow-200"
+  role="region"
+  [style.display]="accordionItem5.expanded ? '' : 'none'"
+  [attr.id]="'accordion-body-5'"
+  [attr.aria-labelledby]="'accordion-header-5'">
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+</div>
+</cdk-accordion-item>
 </cdk-accordion>
+
+
 <div class="bg-[#DDDDDD] text-gray-400 flex p-4">
   <div class="w-96">
     <p class="w-full text-sm">999 lugares</p>
