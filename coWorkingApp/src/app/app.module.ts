@@ -30,7 +30,6 @@ import { HttpClientModule } from '@angular/common/http';
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
-    LoginComponent,
     RegistroComponent,
     MapComponent,
     LoginComponent,
