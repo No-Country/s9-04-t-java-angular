@@ -1,0 +1,16 @@
+input[type="text"],[type="password"],[type="email"],[type="number"], imput:focus{
+    border:0;
+    box-shadow: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+  }
+  
