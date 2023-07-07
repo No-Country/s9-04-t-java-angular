@@ -19,6 +19,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     CdkAccordionModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
