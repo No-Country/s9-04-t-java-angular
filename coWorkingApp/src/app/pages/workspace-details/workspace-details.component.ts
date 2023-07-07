@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { faArrowLeft, faShareNodes, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-workspace-details',
@@ -36,6 +37,21 @@ export class WorkspaceDetailsComponent {
       3.1
     ],
     price: 150
+  }
+
+  titulo: any;
+
+  _activatedRoute = inject(ActivatedRoute);
+
+  ngOnInit(): void {
+    this._activatedRoute.params.subscribe({
+      next: (params: Params) => {
+        this.titulo = params['id'];
+        console.log(params['id'])
+      },
+      error: (error) => console.log(error),
+      complete: () => { }
+    });
   }
 
 }
