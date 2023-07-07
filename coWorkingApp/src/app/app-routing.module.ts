@@ -33,7 +33,7 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
-    path: 'workspace',
+    path: 'workspace/:id',
     component: WorkspaceDetailsComponent,
     children: [
       {
