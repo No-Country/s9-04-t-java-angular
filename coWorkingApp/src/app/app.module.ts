@@ -30,9 +30,9 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
-    LoginComponent,
     RegistroComponent,
     MapComponent,
+    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe
   ],
@@ -45,6 +45,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     CdkAccordionModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
