@@ -25,7 +25,7 @@ export class ReservationComponent {
   tipoContrasena: string = 'password';
   showPassword: boolean = false;
   CheckSaveCard: boolean = false;
-  detailsOpen: boolean = true;
+  detailsOpen: boolean = false;
 
   //Form
   formErrors: boolean = false;
