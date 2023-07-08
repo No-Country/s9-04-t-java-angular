@@ -1,5 +1,7 @@
 package com.nocountry.woco.auth.model.entity;
 
+import com.nocountry.woco.model.entity.Reservation;
+import com.nocountry.woco.model.entity.Services;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,24 +35,23 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false)
     private String email;
 
     private String username = email;
 
-    @Column(name = "password", nullable = false)
     private String password;
 
+    private Boolean reservation;
+
+    @OneToMany
+    private List<Reservation> reservations;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<RoleEntity> roles;
-
 
     @CreationTimestamp
     @Column(name = "create_timestamp")
