@@ -48,6 +48,7 @@ export class HomeComponent {
         'https://estaticos-cdn.elperiodico.com/clip/bd2a087e-0076-4792-80e5-27e8d52955c1_alta-libre-aspect-ratio_default_0.png',
         'https://media.revistagq.com/photos/62f612194b12f9b6048b3554/16:9/pass/the-batman-2-pelicula.jpeg',
       ],
+      location: 'Avenida Buenos Aires, 2050, CABA',
       capacidad: 15,
       rating: [
         4.5,
@@ -59,7 +60,8 @@ export class HomeComponent {
         4.5,
         3.1
       ],
-      price: 150
+      price: 150,
+      description: 'El nuevo coworking para empresas y autónomos en el corazón del barrio de Sant Andreu, en Barcelona, con todo lo que necesitas: sala de reuniones, estudio fotográfico, servicio de impresión, espacio de descanso con café y agua, Ethernet y Wifi, y lo más importante, acceso las 24h del día.'
     },
   ]
 

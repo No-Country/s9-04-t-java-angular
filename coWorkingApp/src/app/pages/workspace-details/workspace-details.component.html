@@ -1,65 +1,80 @@
-<div class="fixed w-full">
-  
-  <div id="default-carousel" class="relative w-full" data-carousel="static">
-  
-    <div class="absolute z-40 flex justify-between w-full p-4">
-      <button routerLink="/home" class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faArrowLeft"></fa-icon></button>
-      <div class="flex gap-3">
-        <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faShareNodes"></fa-icon></button>
-        <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faHeart"></fa-icon></button>
-      </div>
-    </div>
-  
-    <div class="relative h-56 overflow-hidden md:h-96">
-      <div *ngFor="let image of workspace.images" class="hidden duration-200 ease-linear" data-carousel-item>
-        <img
-          src="{{image}}"
-          class="absolute block object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 aspect-auto top-1/2 left-1/2"
-          alt="...">
-      </div>
-    </div>
-    
-    <button type="button"
-      class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-      data-carousel-prev>
-      <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
-        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-        </svg>
-        <span class="sr-only">Previous</span>
-      </span>
-    </button>
+<ng-container *ngIf="titulo; else loading">
 
-    <button type="button"
-      class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-      data-carousel-next>
-      <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
-        <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-        </svg>
-        <span class="sr-only">Next</span>
-      </span>
-    </button>
-    
+  <div class="fixed w-full">
+  
+    <div id="default-carousel" class="relative w-full" data-carousel="static">
+  
+      <div class="absolute z-40 flex justify-between w-full p-4">
+        <button routerLink="/home" class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon
+            [icon]="faArrowLeft"></fa-icon></button>
+        <div class="flex gap-3">
+          <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faShareNodes"></fa-icon></button>
+          <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faHeart"></fa-icon></button>
+        </div>
+      </div>
+  
+      <div class="relative h-56 overflow-hidden md:h-96">
+        <div *ngFor="let image of workspace.images" class="hidden duration-200 ease-linear" data-carousel-item>
+          <img src="{{image}}"
+            class="absolute block object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 aspect-auto top-1/2 left-1/2"
+            alt="...">
+        </div>
+      </div>
+  
+      <button type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
+          <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M5 1 1 5l4 4" />
+          </svg>
+          <span class="sr-only">Previous</span>
+        </span>
+      </button>
+  
+      <button type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-next>
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
+          <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 9 4-4-4-4" />
+          </svg>
+          <span class="sr-only">Next</span>
+        </span>
+      </button>
+  
+    </div>
+  
   </div>
   
-</div>
-
-<div class="pt-[224px]">
-  <div class="flex flex-col gap-1 px-4 py-2 text-sm">
-    <p class="text-xl font-bold">{{workspace.name}}</p>
-    <p class="font-semibold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
-    <p class="text-gray-500"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
-    <div class="flex items-center gap-2 text-sm">
-      <div class="flex items-center gap-2 p-1 px-2 bg-gray-300 rounded-lg">
-        <fa-icon [icon]="faStar"></fa-icon>
-        <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
+  <div class="pt-[224px]">
+    <div class="flex flex-col gap-1 px-4 py-2 text-sm">
+      <p class="text-xl font-bold">{{workspace.name}}</p>
+      <p class="font-semibold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+      <p class="text-gray-500"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
+      <div class="flex items-center gap-2 text-sm">
+        <div class="flex items-center gap-2 p-1 px-2 bg-gray-300 rounded-lg">
+          <fa-icon [icon]="faStar"></fa-icon>
+          <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
+        </div>
+        <p>{{workspace.rating.length}} calificaciones</p>
       </div>
-      <p>{{workspace.rating.length}} calificaciones</p>
     </div>
   </div>
-</div>
+  
+  <router-outlet></router-outlet>
+  
+</ng-container>
+<ng-template #loading>
 
-<router-outlet></router-outlet>
+  <div class="flex items-center justify-center min-h-screen bg-red-200">
+    <p>cargando...</p>
+  </div>
+  
+</ng-template>
+
+

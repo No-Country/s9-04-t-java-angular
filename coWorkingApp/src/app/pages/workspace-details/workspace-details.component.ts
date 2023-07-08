@@ -36,18 +36,22 @@ export class WorkspaceDetailsComponent {
       4.5,
       3.1
     ],
-    price: 150
+    price: 150,
+    description: 'El nuevo coworking para empresas y autónomos en el corazón del barrio de Sant Andreu, en Barcelona, con todo lo que necesitas: sala de reuniones, estudio fotográfico, servicio de impresión, espacio de descanso con café y agua, Ethernet y Wifi, y lo más importante, acceso las 24h del día.'
   }
 
   titulo: any;
 
   _activatedRoute = inject(ActivatedRoute);
 
+  interval: any;
+
   ngOnInit(): void {
     this._activatedRoute.params.subscribe({
       next: (params: Params) => {
-        this.titulo = params['id'];
-        console.log(params['id'])
+        this.interval = setInterval(() => {
+          this.titulo = params['id'];
+        }, 3000);
       },
       error: (error) => console.log(error),
       complete: () => { }
