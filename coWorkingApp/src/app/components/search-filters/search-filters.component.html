@@ -10,20 +10,32 @@
   [attr.id]="'accordion-header-1'"
   [attr.aria-expanded]="accordionItem.expanded"
   [attr.aria-controls]="'accordion-body-1'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem.toggle()">
+  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem.toggle()">
     <p>Ordenar</p>
     <div class="w-full"></div>
     <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
   </div>
   <div
-    class="example-accordion-item-body p-4 bg-green-300"
+    class="example-accordion-item-body p-4"
     role="region"
     [style.display]="accordionItem.expanded ? '' : 'none'"
     [attr.id]="'accordion-body-1'"
     [attr.aria-labelledby]="'accordion-header-1'">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-    excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-    veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+
+    <div class="flex gap-2 w-full">
+      <div class="flex flex-col gap-2 p-2 py-6 border border-spacing-2 rounded-md w-full items-center justify-center">
+        <fa-icon [icon]="faStar"></fa-icon>
+        <p class="text-center text-sm">Mejores calificados</p>
+      </div>
+      <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center">
+        <fa-icon [icon]="faLocationDot"></fa-icon>
+        <p class="text-sm">Cercanía</p>
+      </div>
+      <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center">
+        <fa-icon [icon]="faUsers"></fa-icon>
+        <p class="text-center text-sm">Sala de reunión</p>
+      </div>
+    </div>
   </div>
 </cdk-accordion-item>
 
@@ -37,7 +49,7 @@ tabindex="0"
 [attr.id]="'accordion-header-2'"
 [attr.aria-expanded]="accordionItem2.expanded"
 [attr.aria-controls]="'accordion-body-2'">
-<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem2.toggle()">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem2.toggle()">
   <p>Precio</p>
   <div class="w-full"></div>
   <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
@@ -65,7 +77,7 @@ tabindex="0"
 [attr.id]="'accordion-header-2'"
 [attr.aria-expanded]="accordionItem3.expanded"
 [attr.aria-controls]="'accordion-body-2'">
-<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem3.toggle()">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem3.toggle()">
   <p>Distancia</p>
   <div class="w-full"></div>
   <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
@@ -92,7 +104,7 @@ tabindex="0"
 [attr.id]="'accordion-header-2'"
 [attr.aria-expanded]="accordionItem4.expanded"
 [attr.aria-controls]="'accordion-body-2'">
-<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem4.toggle()">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem4.toggle()">
   <p>Capacidad</p>
   <div class="w-full"></div>
   <fa-icon [icon]="faChevronDown">{{ accordionItem4.expanded ? 'close' : 'open' }}</fa-icon>
@@ -119,20 +131,29 @@ tabindex="0"
 [attr.id]="'accordion-header-5'"
 [attr.aria-expanded]="accordionItem5.expanded"
 [attr.aria-controls]="'accordion-body-5'">
-<div class="example-accordion-item-header flex pl-4 pr-6 py-4" (click)="accordionItem5.toggle()">
+<div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem5.toggle()">
   <p>Servicios</p>
   <div class="w-full"></div>
   <fa-icon [icon]="faChevronDown">{{ accordionItem5.expanded ? 'close' : 'open' }}</fa-icon>
 </div>
 <div
-  class="example-accordion-item-body p-4 bg-yellow-200"
+  class="example-accordion-item-body p-4"
   role="region"
   [style.display]="accordionItem5.expanded ? '' : 'none'"
   [attr.id]="'accordion-body-5'"
   [attr.aria-labelledby]="'accordion-header-5'">
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+  <div class="flex text-sm">
+    <div class="flex flex-col w-full">
+      <div class="flex gap-2 items-center"><input type="checkbox">Wifi</div>
+      <div class="flex gap-2 items-center"><input type="checkbox">Impresora</div>
+      <div class="flex gap-2 items-center"><input type="checkbox">Sala de reunión</div>
+    </div>
+    <div class="flex flex-col w-full">
+      <div class="flex gap-2 items-center"><input type="checkbox">Estacionamiento</div>
+      <div class="flex gap-2 items-center"><input type="checkbox">Lockers</div>
+      <div class="flex gap-2 items-center"><input type="checkbox">Calefacción</div>
+    </div>
+  </div>
 </div>
 </cdk-accordion-item>
 </cdk-accordion>
