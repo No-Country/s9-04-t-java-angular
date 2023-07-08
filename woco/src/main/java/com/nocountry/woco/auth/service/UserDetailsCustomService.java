@@ -56,7 +56,6 @@ public class UserDetailsCustomService implements UserDetailsService {
 
     public UserResponse save(UserRequest userRequest) throws IOException {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         UserEntity userEntity = new UserEntity();
         userEntity.setFirstName(userRequest.getFirstName());
         userEntity.setLastName(userRequest.getLastName());
@@ -64,11 +63,8 @@ public class UserDetailsCustomService implements UserDetailsService {
         userEntity.setUsername(userRequest.getEmail());
         userEntity.setRoles(List.of(roleRepository.findByName(RoleType.ADMIN.getFullRoleName())));
         userEntity.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-
-
         userRepository.save(userEntity);
         UserResponse result = mapper.map(userEntity, UserResponse.class);
-
         result.setToken(jwtUtil.generateToken(userEntity));
 
         //MAIL VALIDATION WHEN AN USER IS CREATED
