@@ -1,14 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { faArrowLeft, faShareNodes, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { ActivatedRoute, Params } from '@angular/router';
+import { CoworkService } from 'src/app/services/cowork.service';
 
 @Component({
   selector: 'app-workspace-details',
   templateUrl: './workspace-details.component.html',
   styleUrls: ['./workspace-details.component.css']
 })
-export class WorkspaceDetailsComponent {
+export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
   faArrowLeft = faArrowLeft;
   faShareNodes = faShareNodes;
@@ -40,22 +41,37 @@ export class WorkspaceDetailsComponent {
     description: 'El nuevo coworking para empresas y autónomos en el corazón del barrio de Sant Andreu, en Barcelona, con todo lo que necesitas: sala de reuniones, estudio fotográfico, servicio de impresión, espacio de descanso con café y agua, Ethernet y Wifi, y lo más importante, acceso las 24h del día.'
   }
 
-  titulo: any;
+  // tests
+
+  product: any;
+
+  id: number = 0;
 
   _activatedRoute = inject(ActivatedRoute);
+  coworkService = inject(CoworkService);
 
   interval: any;
 
   ngOnInit(): void {
     this._activatedRoute.params.subscribe({
       next: (params: Params) => {
-        this.interval = setInterval(() => {
-          this.titulo = params['id'];
-        }, 3000);
+        this.id = params['id'];
       },
       error: (error) => console.log(error),
       complete: () => { }
     });
+    this.coworkService.getProduct(this.id);
+    this.coworkService.getProductObservable().subscribe({
+      next: (res) => {
+        this.product = res;
+      },
+      error: (error) => {console.log(error)},
+      complete: () => { }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.coworkService.selectedProduct.next(undefined)
   }
 
 }
