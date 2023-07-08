@@ -17,13 +17,7 @@ export class SearchBarComponent {
   faChevronDown = faChevronDown;
   faTableList = faTableList;
 
-  items = ['Ordenar', 'Precio', 'Distancia', 'Capacidad', 'Servicios'];
-  expandedIndex = 0;
-
-
-  constructor(private overlay: Overlay) {}
-
-  ngOnInit(): void {}
+  constructor( private overlay: Overlay ) {}
 
   openSearchFiltersComponent() {
     const overlayRef = this.overlay.create({
@@ -39,8 +33,5 @@ export class SearchBarComponent {
     const dialogPortal = new ComponentPortal(SearchFiltersComponent);
     overlayRef.attach(dialogPortal);
     overlayRef.backdropClick().subscribe(() => overlayRef.detach());
-
   }
-
 }
-

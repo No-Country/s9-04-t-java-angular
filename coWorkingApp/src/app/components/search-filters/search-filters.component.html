@@ -55,14 +55,30 @@ tabindex="0"
   <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
 </div>
 <div
-  class="example-accordion-item-body p-4 bg-pink-300"
+  class="example-accordion-item-body p-4"
   role="region"
   [style.display]="accordionItem2.expanded ? '' : 'none'"
   [attr.id]="'accordion-body-2'"
   [attr.aria-labelledby]="'accordion-header-2'">
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+
+  <h2>Precio por día</h2>
+  <div class="flex gap-4 p-4 justify-between">
+    <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
+      <p class="text-center">Precio Mínimo</p>
+      <p class="text-center"> {{ value | currency:'USD':'symbol':'1.0-0' }}</p>
+    </div>
+    <hr class="w-2 self-center border border-gray-600">
+    <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
+      <p class="text-center">Precio Máximo</p>
+      <p class="text-center">{{ highValue | currency:'USD':'symbol':'1.0-0' }}</p>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <div class="custom-slider">
+      <ngx-slider [(value)]="value" [(highValue)]="highValue" [options]="optionsPrice"></ngx-slider>
+    </div>
+  </div>
 </div>
 </cdk-accordion-item>
 
@@ -83,20 +99,33 @@ tabindex="0"
   <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
 </div>
 <div
-  class="example-accordion-item-body p-4 bg-yellow-200"
+  class="example-accordion-item-body p-4"
   role="region"
   [style.display]="accordionItem3.expanded ? '' : 'none'"
   [attr.id]="'accordion-body-2'"
   [attr.aria-labelledby]="'accordion-header-2'">
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-  excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-  veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+
+  <div class="flex gap-4 p-4 justify-between">
+    <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
+      <p class="text-center"> {{ minKm }} <span>km</span></p>
+    </div>
+    <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
+      <p class="text-center">{{ maxKm }} <span>km</span></p>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <div class="custom-slider">
+      <ngx-slider [(value)]="minKm" [(highValue)]="maxKm" [options]="optionsKm"></ngx-slider>
+    </div>
+  </div>
+
 </div>
 </cdk-accordion-item>
 
 <!-- Item 4 -->
 
-<cdk-accordion-item
+<!-- <cdk-accordion-item
 #accordionItem4="cdkAccordionItem"
 class="example-accordion-item"
 role="button"
@@ -119,7 +148,7 @@ tabindex="0"
   excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
   veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
 </div>
-</cdk-accordion-item>
+</cdk-accordion-item> -->
 
 <!-- Item 5 -->
 
