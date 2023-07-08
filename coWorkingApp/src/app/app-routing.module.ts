@@ -29,7 +29,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'registro',
+    path: 'register',
     component: RegistroComponent
   },
   {

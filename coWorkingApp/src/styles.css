@@ -5,7 +5,4 @@
 
 @import '@angular/cdk/overlay-prebuilt.css';
 
-input {
-  outline: none !important;
-  border: none !important;
-}
+
