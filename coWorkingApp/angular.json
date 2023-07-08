@@ -60,7 +60,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "coWorkingApp:build:production"
+              "browserTarget": "coWorkingApp:build:production",
+              "proxyConfig": "proxy.config.json"
             },
             "development": {
               "browserTarget": "coWorkingApp:build:development"

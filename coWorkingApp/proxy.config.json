@@ -1,8 +1,0 @@
-{
-  "/api/*": {
-    "target": "https://woco.onrender.com",
-    "secure": true,
-    "loglevel": "debug",
-    "changeOrigin": true
-  }
-}

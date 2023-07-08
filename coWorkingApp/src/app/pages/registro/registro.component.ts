@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
 export class RegistroComponent {
 
   apiUrl = 'https://woco.onrender.com';
-  // apiUrl = '/api';
 
   faArrowLeft = faArrowLeft;
 
