@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
 import { ModalPersonsComponent } from './components/modal-persons/modal-persons.component';
+import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ModalPersonsComponent } from './components/modal-persons/modal-persons.
     LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe,
-    ModalPersonsComponent
+    ModalPersonsComponent,
+    AlertsReservationComponent
   ],
   imports: [
     BrowserModule,

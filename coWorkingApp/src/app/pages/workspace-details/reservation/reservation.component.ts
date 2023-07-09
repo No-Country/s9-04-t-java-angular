@@ -4,7 +4,9 @@ import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faCalendarCheck, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { faChevronDown, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
+import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
@@ -31,17 +33,10 @@ export class ReservationComponent {
   CheckSaveCard: boolean = false;
   detailsOpen: boolean = false;
 
-  //Alerts
-  showAlertError = false;
-  showAlertConfirmation = false;
-  alert : string = "";
-
-
   //Form
   formErrors: boolean = false;
   formSubmitted = false;
   personalData: FormGroup;
-
 
   dateReservation: string = '';
   totalPeople: number = 0;
@@ -51,7 +46,8 @@ export class ReservationComponent {
   constructor(
     private formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
-    private perDataService: PersonalDataService
+    private perDataService: PersonalDataService,
+    private alertsService: AlertsReservaService
   ){
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
@@ -68,6 +64,7 @@ export class ReservationComponent {
   }
 
   
+
   get email() {
     return this.personalData.get('email');
   }
@@ -109,27 +106,6 @@ export class ReservationComponent {
   }
  
 
-  hideAlerts() {
-    if(this.showAlertError){
-      this.showAlertError = false;
-    } else {
-      this.showAlertConfirmation = false;
-    }
-   
-  }
-  
-
-  showAlertsDuration(duration: number, alert: string) {
-    if(alert === "error"){
-    this.showAlertError = true;
-    } else if(alert === "confirmation") {
-      this.showAlertConfirmation = true;
-    }
-    setTimeout(() => {
-      this.hideAlerts();
-    }, duration);
-  }
-
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.tipoContrasena = this.showPassword ? 'number' : 'password';
@@ -158,17 +134,13 @@ export class ReservationComponent {
     .subscribe({
       next: (data: any) => {
         console.log(data);
-        this.showAlertsDuration(3000, "confirmation");
+      this.alertsService.show(3000, 'confirmation');
         },
       error: (error) => {
         console.log(error);
-        this.showAlertsDuration(3000, "error");
+        this.alertsService.show(3000, 'error');
       }
     });
   }
-
-
-
-
 
 }
