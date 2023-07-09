@@ -1,9 +1,10 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faCalendarCheck, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { faChevronDown, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
@@ -12,6 +13,9 @@ import { PersonalDataService } from 'src/app/services/personal-data.service';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent {
+
+  @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
+
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
   faUser = faUser;
@@ -26,6 +30,12 @@ export class ReservationComponent {
   showPassword: boolean = false;
   CheckSaveCard: boolean = false;
   detailsOpen: boolean = false;
+
+  //Alerts
+  showAlertError = false;
+  showAlertConfirmation = false;
+  alert : string = "";
+
 
   //Form
   formErrors: boolean = false;
@@ -94,6 +104,32 @@ export class ReservationComponent {
     return this.personalData.get('saveCard');
   }
 
+  openModal(): void {
+    this.modalComponent.openModalPersons();
+  }
+ 
+
+  hideAlerts() {
+    if(this.showAlertError){
+      this.showAlertError = false;
+    } else {
+      this.showAlertConfirmation = false;
+    }
+   
+  }
+  
+
+  showAlertsDuration(duration: number, alert: string) {
+    if(alert === "error"){
+    this.showAlertError = true;
+    } else if(alert === "confirmation") {
+      this.showAlertConfirmation = true;
+    }
+    setTimeout(() => {
+      this.hideAlerts();
+    }, duration);
+  }
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.tipoContrasena = this.showPassword ? 'number' : 'password';
@@ -122,10 +158,11 @@ export class ReservationComponent {
     .subscribe({
       next: (data: any) => {
         console.log(data);
+        this.showAlertsDuration(3000, "confirmation");
         },
       error: (error) => {
         console.log(error);
-  
+        this.showAlertsDuration(3000, "error");
       }
     });
   }

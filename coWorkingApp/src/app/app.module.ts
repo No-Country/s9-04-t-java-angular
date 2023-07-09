@@ -21,6 +21,7 @@ import { RegistroComponent } from './pages/registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
+import { ModalPersonsComponent } from './components/modal-persons/modal-persons.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     MapComponent,
     LoginComponent,
     WorkspaceCardComponent,
-    AverageRatingPipe
+    AverageRatingPipe,
+    ModalPersonsComponent
   ],
   imports: [
     BrowserModule,
