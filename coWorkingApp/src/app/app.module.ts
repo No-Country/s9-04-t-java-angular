@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-// import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -47,7 +47,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // NgxSliderModule
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
