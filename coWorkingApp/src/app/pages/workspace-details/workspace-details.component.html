@@ -1,4 +1,4 @@
-<!-- <ng-container *ngIf="id; else loading">
+<ng-container *ngIf="workspace; else loading">
 
   <div class="fixed w-full">
   
@@ -64,29 +64,17 @@
         <p>{{workspace.rating.length}} calificaciones</p>
       </div>
     </div>
+    <p class="bg-red-300">{{this.id}}</p>
   </div>
   
   <router-outlet></router-outlet>
   
 </ng-container>
+
 <ng-template #loading>
 
   <div class="flex items-center justify-center min-h-screen bg-red-200">
     <p>cargando...</p>
   </div>
   
-</ng-template> -->
-
-<div class="flex flex-col min-h-screen">
-
-  <div *ngIf="product" class="min-h-[350px] bg-green-300">
-    <button routerLink="/home" class="px-5 py-1 bg-gray-100">home</button>
-    <button routerLink="reservation" class="px-5 py-1 bg-gray-100">reservation</button>
-    <p>id: {{product.id}}</p>
-    <p>{{product.title}}</p>
-    <p>{{product.description}}</p>
-    <p>{{product.price | currency}}</p>
-    <img src="{{product.images[0]}}" alt="">
-  </div>
-  <router-outlet></router-outlet>
-</div>
+</ng-template>
