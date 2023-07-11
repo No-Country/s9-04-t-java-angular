@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   coworkService = inject(CoworkService);
   
   ngOnInit(): void {
+    window.scrollTo({ top: 0 });
     this.coworkService.getAllWorkspaces().subscribe({
       next: (res: any) => {
         this.workspaces = res;
