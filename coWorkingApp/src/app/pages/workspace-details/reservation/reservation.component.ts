@@ -1,9 +1,12 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { ViewportScroller } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faCalendarCheck, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { faChevronDown, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
+import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
+import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
@@ -11,7 +14,11 @@ import { PersonalDataService } from 'src/app/services/personal-data.service';
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
-export class ReservationComponent {
+export class ReservationComponent implements OnInit {
+
+  @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
+  
+
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
   faUser = faUser;
@@ -25,23 +32,33 @@ export class ReservationComponent {
   tipoContrasena: string = 'password';
   showPassword: boolean = false;
   CheckSaveCard: boolean = false;
-  detailsOpen: boolean = true;
+  detailsOpen: boolean = false;
 
   //Form
   formErrors: boolean = false;
   formSubmitted = false;
   personalData: FormGroup;
+  
 
 
   dateReservation: string = '';
-  totalPeople: number = 0;
+  numberPersons = 1 ;
   totalPrice: number = 0;
+
   
+  ngOnInit(): void {
+      this.perDataService.getNumberPersons().subscribe((numberPersons: number) => {
+      this.numberPersons = numberPersons;
+    });
+  }
+
+ 
 
   constructor(
     private formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
-    private perDataService: PersonalDataService
+    private perDataService: PersonalDataService,
+    private alertsService: AlertsReservaService
   ){
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
@@ -53,11 +70,14 @@ export class ReservationComponent {
       expirationCard:['',[Validators.required]],
       saveCard: false,
       receiveNotifications: false,
+      numberPersons: this.numberPersons
     });
     console.log(this.saveCard,'card')
+
+
   }
 
-  
+
   get email() {
     return this.personalData.get('email');
   }
@@ -94,6 +114,12 @@ export class ReservationComponent {
     return this.personalData.get('saveCard');
   }
 
+
+  openModalPerson(): void {
+    this.modalComponent.openModalPersons();
+  }
+ 
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.tipoContrasena = this.showPassword ? 'number' : 'password';
@@ -109,7 +135,7 @@ export class ReservationComponent {
     this.detailsOpen = !this.detailsOpen;
     this.viewportScroller.scrollToAnchor('end');
   }
-
+  
 
   onLoginFormSubmit(){
     this.formSubmitted = true;
@@ -117,21 +143,21 @@ export class ReservationComponent {
       this.formErrors = true;
       return;
     }
+  
     this.personalData.get('saveCard')?.setValue(this.CheckSaveCard);
+    this.personalData.patchValue({ numberPersons: this.numberPersons });
     this.perDataService.onPersonalData(this.personalData.value)
+      
     .subscribe({
       next: (data: any) => {
         console.log(data);
+      this.alertsService.show(3000, 'confirmation');
         },
       error: (error) => {
         console.log(error);
-  
+        this.alertsService.show(3000, 'error');
       }
     });
   }
-
-
-
-
 
 }

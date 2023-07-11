@@ -1,4 +1,4 @@
-export interface PersonalData {
+export interface PersonalDataReserva {
     dateReservation: string;
     totalPeople: number;
     totalPrice: number;
@@ -9,5 +9,5 @@ export interface PersonalData {
     cardNumber: number;
     cvcCvv: number;
     expirationCard: number;
-    
+    numberPersons: number;
 }
