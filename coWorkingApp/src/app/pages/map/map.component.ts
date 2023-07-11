@@ -10,7 +10,6 @@ declare const L:any;
 })
 
 export class MapComponent implements OnInit {
-  title = 'locationApp';
 
   ngOnInit() {
     if (!navigator.geolocation) {
