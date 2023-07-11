@@ -1,8 +1,9 @@
-import { Overlay } from '@angular/cdk/overlay';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { faSearch, faSlidersH, faLocationDot, faChevronDown, faTableList} from '@fortawesome/free-solid-svg-icons';
-import { SearchFiltersComponent } from '../search-filters/search-filters.component';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { CoworkService } from 'src/app/services/cowork.service';
+import { DialogService } from 'src/app/services/dialog.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -11,27 +12,47 @@ import { ComponentPortal } from '@angular/cdk/portal';
 })
 export class SearchBarComponent {
 
+  searchControl: any = new FormControl('');
+  searchResults: any[] = [];
+
   faSearch = faSearch;
   faSlidersH = faSlidersH;
   faLocationDot = faLocationDot;
   faChevronDown = faChevronDown;
   faTableList = faTableList;
 
-  constructor( private overlay: Overlay ) {}
-
-  openSearchFiltersComponent() {
-    const overlayRef = this.overlay.create({
-      hasBackdrop: true,
-      backdropClass: 'overlay-backdrop',
-      panelClass: 'overlay-panel',
-      positionStrategy: this.overlay
-        .position()
-        .global()
-        .centerHorizontally()
-        .centerVertically()
+  constructor(private dialogService: DialogService) {
+    this.searchControl.valueChanges
+    .pipe(debounceTime(300))
+    .subscribe((value: string) => {
+      // this.searching(value);
     });
-    const dialogPortal = new ComponentPortal(SearchFiltersComponent);
-    overlayRef.attach(dialogPortal);
-    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
+
+  // searching(query: string): any {
+  //   this.coworkService.getAllWorkspaces()
+  //   .subscribe(res => {
+  //     this.searchResults = res;
+  //   })
+  // }
+
+
+  workspaces: any[] = [];
+
+  coworkService = inject(CoworkService);
+
+  // ngOnInit(): void {
+  //   this.coworkService.getAllWorkspaces().subscribe({
+  //     next: (res: any) => {
+  //       this.workspaces = res;
+  //     },
+  //     error: (err) => console.log(err),
+  //     complete: () => {}
+  //   });
+  // }
+
+  openDialog() {
+    this.dialogService.open();
+  }
+
 }
