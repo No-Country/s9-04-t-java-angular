@@ -34,9 +34,9 @@ export class CoworkService {
       id: 2,
       name: 'Espacio 2',
       images: [
-        'https://i.blogs.es/0e7127/2560_3000/1366_2000.jpeg',
-        'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2020/05/gta-online-1943171.jpg?tf=3840x',
-        'https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2021/06/17/60cb034db908c.r_d.674-358-9375.jpeg'
+        'https://f4.bcbits.com/img/a3250604502_2.jpg',
+        'https://f4.bcbits.com/img/a2320864159_16.jpg',
+        'https://f4.bcbits.com/img/a2711163622_16.jpg'
       ],
       location: 'Avenida Buenos Aires, 2050, CABA',
       capacidad: 15,
@@ -83,9 +83,12 @@ export class CoworkService {
     return this.workspacesSubject.asObservable();
   }
 
-  getWorkspaceById(id: number) {
+  filterWorkspaceById(id: number) {
     let result = this.workspaces.filter((workspace: any) => workspace.id == id);
     this.selectedWorkspace.next(result[0]);
+  }
+
+  getWorkspaceById() {
     return this.selectedWorkspace.asObservable();
   }
 
