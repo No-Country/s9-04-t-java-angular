@@ -30,15 +30,19 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+<<<<<<< HEAD
     path: 'calendary',
     component: CalendaryComponent,
   },
   {
     path: 'registro',
+=======
+    path: 'register',
+>>>>>>> 622b2e2d32e2fbc0f0c1a4d37149cf2c954e3111
     component: RegistroComponent
   },
   {
-    path: 'workspace',
+    path: 'workspace/:id',
     component: WorkspaceDetailsComponent,
     children: [
       {

@@ -1,3 +1,12 @@
 <app-search-bar></app-search-bar>
+<<<<<<< HEAD
 <app-map></app-map>
 <footer></footer>
+=======
+<!-- <app-map></app-map> -->
+<div class="flex flex-col min-h-screen gap-3 p-4">
+
+  <app-workspace-card routerLink="/workspace/{{item.id}}" *ngFor="let item of workspaces" [workspace]="item"></app-workspace-card>
+
+</div>
+>>>>>>> 622b2e2d32e2fbc0f0c1a4d37149cf2c954e3111

@@ -5,16 +5,38 @@
 
 @import '@angular/cdk/overlay-prebuilt.css';
 
-input {
+.custom-slider .ngx-slider .ngx-slider-selection,
+.ngx-slider-pointer,
+.ngx-slider-pointer-min,
+.ngx-slider-pointer-max {
+  background: rgb(138, 9, 224) !important;
+}
+
+.ngx-slider-pointer {
+  top: -6px !important;
+  width: 16px !important;
+  height: 16px !important;
   outline: none !important;
-  border: none !important;
+}
+
+.ngx-slider-bar {
+  height: 3px !important;
+}
+
+.ngx-slider-pointer::after  {
+  background-color: red !important;
+  width: 0 !important;
+}
+
+.ngx-slider-model-value, .ngx-slider-model-high, .ngx-slider-floor, .ngx-slider-ceil {
+  display: none !important;
+}
+
+.ngx-slider {
+  margin: 0 !important;
 }
 
 app-search-filters {
-  /* margin: 20px !important; */
-  padding: 20px;
-  border-radius: 20px;
   background-color: white;
-  height: 80vh;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px 10px 0 0;
 }
