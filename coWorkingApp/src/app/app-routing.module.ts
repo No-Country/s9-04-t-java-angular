@@ -8,6 +8,7 @@ import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
+import { DireccionComponent } from './pages/direccion/direccion.component';
 
 const routes: Routes = [
   {
@@ -30,16 +31,12 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-<<<<<<< HEAD
-    path: 'calendary',
-    component: CalendaryComponent,
+    path: 'register',
+    component: RegistroComponent
   },
   {
-    path: 'registro',
-=======
-    path: 'register',
->>>>>>> 622b2e2d32e2fbc0f0c1a4d37149cf2c954e3111
-    component: RegistroComponent
+    path: 'direccion',
+    component: DireccionComponent
   },
   {
     path: 'workspace/:id',

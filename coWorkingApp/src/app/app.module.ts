@@ -24,6 +24,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
+import { DireccionComponent } from './pages/direccion/direccion.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -47,7 +48,8 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     MapComponent,
     LoginComponent,
     FooterComponent,
-    CalendaryComponent
+    CalendaryComponent,
+    DireccionComponent
 // >>>>>>> 51183b641e882060528cff771af2b948f09468df
 =======
     RegistroComponent,
@@ -64,7 +66,7 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     FontAwesomeModule,
     OverlayModule,
 <<<<<<< HEAD
-    FullCalendarModule
+    FullCalendarModule,
 =======
     CdkAccordionModule,
     FormsModule,
