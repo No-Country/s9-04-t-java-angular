@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,6 +15,9 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
 import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { FooterComponent } from './pages/footer/footer.component';
+import { CalendaryComponent } from './components/calendary/calendary.component';
+
 
 
 @NgModule({
@@ -25,19 +29,22 @@ import { RegistroComponent } from './pages/registro/registro.component';
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
-<<<<<<< HEAD
+// <<<<<<< HEAD
     LoginComponent,
-    RegistroComponent
-=======
+    RegistroComponent,
+// =======
     MapComponent,
-    LoginComponent
->>>>>>> 51183b641e882060528cff771af2b948f09468df
+    LoginComponent,
+    FooterComponent,
+    CalendaryComponent
+// >>>>>>> 51183b641e882060528cff771af2b948f09468df
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    OverlayModule
+    OverlayModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
