@@ -1,4 +1,5 @@
-<div class="w-full  flex-col flex container mx-auto h-screen">
+<div class="w-full  flex-col flex container mx-auto min-h-screen">
+    <app-alerts-reservation></app-alerts-reservation>
     <div *ngIf="!detailsOpen">
         <div class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px]">
             <div>
@@ -18,7 +19,7 @@
                     <h5>Cantidad de personas</h5>
                     <p>1 nomada</p>
                 </div>
-                <button class="underline-offset-4 underline font-bold">Editar</button>
+                <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
             </div>
             <div class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px] ">
                 <p class="m-auto justify-center text-center">
@@ -26,7 +27,7 @@
                 </p>
             </div>
         </div>
-
+        <app-modal-persons></app-modal-persons>
         <div class="flex-col px-4 py-3 bg-[#F4F4F4] flex mb-4">
             <div>
                 <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Detalles del precio</h5>
@@ -78,6 +79,8 @@
         </div>
 
         <form class="flex flex-col  justify-center" [formGroup]="personalData" (ngSubmit)="onLoginFormSubmit()">
+
+
             <div class="border-b border-dashed flex flex-col gap-4 pb-4">
                 <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold " #details>Datos personales</h5>
 
@@ -115,7 +118,8 @@
                     <input type="text" class="py-2 border rounded ps-4 bg-[#F4F4F4]" placeholder="ingresa tu apellido"
                         formControlName="lastName">
                     <div *ngIf="lastName?.errors && lastName?.touched">
-                        <div *ngIf="personalData.get('lastName')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
+                        <div *ngIf="personalData.get('lastName')?.hasError('required')"
+                            class="text-[#BB4E4E] text-[13px]">
                             El apellido es requerido
                         </div>
                     </div>
@@ -129,7 +133,8 @@
                     <input type="text" class="py-2 border rounded ps-4 bg-[#F4F4F4]" placeholder="Ingresa nombre"
                         formControlName="ownerName">
                     <div *ngIf="ownerName?.errors && ownerName?.touched">
-                        <div *ngIf="personalData.get('ownerName')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
+                        <div *ngIf="personalData.get('ownerName')?.hasError('required')"
+                            class="text-[#BB4E4E] text-[13px]">
                             El nombre titular es requerido
                         </div>
                     </div>
@@ -140,7 +145,8 @@
                     <input type="number" class="py-2 border rounded ps-4 bg-[#F4F4F4]" placeholder="0000 0000 0000 0000"
                         formControlName="cardNumber">
                     <div *ngIf="cardNumber?.errors && cardNumber?.touched">
-                        <div *ngIf="personalData.get('cardNumber')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
+                        <div *ngIf="personalData.get('cardNumber')?.hasError('required')"
+                            class="text-[#BB4E4E] text-[13px]">
                             El número de tarjeta es requerido
                         </div>
                     </div>
@@ -159,14 +165,16 @@
                                 (click)="togglePasswordVisibility()" class="pe-4 cursor-pointer m-auto"></fa-icon>
                         </div>
                         <div *ngIf="cvcCvv?.errors && cvcCvv?.touched">
-                            <div *ngIf="personalData.get('cvcCvv')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
+                            <div *ngIf="personalData.get('cvcCvv')?.hasError('required')"
+                                class="text-[#BB4E4E] text-[13px]">
                                 El CVC/CVV es requerido
                             </div>
                         </div>
                     </div>
 
                     <div class="text-center ">
-                        <label for="" class="text-center flex mb-2">Vencimiento <span class="text-[#BB4E4E]">*</span></label>
+                        <label for="" class="text-center flex mb-2">Vencimiento <span
+                                class="text-[#BB4E4E]">*</span></label>
                         <div class="border  flex justify-between py-3 rounded-lg w-[156px] bg-[#F4F4F4]">
                             <input type="text" placeholder="12/10" class="ps-4 w-full  bg-[#F4F4F4]"
                                 formControlName="expirationCard">
@@ -200,7 +208,7 @@
 
     <div class="flex justify-around bg-[#F4F4F4] py-2 mt-auto">
         <div class="flex-col m-auto">
-            <fa-icon class="text-sm" [icon]="faUser"></fa-icon> 1 nomada <span
+            <fa-icon class="text-sm" [icon]="faUser"></fa-icon> {{numberPersons}} nomada <span
                 class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
             jul.
             <h5>$595</h5>

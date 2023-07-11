@@ -1,0 +1,76 @@
+<ng-template #modalPersona>
+    <div class="fixed inset-0 flex items-center justify-center ">
+        <div class="bg-white rounded-lg shadow-lg  w-[360px] gap-4">
+
+            <div class=" flex flex-col gap-4 p-4">
+                <div class="flex justify-between border-b">
+                    <h1 class="text-xl font-bold mb-2">Cantidad de personas</h1>
+                    <button class="rounded-lg p-2 hover:bg-gray-200" (click)="closeModalPersons()">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24">
+                            <path
+                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div>
+                    <p>Este espacio tiene una capacidad máxima de 5 huespedes</p>
+                </div>
+                <div class="flex flex-col">
+
+                    <div class="border-b justify-between flex">
+                        <h1 class="text-xl font-bold mb-2">Manualmente</h1>
+                        <fa-icon [icon]="faChevronUp"></fa-icon>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <h5>
+                                Nómada (+18)
+                            </h5>
+                        </div>
+
+                        <div class="flex justify-center items-center gap-2 ">
+                            <button
+                                class="inline-flex items-center  rounded-full border h-[46px] w-[46px] justify-center"
+                                (click)="decreaseNumber()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="2"
+                                    viewBox="0 0 14 2" fill="none">
+                                    <path d="M0 2V0H14V2H0Z" fill="#A7A7A7" />
+                                </svg></button>
+                            <div><input type="number" class="h-[46px] w-[46px] p-3 text-center"
+                                    [placeholder]="numberPersons" [(ngModel)]="numberPersons" min="1"></div>
+                            <button
+                                class="inline-flex items-center  rounded-full border h-[46px] w-[46px] justify-center"
+                                (click)="increaseNumber()"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                    height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M6 14V8H0V6H6V0H8V6H14V8H8V14H6Z" fill="#3D3D3D" />
+                                </svg></button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="flex flex-col">
+                    <div class="border-b justify-between flex ">
+                        <h1 class="text-xl font-bold mb-2">Varias personas</h1>
+                        <fa-icon [icon]="faChevronUp"></fa-icon>
+                    </div>
+                    <div class="flex justify-between mt-2">
+                        <button class="rounded-lg border flex p-2">1-5</button>
+                        <button class="rounded-lg border flex p-2">6-10</button>
+                        <button class="rounded-lg border flex p-2">11-20</button>
+                        <button class="rounded-lg border flex p-2">21-40</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex justify-between bg-slate-400 p-4 items-center ">
+                <div>
+                    <fa-icon [icon]="faUser"></fa-icon> {{numberPersons}} nómada
+                </div>
+                <button class="rounded-lg border p-3 w-[160px]" (click)="closeModalPersons()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
