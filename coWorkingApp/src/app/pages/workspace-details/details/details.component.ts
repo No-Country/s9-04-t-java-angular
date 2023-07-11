@@ -17,13 +17,12 @@ export class DetailsComponent implements OnInit {
   workspace: any;
   
   ngOnInit(): void {
-
+    window.scrollTo({ top: 0 });
     this.coworkService.getWorkspaceById().subscribe({
       next: (res: any) => {
         this.workspace = res;
       }
-    })
-
+    });
   }
 
 
