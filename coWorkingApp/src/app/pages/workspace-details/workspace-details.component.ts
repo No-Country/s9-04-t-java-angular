@@ -48,7 +48,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   }
 
   getSelectedWorkspace(id: number) {
-    this.workspaceSub = this.coworkService.getWorkspaceById(id).subscribe({
+    this.coworkService.filterWorkspaceById(id);
+    this.workspaceSub = this.coworkService.getWorkspaceById().subscribe({
       next: (res: any) => {
         this.workspace = res;
         console.log(res);
