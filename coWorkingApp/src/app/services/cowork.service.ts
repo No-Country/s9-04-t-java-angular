@@ -74,7 +74,7 @@ export class CoworkService {
   ];
 
   http = inject(HttpClient);
-  
+
   workspacesSubject: BehaviorSubject<any> = new BehaviorSubject(this.workspaces);
 
   selectedWorkspace: BehaviorSubject<any> = new BehaviorSubject(undefined);
@@ -92,5 +92,8 @@ export class CoworkService {
   getProduct(id: number) {
     return this.http.get(`https://dummyjson.com/products/${id}`);
   }
+
+
+
 
 }

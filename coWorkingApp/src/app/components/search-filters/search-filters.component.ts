@@ -2,6 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faClose, faChevronDown, faStar, faLocationDot, faUsers} from '@fortawesome/free-solid-svg-icons';
 import { Options } from '@angular-slider/ngx-slider';
+import { DialogService } from 'src/app/services/dialog.service';
+
 
 @Component({
   selector: 'app-search-filters',
@@ -34,7 +36,10 @@ export class SearchFiltersComponent {
     ceil: 500
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private dialogService: DialogService
+    ) {
     this.form = this.fb.group({
       betters: false,
       closer: false,
@@ -56,6 +61,7 @@ export class SearchFiltersComponent {
   showResults(){
     console.log(this.form.value);
     this.onCloseModal();
+    this.dialogService.close();
   }
 
   isBetters: boolean = false;
@@ -75,5 +81,12 @@ export class SearchFiltersComponent {
   optionSelectedRoom(){
     this.isRoom = !this.isRoom;
     this.form.value.room = this.isRoom;
+  }
+
+
+  // Dialog
+
+  close() {
+    this.dialogService.close()
   }
 }
