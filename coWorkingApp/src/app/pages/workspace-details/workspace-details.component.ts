@@ -43,7 +43,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
         this.id = params['id'];
       },
       error: (error) => console.log(error),
-      complete: () => {}
+      complete: () => { }
     });
   }
 
@@ -68,7 +68,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
   previo() {
     if (this.displayedImage == 0) {
-      this.displayedImage = this.workspace.images.length -1;
+      this.displayedImage = this.workspace.images.length - 1;
     } else {
       this.displayedImage--;
     }

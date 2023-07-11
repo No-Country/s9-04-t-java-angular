@@ -2,6 +2,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { faChevronUp, faUser } from '@fortawesome/free-solid-svg-icons';
+import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 
 
@@ -18,18 +19,23 @@ export class ModalPersonsComponent {
   @ViewChild('modalPersona') modalPersona!: TemplateRef<any>;
   private overlayRef: OverlayRef | null = null;
 
-  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef) { }
+  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef,
+    private perDataService: PersonalDataService) { }
 
-  
-  decreaseNumber() {
-    if (this.numberPersons > 1) {
-      this.numberPersons--;
+
+    decreaseNumber() {
+      if (this.numberPersons > 1) {
+        this.numberPersons--;
+        this.perDataService.saveNumberPersons(this.numberPersons);
+      }
     }
-  }
+    
+    increaseNumber() {
+      this.numberPersons++;
+      this.perDataService.saveNumberPersons(this.numberPersons);
+    }
+    
 
-  increaseNumber() {
-    this.numberPersons++;
-  }
 
   openModalPersons(): void {
     if (!this.overlayRef) {
@@ -49,4 +55,3 @@ export class ModalPersonsComponent {
     }
   }
 }
- 

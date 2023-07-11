@@ -64,9 +64,9 @@
             </div>
             <div class="flex justify-between bg-slate-400 p-4 items-center ">
                 <div>
-                    <fa-icon [icon]="faUser"></fa-icon> 1 nómada
+                    <fa-icon [icon]="faUser"></fa-icon> {{numberPersons}} nómada
                 </div>
-                <button class="rounded-lg border p-3 w-[160px]">
+                <button class="rounded-lg border p-3 w-[160px]" (click)="closeModalPersons()">
                     Guardar
                 </button>
             </div>

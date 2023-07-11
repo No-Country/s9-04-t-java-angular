@@ -1,4 +1,4 @@
-<div class="w-full  flex-col flex container mx-auto h-screen">
+<div class="w-full  flex-col flex container mx-auto min-h-screen">
     <app-alerts-reservation></app-alerts-reservation>
     <div *ngIf="!detailsOpen">
         <div class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px]">
@@ -19,7 +19,7 @@
                     <h5>Cantidad de personas</h5>
                     <p>1 nomada</p>
                 </div>
-                <button class="underline-offset-4 underline font-bold" (click)="openModal()">Editar</button>
+                <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
             </div>
             <div class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px] ">
                 <p class="m-auto justify-center text-center">
@@ -208,7 +208,7 @@
 
     <div class="flex justify-around bg-[#F4F4F4] py-2 mt-auto">
         <div class="flex-col m-auto">
-            <fa-icon class="text-sm" [icon]="faUser"></fa-icon> 1 nomada <span
+            <fa-icon class="text-sm" [icon]="faUser"></fa-icon> {{numberPersons}} nomada <span
                 class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
             jul.
             <h5>$595</h5>
