@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { faArrowLeft, faShareNodes, faLocationDot, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faShareNodes, faLocationDot, faStar, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { ActivatedRoute, Params } from '@angular/router';
 import { CoworkService } from 'src/app/services/cowork.service';
-import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-workspace-details',
@@ -17,10 +16,13 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   faLocationDot = faLocationDot;
   faStar = faStar;
   faHeart = faHeart;
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
 
   workspace: any;
   workspaceSub: any;
   id: number = 0;
+  displayedImage: number = 0;
 
   _activatedRoute = inject(ActivatedRoute);
   coworkService = inject(CoworkService);
@@ -54,6 +56,22 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
       error: (error: any) => console.log(error),
       complete: () => { }
     });
+  }
+
+  next() {
+    if (this.displayedImage == this.workspace.images.length - 1) {
+      this.displayedImage = 0;
+    } else {
+      this.displayedImage++
+    }
+  }
+
+  previo() {
+    if (this.displayedImage == 0) {
+      this.displayedImage = this.workspace.images.length -1;
+    } else {
+      this.displayedImage--;
+    }
   }
 
 }
