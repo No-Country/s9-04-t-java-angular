@@ -27,6 +27,7 @@ import { WorkspaceCardComponent } from './components/workspace-card/workspace-ca
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
 import { ModalPersonsComponent } from './components/modal-persons/modal-persons.component';
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
+import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
     WorkspaceCardComponent,
     AverageRatingPipe,
     ModalPersonsComponent,
-    AlertsReservationComponent
+    AlertsReservationComponent,
+    ScheduleModalComponent
   ],
   imports: [
     BrowserModule,
