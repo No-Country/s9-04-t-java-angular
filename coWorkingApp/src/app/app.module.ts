@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -47,7 +48,8 @@ import { AverageRatingPipe } from './pipes/average-rating.pipe';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSliderModule
+    NgxSliderModule,
+    CdkMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

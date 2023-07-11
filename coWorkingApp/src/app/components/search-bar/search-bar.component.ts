@@ -1,8 +1,5 @@
-import { Overlay } from '@angular/cdk/overlay';
 import { Component } from '@angular/core';
 import { faSearch, faSlidersH, faLocationDot, faChevronDown, faTableList} from '@fortawesome/free-solid-svg-icons';
-import { SearchFiltersComponent } from '../search-filters/search-filters.component';
-import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'app-search-bar',
@@ -17,21 +14,10 @@ export class SearchBarComponent {
   faChevronDown = faChevronDown;
   faTableList = faTableList;
 
-  constructor( private overlay: Overlay ) {}
+  constructor() {}
 
-  openSearchFiltersComponent() {
-    const overlayRef = this.overlay.create({
-      hasBackdrop: true,
-      backdropClass: 'overlay-backdrop',
-      panelClass: 'overlay-panel',
-      positionStrategy: this.overlay
-        .position()
-        .global()
-        .centerHorizontally()
-        .centerVertically()
-    });
-    const dialogPortal = new ComponentPortal(SearchFiltersComponent);
-    overlayRef.attach(dialogPortal);
-    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+  closeModal() {
+    const modal: any = document.getElementById('defaultModal');
+    modal.setAttribute('data-modal-hide', '');
   }
 }

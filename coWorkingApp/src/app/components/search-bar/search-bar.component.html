@@ -2,7 +2,6 @@
   <div class="h-12 rounded-md bg-gray-200 flex items-center py-2 px-3">
     <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
     <input type="search" class="bg-transparent placeholder:text-[#000000] w-full border-none" placeholder="Buscar en...">
-    <!-- <fa-icon [icon]="faSlidersH" class="pl-4 " (click)="openSearchFiltersComponent()"></fa-icon> -->
     <!-- Modal toggle -->
     <fa-icon [icon]="faSlidersH" data-modal-target="defaultModal" data-modal-toggle="defaultModal" type="button">
   Toggle modal
@@ -47,7 +46,7 @@
 
             <!-- Accordion -->
 
-            <app-search-filters></app-search-filters>
+            <app-search-filters (closeModal)="closeModal()"></app-search-filters>
 
         </div>
     </div>
