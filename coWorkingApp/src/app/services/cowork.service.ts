@@ -53,7 +53,7 @@ export class CoworkService {
       name: 'Espacio 3',
       images: [
         'https://i.blogs.es/0c9485/the-batman-cartel/1366_2000.jpeg',
-        'https://estaticos-cdn.elperiodico.com/clip/bd2a087e-0076-4792-80e5-27e8d52955c1_alta-libre-aspect-ratio_default_0.png',
+        'https://www.latercera.com/resizer/gtE5wcocrX9i500-vLpgccD60DI=/arc-anglerfish-arc2-prod-copesa/public/NCJRQRPOARA5XGJQGSHNQDCCRI.jpg',
         'https://media.revistagq.com/photos/62f612194b12f9b6048b3554/16:9/pass/the-batman-2-pelicula.jpeg',
       ],
       location: 'Avenida Buenos Aires, 2050, CABA',
@@ -84,16 +84,13 @@ export class CoworkService {
   }
 
   getWorkspaceById(id: number) {
-    // this.http.get(`https://dummyjson.com/products/${id}`).subscribe({
-    //   next: (res) => {
-    //     this.selectedWorkspace.next(
-    //     console.log(res);
-    // });
-
     let result = this.workspaces.filter((workspace: any) => workspace.id == id);
     this.selectedWorkspace.next(result[0]);
     return this.selectedWorkspace.asObservable();
+  }
 
+  getProduct(id: number) {
+    return this.http.get(`https://dummyjson.com/products/${id}`);
   }
 
 

@@ -1,54 +1,28 @@
 <ng-container *ngIf="workspace; else loading">
 
   <div class="fixed w-full">
-  
-    <div id="default-carousel" class="relative w-full" data-carousel="static">
-  
-      <div class="absolute z-40 flex justify-between w-full p-4">
-        <button routerLink="/home" class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon
-            [icon]="faArrowLeft"></fa-icon></button>
+    <div class="relative">
+      <div class="absolute top-0 z-40 flex justify-between w-full p-4">
+        <a routerLink="/home" class="flex items-center justify-center w-8 rounded-full aspect-square bg-zinc-50"><fa-icon [icon]="faArrowLeft"></fa-icon></a>
         <div class="flex gap-3">
-          <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faShareNodes"></fa-icon></button>
-          <button class="h-8 bg-blue-100 rounded-full aspect-square"><fa-icon [icon]="faHeart"></fa-icon></button>
+          <button class="w-8 rounded-full aspect-square bg-zinc-50"><fa-icon [icon]="faShareNodes"></fa-icon>
+          </button>
+          <button class="w-8 rounded-full aspect-square bg-zinc-50"><fa-icon [icon]="faHeart"></fa-icon>
+          </button>
         </div>
       </div>
-  
-      <div class="relative h-56 overflow-hidden md:h-96">
-        <div *ngFor="let image of workspace.images" class="hidden duration-200 ease-linear" data-carousel-item>
-          <img src="{{image}}"
-            class="absolute block object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 aspect-auto top-1/2 left-1/2"
-            alt="...">
-        </div>
+      <div class="absolute z-30 flex justify-between w-full h-full p-5">
+        <button class="p-3 text-white" (click)="previo()"><fa-icon [icon]="faChevronLeft"></fa-icon></button>
+        <button class="p-3 text-white" (click)="next()"><fa-icon [icon]="faChevronRight"></fa-icon></button>
       </div>
-  
-      <button type="button"
-        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
-          <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M5 1 1 5l4 4" />
-          </svg>
-          <span class="sr-only">Previous</span>
-        </span>
-      </button>
-  
-      <button type="button"
-        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-        data-carousel-next>
-        <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 rounded-full">
-          <svg class="w-4 h-4 text-white dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 6 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="m1 9 4-4-4-4" />
-          </svg>
-          <span class="sr-only">Next</span>
-        </span>
-      </button>
-  
-    </div>
-  
+      <div class="absolute z-30 flex justify-center w-full gap-2 bottom-4">
+        <div [ngClass]="displayedImage == i? 'bg-white' : 'bg-white/40'" class="w-2 h-2 rounded-full drop-shadow-lg"
+          *ngFor="let image of workspace.images; let i = index"></div>
+      </div>      
+      <div id="carousel" class="flex w-full">
+        <img class="w-full h-[224px] object-cover" src="{{workspace.images[displayedImage]}}" alt="">
+      </div>
+    </div>  
   </div>
   
   <div class="pt-[224px]">
@@ -64,7 +38,6 @@
         <p>{{workspace.rating.length}} calificaciones</p>
       </div>
     </div>
-    <p class="bg-red-300">{{this.id}}</p>
   </div>
   
   <router-outlet></router-outlet>
