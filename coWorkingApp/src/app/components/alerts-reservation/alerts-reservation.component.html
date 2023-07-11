@@ -1,22 +1,23 @@
-<div *ngIf="showAlertError"
-class="fixed inset-x-0 top-[-10px] flex items-center justify-center "
-(click)="hideAlerts()">
-<div  [ngClass]="{'animate-fade-down ': showAlertError}" class="flex items-center justify-center  px-4 py-2 bg-red-500 text-white">
-    <div>check</div>
-    <div class="flex flex-col gap-1">
-        <h5>Tu reserva se realizo correctamente.</h5>
-        <p>Gracias por elegirnos.</p>
+
+<div *ngIf="showAlertError" class="fixed inset-x-0 top-1 flex items-center justify-center " (click)="hideAlerts()">
+    <div [ngClass]="{'animate-fade-down ': showAlertError}"
+        class="flex items-center rounded-lg justify-center  p-3 bg-red-500 text-white">
+        <div class="flex me-2"><fa-icon [icon]="faCircleExclamation" shake></fa-icon></div>
+        <div class="flex flex-col gap-1">
+            <h5>Los datos ingresados no son correctos.</h5>
+            <p>Tu reserva no se pudo realizar.</p>
+        </div>
     </div>
 </div>
-</div>
-<div *ngIf="showAlertConfirmation"
-class="fixed inset-x-0 top-0 flex items-center justify-center"
-(click)="hideAlerts()">
-<div  [ngClass]="{'animate-fade-down ': showAlertConfirmation}" class="flex items-center justify-center  px-4 py-2 bg-green-500 text-white">
-    <div>check</div>
-    <div class="flex flex-col gap-1">
-        <h5>Tu reserva se realizo correctamente.</h5>
-        <p>Gracias por elegirnos.</p>
+
+<div *ngIf="showAlertConfirmation" class="fixed inset-x-0 top-0 flex items-center justify-center"
+    (click)="hideAlerts()">
+    <div [ngClass]="{'animate-fade-down ': showAlertConfirmation}"
+        class="flex rounded-lg items-center justify-center  p-3 bg-green-500 text-white">
+        <div><fa-icon [icon]="faCheckCircle" beat></fa-icon></div>
+        <div class="flex flex-col gap-1">
+            <h5 class="">Tu reserva se realizo correctamente.</h5>
+            <p>Gracias por elegirnos.</p>
+        </div>
     </div>
-</div>
 </div>

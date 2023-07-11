@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PersonalDataService {
-  apiUrl = "https://eopvbi88r5ylyo5.m.pipedream.net";
+  apiUrl = "https://eopvbi88r5ylyo5.m.pipedream.nt";
   constructor(private http:HttpClient) {}
 
   onPersonalData(perData:PersonalData): Observable<any>{

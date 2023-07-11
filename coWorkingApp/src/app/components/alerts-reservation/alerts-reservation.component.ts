@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faCheckCircle, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
   styleUrls: ['./alerts-reservation.component.css']
 })
 export class AlertsReservationComponent implements OnInit{
-
+  faCheckCircle = faCheckCircle;
+  faCircleExclamation = faCircleExclamation;
   showAlertError = false;
   showAlertConfirmation = false;
 

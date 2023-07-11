@@ -1,6 +1,7 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { faChevronUp, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -10,11 +11,25 @@ import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/co
   styleUrls: ['./modal-persons.component.css']
 })
 export class ModalPersonsComponent {
+  faChevronUp = faChevronUp;
+  faUser = faUser;
+  numberPersons: number = 1;
 
-  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+  @ViewChild('modalPersona') modalPersona!: TemplateRef<any>;
   private overlayRef: OverlayRef | null = null;
 
   constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef) { }
+
+  
+  decreaseNumber() {
+    if (this.numberPersons > 1) {
+      this.numberPersons--;
+    }
+  }
+
+  increaseNumber() {
+    this.numberPersons++;
+  }
 
   openModalPersons(): void {
     if (!this.overlayRef) {
@@ -22,7 +37,7 @@ export class ModalPersonsComponent {
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
         hasBackdrop: true
       });
-      this.overlayRef.attach(new TemplatePortal(this.modalTemplate, this.viewContainerRef));
+      this.overlayRef.attach(new TemplatePortal(this.modalPersona, this.viewContainerRef));
     }
   }
   
