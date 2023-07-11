@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
+// import { FullCalendarModule } from '@fullcalendar/angular';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CdkMenuModule } from '@angular/cdk/menu';
@@ -18,6 +19,8 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
 import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { FooterComponent } from './pages/footer/footer.component';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
@@ -34,6 +37,11 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
     WorkspaceDetailsComponent,
     DetailsComponent,
     ReservationComponent,
+    LoginComponent,
+    RegistroComponent,
+    MapComponent,
+    LoginComponent,
+    FooterComponent,
     RegistroComponent,
     MapComponent,
     LoginComponent,
@@ -53,7 +61,8 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
     ReactiveFormsModule,
     HttpClientModule,
     NgxSliderModule,
-    CdkMenuModule
+    CdkMenuModule,
+    // FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
