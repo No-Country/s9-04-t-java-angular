@@ -7,7 +7,6 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
 import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { CalendaryComponent } from './components/calendary/calendary.component';
 
 const routes: Routes = [
   {
@@ -30,15 +29,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-<<<<<<< HEAD
-    path: 'calendary',
-    component: CalendaryComponent,
-  },
-  {
-    path: 'registro',
-=======
     path: 'register',
->>>>>>> 622b2e2d32e2fbc0f0c1a4d37149cf2c954e3111
     component: RegistroComponent
   },
   {
