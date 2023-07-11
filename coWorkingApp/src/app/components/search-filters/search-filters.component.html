@@ -1,210 +1,216 @@
-<h2 class="text-xl text-black p-4 font-bold border-b-2">Filtros</h2>
-<form [formGroup]="form" (ngSubmit)="showResults()">
+<div >
+  <div class="flex justify-between items-center border-b-2 w-full">
+    <h2 class="text-xl text-black p-4 font-bold">Filtros</h2>
+    <fa-icon [icon]="faClose" (click)="close()" class="pr-7 cursor-pointer"></fa-icon>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="showResults()">
 
-  <cdk-accordion class="example-accordion">
+    <cdk-accordion class="example-accordion">
 
-    <!-- Item 1 -->
+      <!-- Item 1 -->
+
+      <cdk-accordion-item
+      #accordionItem="cdkAccordionItem"
+      class="example-accordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-1'"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-1'">
+      <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem.toggle()">
+        <p>Ordenar</p>
+        <div class="w-full"></div>
+        <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
+      </div>
+      <div
+        class="example-accordion-item-body p-4"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-1'"
+        [attr.aria-labelledby]="'accordion-header-1'">
+
+        <div class="flex gap-2 w-full">
+          <div class="flex flex-col gap-2 p-2 py-6 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedBetters()"
+          [ngClass]="{'border border-spacing-2 border-purple-500': isBetters}"
+          >
+            <fa-icon [icon]="faStar"></fa-icon>
+            <p class="text-center text-sm">Mejores calificados</p>
+          </div>
+          <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedCloser()"
+          [ngClass]="{'border border-spacing-2 border-purple-500': isCloser}"
+          >
+            <fa-icon [icon]="faLocationDot"></fa-icon>
+            <p class="text-sm">Cercanía</p>
+          </div>
+          <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedRoom()"
+          [ngClass]="{'border border-spacing-2 border-purple-500': isRoom}"
+          >
+            <fa-icon [icon]="faUsers"></fa-icon>
+            <p class="text-center text-sm">Sala de reunión</p>
+          </div>
+        </div>
+      </div>
+    </cdk-accordion-item>
+
+    <!-- Item 2 -->
 
     <cdk-accordion-item
-    #accordionItem="cdkAccordionItem"
+    #accordionItem2="cdkAccordionItem"
     class="example-accordion-item"
     role="button"
     tabindex="0"
-    [attr.id]="'accordion-header-1'"
-    [attr.aria-expanded]="accordionItem.expanded"
-    [attr.aria-controls]="'accordion-body-1'">
-    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem.toggle()">
-      <p>Ordenar</p>
+    [attr.id]="'accordion-header-2'"
+    [attr.aria-expanded]="accordionItem2.expanded"
+    [attr.aria-controls]="'accordion-body-2'">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem2.toggle()">
+      <p>Precio</p>
       <div class="w-full"></div>
       <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
     </div>
     <div
       class="example-accordion-item-body p-4"
       role="region"
-      [style.display]="accordionItem.expanded ? '' : 'none'"
-      [attr.id]="'accordion-body-1'"
-      [attr.aria-labelledby]="'accordion-header-1'">
+      [style.display]="accordionItem2.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-2'"
+      [attr.aria-labelledby]="'accordion-header-2'">
 
-      <div class="flex gap-2 w-full">
-        <div class="flex flex-col gap-2 p-2 py-6 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedBetters()"
-        [ngClass]="{'border border-spacing-2 border-purple-500': isBetters}"
-        >
-          <fa-icon [icon]="faStar"></fa-icon>
-          <p class="text-center text-sm">Mejores calificados</p>
+      <h2>Precio por día</h2>
+      <div class="flex gap-4 p-4 justify-between">
+        <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
+          <p class="text-center">Precio Mínimo</p>
+          <p class="text-center"> {{ form.value.minPrice | currency:'USD':'symbol':'1.0-0' }}</p>
         </div>
-        <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedCloser()"
-        [ngClass]="{'border border-spacing-2 border-purple-500': isCloser}"
-        >
-          <fa-icon [icon]="faLocationDot"></fa-icon>
-          <p class="text-sm">Cercanía</p>
+        <hr class="w-2 self-center border border-gray-600">
+        <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
+          <p class="text-center">Precio Máximo</p>
+          <p class="text-center">{{ form.value.maxPrice | currency:'USD':'symbol':'1.0-0' }}</p>
         </div>
-        <div class="flex flex-col gap-2 p-2 border border-spacing-2 rounded-md w-full items-center justify-center hover:bg-gray-100" (click)="optionSelectedRoom()"
-        [ngClass]="{'border border-spacing-2 border-purple-500': isRoom}"
-        >
-          <fa-icon [icon]="faUsers"></fa-icon>
-          <p class="text-center text-sm">Sala de reunión</p>
+      </div>
+
+      <div class="p-4">
+        <div class="custom-slider">
+          <ngx-slider [(value)]="form.value.minPrice" [(highValue)]="form.value.maxPrice" [options]="optionsPrice"></ngx-slider>
         </div>
       </div>
     </div>
-  </cdk-accordion-item>
+    </cdk-accordion-item>
 
-  <!-- Item 2 -->
 
-  <cdk-accordion-item
-  #accordionItem2="cdkAccordionItem"
-  class="example-accordion-item"
-  role="button"
-  tabindex="0"
-  [attr.id]="'accordion-header-2'"
-  [attr.aria-expanded]="accordionItem2.expanded"
-  [attr.aria-controls]="'accordion-body-2'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem2.toggle()">
-    <p>Precio</p>
-    <div class="w-full"></div>
-    <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
-  </div>
-  <div
-    class="example-accordion-item-body p-4"
-    role="region"
-    [style.display]="accordionItem2.expanded ? '' : 'none'"
-    [attr.id]="'accordion-body-2'"
-    [attr.aria-labelledby]="'accordion-header-2'">
+    <!-- Item 3 -->
 
-    <h2>Precio por día</h2>
-    <div class="flex gap-4 p-4 justify-between">
-      <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
-        <p class="text-center">Precio Mínimo</p>
-        <p class="text-center"> {{ form.value.minPrice | currency:'USD':'symbol':'1.0-0' }}</p>
+    <cdk-accordion-item
+    #accordionItem3="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-2'"
+    [attr.aria-expanded]="accordionItem3.expanded"
+    [attr.aria-controls]="'accordion-body-2'">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem3.toggle()">
+      <p>Distancia</p>
+      <div class="w-full"></div>
+      <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
+    </div>
+    <div
+      class="example-accordion-item-body p-4"
+      role="region"
+      [style.display]="accordionItem3.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-2'"
+      [attr.aria-labelledby]="'accordion-header-2'">
+
+      <div class="flex gap-4 p-4 justify-between">
+        <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
+          <p class="text-center"> {{ form.value.minKm }} <span>km</span></p>
+        </div>
+        <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
+          <p class="text-center">{{ form.value.maxKm }} <span>km</span></p>
+        </div>
       </div>
-      <hr class="w-2 self-center border border-gray-600">
-      <div class="p-4 border border-spacing-2 border-gray-600 rounded-md">
-        <p class="text-center">Precio Máximo</p>
-        <p class="text-center">{{ form.value.maxPrice | currency:'USD':'symbol':'1.0-0' }}</p>
+
+      <div class="p-4">
+        <div class="custom-slider">
+          <ngx-slider [(value)]="form.value.minKm" [(highValue)]="form.value.maxKm" [options]="optionsKm"></ngx-slider>
+        </div>
+      </div>
+
+    </div>
+    </cdk-accordion-item>
+
+    <!-- Item 4 -->
+
+    <!-- <cdk-accordion-item
+    #accordionItem4="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-2'"
+    [attr.aria-expanded]="accordionItem4.expanded"
+    [attr.aria-controls]="'accordion-body-2'">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem4.toggle()">
+      <p>Capacidad</p>
+      <div class="w-full"></div>
+      <fa-icon [icon]="faChevronDown">{{ accordionItem4.expanded ? 'close' : 'open' }}</fa-icon>
+    </div>
+    <div
+      class="example-accordion-item-body p-4 bg-yellow-200"
+      role="region"
+      [style.display]="accordionItem4.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-4'"
+      [attr.aria-labelledby]="'accordion-header-4'">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
+      excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
+      veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
+    </div>
+    </cdk-accordion-item> -->
+
+    <!-- Item 5 -->
+
+    <cdk-accordion-item
+    #accordionItem5="cdkAccordionItem"
+    class="example-accordion-item"
+    role="button"
+    tabindex="0"
+    [attr.id]="'accordion-header-5'"
+    [attr.aria-expanded]="accordionItem5.expanded"
+    [attr.aria-controls]="'accordion-body-5'">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem5.toggle()">
+      <p>Servicios</p>
+      <div class="w-full"></div>
+      <fa-icon [icon]="faChevronDown">{{ accordionItem5.expanded ? 'close' : 'open' }}</fa-icon>
+    </div>
+    <div
+      class="example-accordion-item-body p-4"
+      role="region"
+      [style.display]="accordionItem5.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-5'"
+      [attr.aria-labelledby]="'accordion-header-5'">
+      <div class="flex text-sm">
+        <div class="flex flex-col w-full">
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sWifi">Wifi</div>
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sPrinter">Impresora</div>
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sRoom">Sala de reunión</div>
+        </div>
+        <div class="flex flex-col w-full">
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sParking">Estacionamiento</div>
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sLockers">Lockers</div>
+          <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sCalefaction">Calefacción</div>
+        </div>
       </div>
     </div>
+    </cdk-accordion-item>
+    </cdk-accordion>
 
-    <div class="p-4">
-      <div class="custom-slider">
-        <ngx-slider [(value)]="form.value.minPrice" [(highValue)]="form.value.maxPrice" [options]="optionsPrice"></ngx-slider>
+
+    <div class="bg-[#DDDDDD] text-gray-400 flex justify-between p-4 gap-10">
+      <div>
+        <p class="w-full text-sm">999 lugares</p>
+        <a class="w-full text-sm underline" href="/">Borrar filtros</a>
+      </div>
+      <!-- <div class="w-full"></div> -->
+      <div>
+        <button type="submit" class="bg-[#848484] text-white p-2 rounded-md">Mostrar resultados</button>
       </div>
     </div>
-  </div>
-  </cdk-accordion-item>
+  </form>
 
-
-  <!-- Item 3 -->
-
-  <cdk-accordion-item
-  #accordionItem3="cdkAccordionItem"
-  class="example-accordion-item"
-  role="button"
-  tabindex="0"
-  [attr.id]="'accordion-header-2'"
-  [attr.aria-expanded]="accordionItem3.expanded"
-  [attr.aria-controls]="'accordion-body-2'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem3.toggle()">
-    <p>Distancia</p>
-    <div class="w-full"></div>
-    <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
-  </div>
-  <div
-    class="example-accordion-item-body p-4"
-    role="region"
-    [style.display]="accordionItem3.expanded ? '' : 'none'"
-    [attr.id]="'accordion-body-2'"
-    [attr.aria-labelledby]="'accordion-header-2'">
-
-    <div class="flex gap-4 p-4 justify-between">
-      <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
-        <p class="text-center"> {{ form.value.minKm }} <span>km</span></p>
-      </div>
-      <div class="w-full p-4 border border-spacing-2 border-gray-600 rounded-md">
-        <p class="text-center">{{ form.value.maxKm }} <span>km</span></p>
-      </div>
-    </div>
-
-    <div class="p-4">
-      <div class="custom-slider">
-        <ngx-slider [(value)]="form.value.minKm" [(highValue)]="form.value.maxKm" [options]="optionsKm"></ngx-slider>
-      </div>
-    </div>
-
-  </div>
-  </cdk-accordion-item>
-
-  <!-- Item 4 -->
-
-  <!-- <cdk-accordion-item
-  #accordionItem4="cdkAccordionItem"
-  class="example-accordion-item"
-  role="button"
-  tabindex="0"
-  [attr.id]="'accordion-header-2'"
-  [attr.aria-expanded]="accordionItem4.expanded"
-  [attr.aria-controls]="'accordion-body-2'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem4.toggle()">
-    <p>Capacidad</p>
-    <div class="w-full"></div>
-    <fa-icon [icon]="faChevronDown">{{ accordionItem4.expanded ? 'close' : 'open' }}</fa-icon>
-  </div>
-  <div
-    class="example-accordion-item-body p-4 bg-yellow-200"
-    role="region"
-    [style.display]="accordionItem4.expanded ? '' : 'none'"
-    [attr.id]="'accordion-body-4'"
-    [attr.aria-labelledby]="'accordion-header-4'">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis
-    excepturi incidunt ipsum deleniti labore, tempore non nam doloribus blanditiis
-    veritatis illo autem iure aliquid ullam rem tenetur deserunt velit culpa?
-  </div>
-  </cdk-accordion-item> -->
-
-  <!-- Item 5 -->
-
-  <cdk-accordion-item
-  #accordionItem5="cdkAccordionItem"
-  class="example-accordion-item"
-  role="button"
-  tabindex="0"
-  [attr.id]="'accordion-header-5'"
-  [attr.aria-expanded]="accordionItem5.expanded"
-  [attr.aria-controls]="'accordion-body-5'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem5.toggle()">
-    <p>Servicios</p>
-    <div class="w-full"></div>
-    <fa-icon [icon]="faChevronDown">{{ accordionItem5.expanded ? 'close' : 'open' }}</fa-icon>
-  </div>
-  <div
-    class="example-accordion-item-body p-4"
-    role="region"
-    [style.display]="accordionItem5.expanded ? '' : 'none'"
-    [attr.id]="'accordion-body-5'"
-    [attr.aria-labelledby]="'accordion-header-5'">
-    <div class="flex text-sm">
-      <div class="flex flex-col w-full">
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sWifi">Wifi</div>
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sPrinter">Impresora</div>
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sRoom">Sala de reunión</div>
-      </div>
-      <div class="flex flex-col w-full">
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sParking">Estacionamiento</div>
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sLockers">Lockers</div>
-        <div class="flex gap-2 items-center"><input type="checkbox" formControlName="sCalefaction">Calefacción</div>
-      </div>
-    </div>
-  </div>
-  </cdk-accordion-item>
-  </cdk-accordion>
-
-
-  <div class="bg-[#DDDDDD] text-gray-400 flex p-4">
-    <div class="w-96">
-      <p class="w-full text-sm">999 lugares</p>
-      <a class="w-full text-sm underline" href="/">Borrar filtros</a>
-    </div>
-    <div class="w-full"></div>
-    <div>
-      <button type="submit" class="bg-[#848484] text-white p-2 rounded-md w-40">Mostrar resultados</button>
-    </div>
-  </div>
-</form>
+</div>
