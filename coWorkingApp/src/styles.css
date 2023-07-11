@@ -35,3 +35,8 @@
 .ngx-slider {
   margin: 0 !important;
 }
+
+app-search-filters {
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+}

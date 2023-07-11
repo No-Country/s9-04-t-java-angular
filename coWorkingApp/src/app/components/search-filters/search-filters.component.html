@@ -1,3 +1,4 @@
+<h2 class="text-xl text-black p-4 font-bold border-b-2">Filtros</h2>
 <form [formGroup]="form" (ngSubmit)="showResults()">
 
   <cdk-accordion class="example-accordion">
@@ -12,7 +13,7 @@
     [attr.id]="'accordion-header-1'"
     [attr.aria-expanded]="accordionItem.expanded"
     [attr.aria-controls]="'accordion-body-1'">
-    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem.toggle()">
+    <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem.toggle()">
       <p>Ordenar</p>
       <div class="w-full"></div>
       <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
@@ -57,7 +58,7 @@
   [attr.id]="'accordion-header-2'"
   [attr.aria-expanded]="accordionItem2.expanded"
   [attr.aria-controls]="'accordion-body-2'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem2.toggle()">
+  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem2.toggle()">
     <p>Precio</p>
     <div class="w-full"></div>
     <fa-icon [icon]="faChevronDown">{{ accordionItem.expanded ? 'close' : 'open' }}</fa-icon>
@@ -101,7 +102,7 @@
   [attr.id]="'accordion-header-2'"
   [attr.aria-expanded]="accordionItem3.expanded"
   [attr.aria-controls]="'accordion-body-2'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem3.toggle()">
+  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem3.toggle()">
     <p>Distancia</p>
     <div class="w-full"></div>
     <fa-icon [icon]="faChevronDown">{{ accordionItem3.expanded ? 'close' : 'open' }}</fa-icon>
@@ -168,7 +169,7 @@
   [attr.id]="'accordion-header-5'"
   [attr.aria-expanded]="accordionItem5.expanded"
   [attr.aria-controls]="'accordion-body-5'">
-  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border border-b-2" (click)="accordionItem5.toggle()">
+  <div class="example-accordion-item-header flex pl-4 pr-6 py-4 border-b-2" (click)="accordionItem5.toggle()">
     <p>Servicios</p>
     <div class="w-full"></div>
     <fa-icon [icon]="faChevronDown">{{ accordionItem5.expanded ? 'close' : 'open' }}</fa-icon>
