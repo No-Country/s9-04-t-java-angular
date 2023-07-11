@@ -28,6 +28,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   coworkService = inject(CoworkService);
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0 });
     this.getIdParam();
     this.getSelectedWorkspace(this.id);
   }
