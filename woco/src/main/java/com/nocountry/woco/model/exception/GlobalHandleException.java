@@ -1,4 +1,4 @@
-package com.nocountry.woco.exception;
+package com.nocountry.woco.model.exception;
 
 
 import org.springframework.http.HttpStatus;
@@ -73,6 +73,10 @@ public class GlobalHandleException {
     }
 
 
+    @ExceptionHandler({ResourceNotFoundException.class})
+    public ResponseEntity<String> resourceNotFoundException(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
 
 
 }

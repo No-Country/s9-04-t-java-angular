@@ -1,7 +1,7 @@
 package com.nocountry.woco.model.mapper;
 
 import com.nocountry.woco.model.entity.Location;
-import com.nocountry.woco.dto.LocationDto;
+import com.nocountry.woco.model.dto.LocationDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

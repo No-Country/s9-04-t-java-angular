@@ -1,6 +1,4 @@
-package com.nocountry.woco.dto;
-
-
+package com.nocountry.woco.model.dto;
 import lombok.*;
 
 @Getter
@@ -9,7 +7,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @Data
-public class ContactDto {
+
+public class ContactDTO {
     private int id;
 
 

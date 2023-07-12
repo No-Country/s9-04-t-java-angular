@@ -27,20 +27,18 @@ public interface CoworkRepository extends JpaRepository<Cowork,Long > {
             " - RADIANS(longitude)) + SIN(RADIANS(:latitude_param))" +
             " * SIN(RADIANS(latitude)))) <= :distance_param" +
             " ", nativeQuery = true)
-    List<Cowork> findByLatitudeLongitudeDistanceAndService(@Param("latitude_param") float latitude, @Param("longitude_param") float longitude, @Param("distance_param") float distance, @Param("services_id_param") int serviceId);
+    List<Cowork> findByLatitudeLongitudeDistanceAndService(@Param("latitude_param") float latitude, @Param("longitude_param") float longitude, @Param("distance_param") float distance, @Param("services_id_param") long serviceId);
 
     @Query(value = "SELECT * " +
             " FROM coworks " +
             " WHERE  services_id = :services_id_param AND" +
             " location_id = :location_id_param", nativeQuery = true)
-    List<Cowork> findByServicesIdAndCityId(@Param("services_id_param") int ServicesId, @Param("location_id_param") int locationId);
+    List<Cowork> findByServicesIdAndCityId(@Param("services_id_param") long ServicesId, @Param("location_id_param") long locationId);
 
-    List<Cowork> findByServices_id(int id);
+    List<Cowork> findByServices_id(long id);
 
-    List<Cowork> findByLocation_id(int id);
+    List<Cowork> findByLocation_id(long id);
 
     List<Cowork> findByNameContaining(String name);
-
-
 
 }

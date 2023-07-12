@@ -1,4 +1,4 @@
-package com.nocountry.woco.dto;
+package com.nocountry.woco.model.dto;
 
 import lombok.*;
 

@@ -1,5 +1,5 @@
 package com.nocountry.woco.model.mapper;
-import com.nocountry.woco.dto.CoworkDto;
+import com.nocountry.woco.model.dto.CoworkDto;
 
 import com.nocountry.woco.model.entity.Cowork;
 import org.mapstruct.Mapper;

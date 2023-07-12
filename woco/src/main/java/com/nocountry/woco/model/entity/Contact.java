@@ -1,5 +1,6 @@
 package com.nocountry.woco.model.entity;
 
+
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +17,7 @@ public class Contact {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Column(name = "EMAIL",length = 2048, nullable = false)
     @NonNull
