@@ -6,6 +6,7 @@ import { faCalendarCheck, faCircleCheck } from '@fortawesome/free-regular-svg-ic
 import { faChevronDown, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
+import { ScheduleModalComponent } from 'src/app/components/schedule-modal/schedule-modal.component';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
@@ -17,7 +18,7 @@ import { PersonalDataService } from 'src/app/services/personal-data.service';
 export class ReservationComponent implements OnInit {
 
   @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
-  
+  @ViewChild(ScheduleModalComponent) modalSchedule!: ScheduleModalComponent;
 
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
@@ -119,6 +120,9 @@ export class ReservationComponent implements OnInit {
     this.modalComponent.openModalPersons();
   }
  
+  openModalSchedule(): void {
+    this.modalSchedule.openModalSchedule();
+  }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
