@@ -1,15 +1,15 @@
-
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Inicia Sesión</h2>
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm flex gap-4">
+    <fa-icon [icon]="faArrowLeft" routerLink="#" class="cursor-pointer px-10 h-2 w-10"></fa-icon>
+    <h1 class="mt-1 text-center text-2xl font-bold leading-3 tracking-tight text-gray-900">Inicia sesión</h1>
   </div>
 
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form class="space-y-6" action="#" method="POST">
+    <form class="space-y-6" [formGroup]="form" (ngSubmit)="login()">
       <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
         <div class="mt-2">
-          <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+          <input formControlName="email"  type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
         </div>
       </div>
 
@@ -18,21 +18,38 @@
           <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
         </div>
         <div class="mt-2">
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+          <input formControlName="password" type="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
         </div>
       </div>
 
-      <div>
+      <!-- <div>
         <input type="checkbox" class="font-bold">Recuerdame
       </div>
 
       <div class="text-sm">
         <a href="#" class="font-bold text-black-600 hover:text-gray-500">Recuperar contraseña</a>
-      </div>
-  
+      </div> -->
+
       <div>
         <button type="submit" class="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">Login</button>
       </div>
 
       <div>
-        <p>No tenés cuenta? <a href="../registro/registro.component.html" class="font-semibold">Registrate</a> </p>
+        <p>No tenés cuenta? <a routerLink="/register" class="font-semibold cursor-pointer">Registrate</a>
+        </p>
+      </div>
+    </form>
+  </div>
+
+
+
+
+
+        <!-- <form [formGroup]="formLogin" (ngSubmit)="login()">
+          <div class="flex flex-col gap-2">
+            <h1>Login</h1>
+            <input type="email" formControlName="username" class="bg-purple-300 border border-gray-300" placeholder="email">
+            <input type="password" formControlName="password" class="bg-purple-300" placeholder="password">
+            <button type="submit" class="bg-gray-800 text-white">Enviar</button>
+          </div>
+        </form> -->

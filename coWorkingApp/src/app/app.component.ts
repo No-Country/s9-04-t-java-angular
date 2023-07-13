@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faBars } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-root',
@@ -10,5 +10,6 @@ export class AppComponent {
   title = 'coWorkingApp';
 
   faHouse = faHouse;
+  faBars = faBars;
 
 }

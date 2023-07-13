@@ -3,7 +3,6 @@ import { faSearch, faSlidersH, faLocationDot, faChevronDown, faTableList} from '
 import { CoworkService } from 'src/app/services/cowork.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-bar',
@@ -12,8 +11,12 @@ import { debounceTime, map } from 'rxjs/operators';
 })
 export class SearchBarComponent {
 
-  searchControl: any = new FormControl('');
+  query: any;
+  searchControl: any = new FormControl<any>('');
   searchResults: any[] = [];
+
+  workspaces: any[] = [];
+  coworkService = inject(CoworkService);
 
   faSearch = faSearch;
   faSlidersH = faSlidersH;
@@ -21,30 +24,34 @@ export class SearchBarComponent {
   faChevronDown = faChevronDown;
   faTableList = faTableList;
 
-  constructor(private dialogService: DialogService) {
-    this.searchControl.valueChanges
-    .pipe(debounceTime(300))
-    .subscribe((value: string) => {
-      // this.searching(value);
-    });
+  constructor(
+    private dialogService: DialogService
+  ) {
+    this.searchControl.valueChanges.subscribe(value => {
+      this.query = value;
+      console.log('query', this.query)
+    })
   }
 
-  // searching(query: string): any {
-  //   this.coworkService.getAllWorkspaces()
-  //   .subscribe(res => {
-  //     this.searchResults = res;
-  //   })
-  // }
-
-
-  workspaces: any[] = [];
-
-  coworkService = inject(CoworkService);
-
   // ngOnInit(): void {
+  //   window.scrollTo({ top: 0 });
   //   this.coworkService.getAllWorkspaces().subscribe({
   //     next: (res: any) => {
-  //       this.workspaces = res;
+  //       if(this.searchControl.value === '') {
+  //         this.workspaces = res;
+  //         console.log('workspaces desde search-bar', this.workspaces)
+  //       } else {
+  //         this.workspaces = res.filter(item =>
+  //           item.name.includes(this.query) ||
+  //           item.location.includes(this.query) ||
+  //           item.capacidad.toString().includes(this.query) ||
+  //           item.description.includes(this.query) ||
+  //           item.id.toString().includes(this.query) ||
+  //           item.price.toString().includes(this.query) ||
+  //           item.rating.toString().includes(this.query)
+  //         );
+  //         console.log('elci', this.workspaces);
+  //       }
   //     },
   //     error: (err) => console.log(err),
   //     complete: () => {}
