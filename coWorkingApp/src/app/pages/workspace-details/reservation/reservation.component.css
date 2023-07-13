@@ -14,3 +14,7 @@ input[type="text"],[type="password"],[type="email"],[type="number"], imput:focus
     border: 0;
   }
   
+  .modal-open {
+    overflow: hidden;
+  }
+  
