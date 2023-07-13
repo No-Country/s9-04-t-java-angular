@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent {
 
-  apiUrl = 'https://woco.onrender.com';
+  apiUrl = 'https://woco-production.up.railway.app';
 
   faArrowLeft = faArrowLeft;
 
