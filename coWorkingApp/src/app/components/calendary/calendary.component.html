@@ -1,0 +1,28 @@
+
+<!-- <p-fullcalendar [events]="events" [options]="options"></p-fullcalendar> -->
+
+<h1>Elegir fecha</h1>
+<hr>
+<div>
+  <div>
+    <p>Fecha entrada</p>
+    <input type="text" (click)="showCalendar('entrada')" placeholder="Seleccionar fecha">
+    <div *ngIf="showEntradaCalendar">
+      <h2 class="calendar-title">Podes elegir uno o más días</h2>
+      <!-- Calendario para seleccionar fecha de entrada -->
+      <!-- <full-calendar [options]="calendarOptions"></full-calendar> -->
+      <!-- Aquí puedes agregar el código para el calendario -->
+    </div>
+  </div>
+  <div>
+    <p>Fecha salida</p>
+    <input type="text" (click)="showCalendar('salida')" placeholder="Seleccionar fecha">
+    <div *ngIf="showSalidaCalendar">
+      <h2 class="calendar-title">Podes elegir uno o más días</h2>
+      <!-- Calendario para seleccionar fecha de salida -->
+      <!-- Aquí puedes agregar el código para el calendario -->
+    </div>
+  </div>
+</div>
+
+

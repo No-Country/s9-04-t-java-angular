@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&display=swap');
+
+body{
+    font-family: 'Inter';
+}
+
+.faq-section {
+    margin-bottom: 20px;
+    text-align: right;
+    padding: 20px;
+}
+
+.faq-sectionnn {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: gray;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 7px;
+    justify-content: right;
+    text-align: right!important;
+    margin: 10 10px;
+    margin-left: 20px;
+  }
+  .btn:hover {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(66, 65, 65);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    justify-content: right;
+  }
+
+  .btn2 {
+    display: inline-block;
+    background-color: #fff;
+    color: #696666;
+    text-decoration: none;
+    border-radius: 2px;
+    justify-content: left;
+    text-align: left!important;
+    margin: 0 10px;
+    margin-right: 129px;
+    border-bottom: 1px solid black;
+  }
+
+  .btn2:hover{
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+    color: #2e2c2c;
+    text-decoration: none;
+    border-radius: 2px;
+    justify-content: left;
+    text-align: left!important;
+    margin: 0 10px;
+    margin-right: 129px;
+  }
+
+p{
+  color: gray;
+}
