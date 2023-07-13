@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CoworkService } from 'src/app/services/cowork.service';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-details',
@@ -11,7 +11,6 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 export class DetailsComponent implements OnInit {
 
   faChevronDown = faChevronDown;
-  faChevronUp = faChevronUp;
 
   coworkService = inject(CoworkService);
   workspace: any;
