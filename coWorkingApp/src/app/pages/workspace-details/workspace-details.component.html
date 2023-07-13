@@ -6,13 +6,13 @@
             
       <div class="">
         <div class="relative">
-          <div class="absolute top-0 z-40 flex justify-between w-full p-4">
-            <a routerLink="/home" class="flex items-center justify-center w-8 rounded-full aspect-square bg-zinc-50"><fa-icon
+          <div class="absolute text-[#919191] top-0 z-40 flex justify-between w-full p-4 py-3 backdrop-blur-sm bg-white/25">
+            <a routerLink="/home" class="flex items-center justify-center w-8 rounded-full aspect-square bg-[#D9D9D9]"><fa-icon
                 [icon]="faArrowLeft"></fa-icon></a>
             <div class="flex gap-3">
-              <button class="w-8 rounded-full aspect-square bg-zinc-50"><fa-icon [icon]="faShareNodes"></fa-icon>
+              <button class="w-8 rounded-full aspect-square bg-[#D9D9D9]"><fa-icon [icon]="faShareNodes"></fa-icon>
               </button>
-              <button class="w-8 rounded-full aspect-square bg-zinc-50"><fa-icon [icon]="faHeart"></fa-icon>
+              <button class="w-8 rounded-full aspect-square bg-[#D9D9D9]"><fa-icon [icon]="faHeart"></fa-icon>
               </button>
             </div>
           </div>
@@ -24,23 +24,26 @@
             <div [ngClass]="displayedImage == i? 'bg-white' : 'bg-white/40'" class="w-2 h-2 rounded-full drop-shadow-lg"
               *ngFor="let image of workspace.images; let i = index"></div>
           </div>
+          <div class="absolute px-2 py-1 bottom-4 right-4 text-[8px] text-black font-medium backdrop-blur-sm bg-white/20 rounded-xl">
+            {{displayedImage +1}} / {{workspace.images.length}}
+          </div>
           <div id="carousel" class="flex w-full">
-            <img class="w-full h-[224px] object-cover" src="{{workspace.images[displayedImage]}}" alt="">
+            <img class="w-full h-[284px] object-cover" src="{{workspace.images[displayedImage]}}" alt="">
           </div>
         </div>
       </div>
       
       <div class="">
-        <div class="flex flex-col gap-1 px-4 py-2 text-sm">
+        <div class="flex flex-col gap-2 px-4 py-2 text-sm">
           <p class="text-xl font-bold">{{workspace.name}}</p>
-          <p class="font-semibold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
-          <p class="text-gray-500"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
+          <p class="font-semibold text-woco-blue-1">{{workspace.price | currency:'USD':'symbol':'1.0-0'}} por jornada</p>
+          <p class="text-[#919191]"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
           <div class="flex items-center gap-2 text-sm">
-            <div class="flex items-center gap-2 p-1 px-2 bg-gray-300 rounded-lg">
+            <div class="flex items-center gap-2 p-1 px-2 rounded-lg text-woco-blue-1 bg-woco-blue-3">
               <fa-icon [icon]="faStar"></fa-icon>
               <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
             </div>
-            <p>{{workspace.rating.length}} calificaciones</p>
+            <p class="text-[#3D3D3D]">{{workspace.rating.length}} calificaciones</p>
           </div>
         </div>
       </div>
