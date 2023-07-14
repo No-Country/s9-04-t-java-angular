@@ -2,6 +2,7 @@ package com.nocountry.woco.controller;
 
 import com.nocountry.woco.model.request.ReservationRequest;
 import com.nocountry.woco.model.response.ReservationResponse;
+import com.nocountry.woco.service.IReservationService;
 import com.nocountry.woco.service.impl.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
-    private final ReservationService reservationService;
+    private final IReservationService reservationService;
 
     public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
