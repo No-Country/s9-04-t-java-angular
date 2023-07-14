@@ -3,7 +3,7 @@ package com.nocountry.woco.service.impl;
 import com.nocountry.woco.model.dto.CoworkDto;
 import com.nocountry.woco.model.entity.Cowork;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
-import com.nocountry.woco.model.mapper.CoworkMapper;
+import com.nocountry.woco.mapper.CoworkMapper;
 import com.nocountry.woco.model.repository.CoworkRepository;
 import com.nocountry.woco.service.CoworkService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,13 +5,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 
-@SpringBootApplication
+
+@SpringBootApplication(scanBasePackages={
+		"com.nocountry.woco.mapper", "com.nocountry.woco.model.repository"})
 public class WocoApplication {
 
 	public static void main(String[] args) {

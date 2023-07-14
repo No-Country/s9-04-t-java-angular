@@ -1,8 +1,8 @@
 package com.nocountry.woco.service.impl;
+import com.nocountry.woco.mapper.ContactMapper;
 import com.nocountry.woco.model.dto.ContactDTO;
 import com.nocountry.woco.model.entity.Contact;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
-import com.nocountry.woco.model.mapper.ContactMapper;
 import com.nocountry.woco.model.repository.ContactRepository;
 import com.nocountry.woco.service.ContactService;
 

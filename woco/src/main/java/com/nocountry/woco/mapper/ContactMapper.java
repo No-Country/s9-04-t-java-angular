@@ -1,4 +1,4 @@
-package com.nocountry.woco.model.mapper;
+package com.nocountry.woco.mapper;
 
 import com.nocountry.woco.model.dto.ContactDTO;
 import com.nocountry.woco.model.entity.Contact;
@@ -8,9 +8,12 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface ContactMapper {
     ContactMapper INSTANCE = Mappers.getMapper( ContactMapper.class );
+
+
+
     ContactDTO toContactDTO(Contact contact);
     List<ContactDTO> toContactsDTO(List<Contact> contacts);
 

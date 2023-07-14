@@ -1,9 +1,10 @@
 package com.nocountry.woco.service.impl;
 
+import com.nocountry.woco.mapper.LocationMapper;
 import com.nocountry.woco.model.dto.LocationDto;
 import com.nocountry.woco.model.entity.Location;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
-import com.nocountry.woco.model.mapper.LocationMapper;
+
 import com.nocountry.woco.model.repository.LocationRepository;
 import com.nocountry.woco.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;

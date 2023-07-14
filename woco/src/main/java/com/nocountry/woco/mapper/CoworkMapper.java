@@ -1,4 +1,4 @@
-package com.nocountry.woco.model.mapper;
+package com.nocountry.woco.mapper;
 import com.nocountry.woco.model.dto.CoworkDto;
 
 import com.nocountry.woco.model.entity.Cowork;
