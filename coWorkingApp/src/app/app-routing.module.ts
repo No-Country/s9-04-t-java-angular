@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
+import { UserDataComponent } from './pages/user-data/user-data.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
         component: ReservationComponent,
       }
     ]
+  },
+  {
+    path: 'my-data',
+    component: UserDataComponent
   },
   {
     path: '**',
