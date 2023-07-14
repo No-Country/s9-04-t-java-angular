@@ -1,16 +1,16 @@
-package com.nocountry.woco.service;
+package com.nocountry.woco.service.impl;
 
 import com.nocountry.woco.auth.model.repository.UserRepository;
 import com.nocountry.woco.model.entity.Reservation;
 import com.nocountry.woco.model.repository.ReservationRepository;
 import com.nocountry.woco.model.request.ReservationRequest;
 import com.nocountry.woco.model.response.ReservationResponse;
-import com.nocountry.woco.service.impl.IReservationService;
+import com.nocountry.woco.service.IReservationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservationService implements IReservationService {
@@ -26,13 +26,30 @@ public class ReservationService implements IReservationService {
 
     @Override
     public ReservationResponse createReservation(ReservationRequest reservationRequest) {
-
-        return null;
+        Reservation reservation = modelMapper.map(reservationRequest, Reservation.class);
+        reservationRepository.save(reservation);
+        return modelMapper.map(reservation, ReservationResponse.class);
     }
 
     @Override
     public boolean deleteReservation(Long reservationId) {
+        Reservation existingReservation = reservationRepository.findById(reservationId).orElse(null);
+        if (existingReservation!= null) {
+            reservationRepository.delete(existingReservation);
+            return true;
+        }
         return false;
+    }
+
+    @Override
+    public List<ReservationResponse> getAllReservationsByUserId(Long userId) {
+        List<Reservation> reservations = reservationRepository.findReservationsByUserEntity_Id(userId);
+        if (reservations != null) {
+            return reservations.stream()
+                    .map(reservation -> modelMapper.map(reservation, ReservationResponse.class))
+                    .collect(Collectors.toList());
+        }
+        return null;
     }
 
     @Override
@@ -49,22 +66,19 @@ public class ReservationService implements IReservationService {
     }
 
     @Override
-    public List<ReservationResponse> getReservationsByReservationDateAndUserId(Date reservationDate, int userId) {
-        return null;
-    }
-
-    @Override
-    public List<ReservationResponse> getReservationsByUserId(int userId) {
-        return null;
-    }
-
-    @Override
     public ReservationResponse getReservationById(Long reservationId) {
+        Reservation reservation = reservationRepository.findById(reservationId).orElse(null);
+        if (reservation!= null) {
+            return modelMapper.map(reservation, ReservationResponse.class);
+        }
         return null;
     }
 
     @Override
     public List<ReservationResponse> getAllReservations() {
-        return null;
+        List<Reservation> reservations = reservationRepository.findAll();
+        return reservations.stream()
+               .map(reservation -> modelMapper.map(reservation, ReservationResponse.class))
+               .collect(Collectors.toList());
     }
 }

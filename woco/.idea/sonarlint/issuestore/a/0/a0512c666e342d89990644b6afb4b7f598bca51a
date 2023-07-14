@@ -1,0 +1,9 @@
+
+k
+java:S3655O"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(§Ô˜µùÿÿÿÿ
+M
+java:S2589G"7Remove this expression which always evaluates to "true"(è·Ì‹
+‡
+java:S11309"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(˜—ðþÿÿÿÿÿ
+V
+java:S1128";Remove this unused import 'lombok.RequiredArgsConstructor'.(ÑØŽúøÿÿÿÿ

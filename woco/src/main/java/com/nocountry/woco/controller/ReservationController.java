@@ -2,7 +2,7 @@ package com.nocountry.woco.controller;
 
 import com.nocountry.woco.model.request.ReservationRequest;
 import com.nocountry.woco.model.response.ReservationResponse;
-import com.nocountry.woco.service.ReservationService;
+import com.nocountry.woco.service.impl.ReservationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +59,12 @@ public class ReservationController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<ReservationResponse>> getReservationsByUserId(@PathVariable Long id) {
+        List<ReservationResponse> reservations = reservationService.getAllReservationsByUserId(id);
+        return ResponseEntity.ok(reservations);
     }
 }
 

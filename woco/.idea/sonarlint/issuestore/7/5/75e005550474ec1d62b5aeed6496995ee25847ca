@@ -1,0 +1,9 @@
+
+k	java:S116"VRename this field "date_before" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïüçë
+j	java:S116"URename this field "date_after" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿ±Şñ
+X
+java:S1128"6Remove this unused import 'lombok.AllArgsConstructor'.(´œ¾öùÿÿÿÿ8—Ã•1
+R
+java:S1128"5Remove this unused import 'lombok.NoArgsConstructor'.(¸¨›8—Ã•1
+K
+java:S1128	".Remove this unused import 'javax.persistence'.(¬£şç8—Ã•1
