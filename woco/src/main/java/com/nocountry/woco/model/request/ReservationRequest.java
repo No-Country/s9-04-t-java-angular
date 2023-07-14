@@ -1,17 +1,13 @@
-package com.nocountry.woco.model.response;
+package com.nocountry.woco.model.request;
 
 import com.nocountry.woco.auth.model.entity.UserEntity;
 import com.nocountry.woco.model.entity.Cowork;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Data
-public class ReservationResponse{
-
+public class ReservationRequest {
     private Long id;
     private LocalDate date_before;
     private LocalDate date_after;

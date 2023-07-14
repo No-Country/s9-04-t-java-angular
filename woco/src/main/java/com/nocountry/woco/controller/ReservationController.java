@@ -1,7 +1,13 @@
 package com.nocountry.woco.controller;
 
+import com.nocountry.woco.model.request.ReservationRequest;
+import com.nocountry.woco.model.response.ReservationResponse;
+import com.nocountry.woco.service.ReservationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/reservations")
@@ -13,14 +19,14 @@ public class ReservationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ReservationDTO>> getAllReservations() {
-        List<ReservationDTO> reservations = reservationService.getAllReservations();
+    public ResponseEntity<List<ReservationResponse>> getAllReservations() {
+        List<ReservationResponse> reservations = reservationService.getAllReservations();
         return ResponseEntity.ok(reservations);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReservationDTO> getReservationById(@PathVariable Long id) {
-        ReservationDTO reservation = reservationService.getReservationById(id);
+    public ResponseEntity<ReservationResponse> getReservationById(@PathVariable Long id) {
+        ReservationResponse reservation = reservationService.getReservationById(id);
         if (reservation != null) {
             return ResponseEntity.ok(reservation);
         } else {
@@ -29,15 +35,15 @@ public class ReservationController {
     }
 
     @PostMapping
-    public ResponseEntity<ReservationDTO> createReservation(@RequestBody ReservationDTO reservationDTO) {
-        ReservationDTO createdReservation = reservationService.createReservation(reservationDTO);
+    public ResponseEntity<ReservationResponse> createReservation(@RequestBody ReservationRequest reservationRequest) {
+        ReservationResponse createdReservation = reservationService.createReservation(reservationRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdReservation);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ReservationDTO> updateReservation(
-            @PathVariable Long id, @RequestBody ReservationDTO reservationDTO) {
-        ReservationDTO updatedReservation = reservationService.updateReservation(id, reservationDTO);
+    public ResponseEntity<ReservationResponse> updateReservation(
+            @PathVariable Long id, @RequestBody ReservationRequest reservationRequest) {
+        ReservationResponse updatedReservation = reservationService.updateReservation(id, reservationRequest);
         if (updatedReservation != null) {
             return ResponseEntity.ok(updatedReservation);
         } else {
