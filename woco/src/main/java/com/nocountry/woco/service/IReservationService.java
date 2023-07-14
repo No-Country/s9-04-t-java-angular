@@ -11,7 +11,6 @@ public interface IReservationService {
     ReservationResponse updateReservation(Long id, ReservationRequest reservationRequest);
     boolean deleteReservation(Long reservationId);
     List<ReservationResponse> getAllReservationsByUserId(Long userId);
-
     List<ReservationResponse> getAllReservations();
 
 }

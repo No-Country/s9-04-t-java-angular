@@ -1,6 +1,5 @@
 package com.nocountry.woco.service.impl;
 
-import com.nocountry.woco.auth.model.repository.UserRepository;
 import com.nocountry.woco.model.entity.Reservation;
 import com.nocountry.woco.model.repository.ReservationRepository;
 import com.nocountry.woco.model.request.ReservationRequest;
@@ -14,14 +13,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class ReservationService implements IReservationService {
-    final ModelMapper modelMapper;
-    final ReservationRepository reservationRepository;
-    final UserRepository userRepository;
+    ModelMapper modelMapper;
+    ReservationRepository reservationRepository;
 
-    public ReservationService(ModelMapper modelMapper, ReservationRepository reservationRepository, UserRepository userRepository) {
+    public ReservationService(ModelMapper modelMapper, ReservationRepository reservationRepository) {
         this.modelMapper = modelMapper;
         this.reservationRepository = reservationRepository;
-        this.userRepository = userRepository;
     }
 
     @Override

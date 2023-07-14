@@ -11,8 +11,6 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reservation {
