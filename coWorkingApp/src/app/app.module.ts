@@ -31,6 +31,7 @@ import { ModalPersonsComponent } from './components/modal-persons/modal-persons.
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
+import { UserDataComponent } from './pages/user-data/user-data.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ScheduleModalComponent } from './components/schedule-modal/schedule-mod
     ModalPersonsComponent,
     AlertsReservationComponent,
     NavbarComponent,
-    ScheduleModalComponent
+    ScheduleModalComponent,
+    UserDataComponent
   ],
   imports: [
     BrowserModule,
