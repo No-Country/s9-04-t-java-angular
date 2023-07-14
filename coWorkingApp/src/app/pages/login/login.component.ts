@@ -33,7 +33,7 @@ export class LoginComponent {
 
   login() {
     const body = this.form.getRawValue();
-    console.log('formLogin',body)
+    console.log('formLogin', body)
     return this.http.post<any>(`${this.apiUrl}/auth/login`, body)
     .pipe(first())
       .subscribe({
