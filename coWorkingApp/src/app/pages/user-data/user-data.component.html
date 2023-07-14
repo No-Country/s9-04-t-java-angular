@@ -1,0 +1,61 @@
+<div class="min-h-screen">
+  <div class="px-4 py-5">
+    <a routerLink="/home" class="text-2xl font-bold"><fa-icon class="text-xl me-4" [icon]="faArrowLeft"></fa-icon>Mis datos</a>
+  </div>
+  <div class="px-4">
+    <form [formGroup]="newUserDataForm" (ngSubmit)="submitNewData()">
+      <cdk-accordion class="example-accordion">
+        <cdk-accordion-item #accordionItem1="cdkAccordionItem" class="example-accordion-item" tabindex="0"
+          [attr.id]="'accordion-header-1'" [attr.aria-expanded]="accordionItem1.expanded"
+          [attr.aria-controls]="'accordion-body-1'">
+          <div role="button" class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem1.toggle()">
+            <p class="font-semibold">Nombre elegido</p>
+            <fa-icon class="duration-200" [icon]="faChevronDown"
+              [ngClass]="accordionItem1.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
+          </div>
+          <div class="pt-2 text-sm" role="region" [style.display]="accordionItem1.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-1'" [attr.aria-labelledby]="'accordion-header-1'">
+            <div class="flex flex-col py-6 gap-9">
+              <div class="flex flex-col gap-2">
+                <label class="font-medium" for="">Nombre</label>
+                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
+                  <input formControlName="name" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faUser"></fa-icon>
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <label class="font-medium" for="">Apellido</label>
+                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
+                  <input formControlName="lastName" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faUser"></fa-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </cdk-accordion-item>
+        <cdk-accordion-item #accordionItem2="cdkAccordionItem" class="example-accordion-item" tabindex="0"
+          [attr.id]="'accordion-header-2'" [attr.aria-expanded]="accordionItem1.expanded"
+          [attr.aria-controls]="'accordion-body-2'">
+          <div role="button" class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem2.toggle()">
+            <p class="font-semibold">Email</p>
+            <fa-icon class="duration-200" [icon]="faChevronDown"
+              [ngClass]="accordionItem2.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
+          </div>
+          <div class="pt-2 text-sm" role="region" [style.display]="accordionItem2.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-2'" [attr.aria-labelledby]="'accordion-header-2'">
+            <div class="flex flex-col py-6 gap-9">
+              <div class="flex flex-col gap-2">
+                <label class="font-medium" for="">Email</label>
+                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
+                  <input formControlName="email" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faEnvelope"></fa-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </cdk-accordion-item>
+      </cdk-accordion>
+      <button type="submit" class="px-5 py-1 bg-red-200">enviar</button>
+    </form>
+  </div>
+</div>
