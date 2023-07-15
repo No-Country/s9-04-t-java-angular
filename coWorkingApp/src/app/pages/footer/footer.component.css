@@ -8,11 +8,19 @@ footer {
     background-color: #f2f2f2;
     padding: 20px;
   }
+
+  fa-icon{
+    color: #015F75;
+  }
   
   h2, h3, h1 {
     margin: 0;
   }
  
+ svg{
+  display: block;
+  margin: auto;
+ }
   
   .gray-text {
     color: gray;
@@ -39,6 +47,7 @@ footer {
  .faq-section {
     margin-bottom: 20px;
     text-align: center;
+    color: #015F75;
   }
 
   .publish-section{
@@ -48,14 +57,15 @@ footer {
   .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: gray;
-    color: #fff;
+    background-color: #E6FAFF;
+    color: #015F75;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px #015F75;
     justify-content: center;
-
+    border: 1px #015F75;
+    margin-bottom: 1px;
   }
-
+  
   a{
     color: gray;
     font-weight: 100;
@@ -69,14 +79,13 @@ footer {
   .btn:hover{
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgb(78, 76, 76);
-    color: #bebbbb;
+    background-color: #bfd3d8;
+    color: #01404e;
     text-decoration: none;
     border-radius: 5px;
     justify-content: center;
-
   }
-  
+
   .social-section {
     text-align: center;
   }

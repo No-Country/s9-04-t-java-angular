@@ -6,11 +6,11 @@
       <cdk-accordion-item #accordionItem1="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
         [attr.id]="'accordion-header-1'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-1'">
-        <div class="flex justify-between py-3 border-b-2 border-gray-400" (click)="accordionItem1.toggle()">
+        <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem1.toggle()">
           <p class="text-xl font-semibold">Sobre el lugar</p>
-          <fa-icon [icon]="accordionItem1.expanded? faChevronUp : faChevronDown"></fa-icon>
+          <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem1.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
-        <div class="pt-2 text-sm text-gray-600" role="region" [style.display]="accordionItem1.expanded ? '' : 'none'"
+        <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem1.expanded ? '' : 'none'"
           [attr.id]="'accordion-body-1'" [attr.aria-labelledby]="'accordion-header-1'">
           <p>{{workspace.description}}</p>
         </div>
@@ -19,11 +19,11 @@
       <cdk-accordion-item #accordionItem2="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
         [attr.id]="'accordion-header-2'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-2'">
-        <div class="flex justify-between py-3 border-b-2 border-gray-400" (click)="accordionItem2.toggle()">
+        <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem2.toggle()">
           <p class="text-xl font-semibold">Horarios</p>
-          <fa-icon [icon]="accordionItem2.expanded? faChevronUp : faChevronDown"></fa-icon>
+          <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem2.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
-        <div class="pt-2 text-sm text-gray-600" role="region" [style.display]="accordionItem2.expanded ? '' : 'none'"
+        <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem2.expanded ? '' : 'none'"
           [attr.id]="'accordion-body-2'" [attr.aria-labelledby]="'accordion-header-2'">
           <p>Lunes a domingos de 09 a 21 hs</p>
         </div>
@@ -32,8 +32,8 @@
     </cdk-accordion>
   </div>
 
-  <div class="flex p-4 bg-gray-300">
-    <a class="w-full p-3 text-center text-white bg-gray-400 rounded-lg" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
+  <div class="flex p-4 bg-white">
+    <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
   </div>
 
 </div>

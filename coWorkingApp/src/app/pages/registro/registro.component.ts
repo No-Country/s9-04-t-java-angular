@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { first, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,18 +13,16 @@ import Swal from 'sweetalert2';
 })
 export class RegistroComponent {
 
-  apiUrl = 'https://woco.onrender.com';
+  apiUrl = environment.API_URL;
 
   faArrowLeft = faArrowLeft;
 
   form: any;
-  formLogin!: FormGroup;
 
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private router: Router,
-    // private auth: AuthService
+    private router: Router
     ) {
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.maxLength(128)]],
@@ -44,56 +42,38 @@ export class RegistroComponent {
         this.numeroValidator()
       ]]
     });
-
-    this.formLogin = this.formBuilder.group({
-      username: [''],
-      password: [''],
-    });
   }
 
   register() {
     const register = this.form.getRawValue();
-    console.log('register desde register getRawValue()',register)
+    console.log('register', register);
 
     return this.http.post<any>(`${this.apiUrl}/auth/register`, register)
-    .subscribe(register => {
-      console.log('register',register)},
-      (error) => {
-        console.error('Error en el registro', error);
-      }
-    )
-  }
-
-  login() {
-    const body = this.formLogin.getRawValue();
-    console.log('formLogin',body)
-    return this.http.post<any>(`${this.apiUrl}/auth/login`, body)
-    .pipe(first())
-      .subscribe({
-        next: (res) => {
-          const username = res.username;
-          console.log(username)
-          Swal.fire({
-            title: `¡Hola! ${username}`,
-            text: `Iniciaste sesión correctamente!`,
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1000,
-          }).then(() => {
-            // this.loading = true;
-            this.router.navigate(['/home']);
-          });
-        },
-        error: (error) => {
-          console.log('Error en el inicio de sesión:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Username o contraseña inválida',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-          });
-        },
-      });
+    .subscribe({
+      next: (res) => {
+        const firstName = res.firstName;
+        console.log(firstName)
+        Swal.fire({
+          title: `¡Hola! ${firstName}`,
+          text: `Registro exitoso!`,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 3000,
+        }).then(() => {
+          // this.loading = true;
+          this.router.navigate(['/home']);
+        });
+      },
+      error: (error) => {
+        console.log('Error en el registro de cuenta:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'Falló el registro',
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+      },
+    });
   }
 
   NoDoubleAtValidator(): ValidatorFn {

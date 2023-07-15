@@ -7,11 +7,11 @@ import { CoworkService } from 'src/app/services/cowork.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+
   workspaces: any[] = [];
-  
+
   coworkService = inject(CoworkService);
-  
+
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
     this.coworkService.getAllWorkspaces().subscribe({

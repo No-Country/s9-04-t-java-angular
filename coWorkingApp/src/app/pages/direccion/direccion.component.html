@@ -1,0 +1,60 @@
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm flex gap-4">
+      <fa-icon [icon]="faArrowLeft" routerLink="#" class="cursor-pointer px-18 h-2 w-10"></fa-icon>
+      <h1 class="mt-1 text-center text-2xl font-bold leading-3 tracking-tight text-900">Dirección del espacio</h1>
+    </div>
+
+    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <form class="space-y-6" action="#" method="POST">
+        <div>
+            <h2 class="mt-0.5 text-left text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                Confirmá tu dirección
+            </h2>
+            <p>Vamos a compartir tu dirección con los nómadas cercanos a tu espacio.</p>
+            <br>
+          <label for="email" class="block text-sm font-bold leading-5 text-gray-900">Dirección</label>
+          <div class="mt-0.5">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Ingresa dirección" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <label for="password" class=" block text-sm font-bold leading-6 text-gray-900">Calle y número</label>
+          </div>
+          <div class="mt-0.5">
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Calle y número" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div>
+            <div class="flex items-center justify-between">
+              <label for="password" class="block text-sm font-bold leading-6 text-gray-900">Ciudad / Pueblo</label>
+            </div>
+            <div class="mt-0.5">
+              <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Ingresa ciudad / pueblo" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="password" class="block text-sm font-bold leading-6 text-gray-900">Provincia</label>
+            </div>
+            <div class="mt-0.5">
+              <input id="nombre" name="nombre" type="text" placeholder="Provincia" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <label for="password" class="block text-sm font-bold leading-6 text-gray-900">Código postal</label>
+            </div>
+            <div class="mt-0.5">
+              <input id="apellido" name="apellido" type="number" placeholder="ingresa código postal" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+            </div>
+          </div>
+          <br>
+
+          <div class="faq-section">
+            <a href="#" class="btn2">Atrás</a>
+            <a href="#" class="btn">Siguiente</a>
+          </div>

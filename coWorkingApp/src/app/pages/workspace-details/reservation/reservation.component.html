@@ -1,4 +1,4 @@
-<div class="w-full  flex-col flex container mx-auto min-h-screen">
+<div  class="w-full  flex-col flex container mx-auto min-h-screen">
     <app-alerts-reservation></app-alerts-reservation>
     <div *ngIf="!detailsOpen">
         <div class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px]">
@@ -12,7 +12,7 @@
                     <h5>Fechas</h5>
                     <p>1 al 5 de julio</p>
                 </div>
-                <button class="underline-offset-4 underline font-bold">Editar</button>
+                <button class="underline-offset-4 underline font-bold" (click)="openModalSchedule()">Editar</button>
             </div>
             <div class="flex justify-between ">
                 <div>
@@ -21,12 +21,13 @@
                 </div>
                 <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
             </div>
-            <div class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px] ">
+            <div class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border  rounded h-[40px] ">
                 <p class="m-auto justify-center text-center">
-                    <fa-icon class="text-xl " [icon]="faCircleCheck"></fa-icon> Las fechas están disponibles
+                    <fa-icon class="text-xl text-[#015F75]" [icon]="faCircleCheck"></fa-icon> Las fechas están disponibles
                 </p>
             </div>
         </div>
+        <app-schedule-modal></app-schedule-modal>
         <app-modal-persons></app-modal-persons>
         <div class="flex-col px-4 py-3 bg-[#F4F4F4] flex mb-4">
             <div>
@@ -55,11 +56,11 @@
 
         </div>
 
-        <div class="flex justify-center  rounded h-[40px] bg-[#CCCCCC] border border-[#676767]  w-[328px] m-auto cursor-pointer "
+        <div class="flex justify-center  rounded h-[40px] bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border   w-[328px] m-auto cursor-pointer "
             *ngIf="!detailsOpen">
             <a class="m-auto justify-center text-center"
                 href="https://web.whatsapp.com/send?phone=3454062217&text=¡Hola! Estoy interesado en contratar un espacio de cowork en su ubicación. Me gustaría obtener más información sobre los servicios y las tarifas disponibles. ¿Podrían proporcionarme detalles sobre la disponibilidad de espacios, los servicios incluidos y los precios? ¡Espero su pronta respuesta! Gracias.">Contacta
-                al propietario <fa-icon class="text-sm" [icon]="faPhone"></fa-icon></a>
+                al propietario <fa-icon class="text-sm text-[#015F75]" [icon]="faPhone"></fa-icon></a>
         </div>
 
     </div>
@@ -71,10 +72,10 @@
         </div>
 
         <div
-            class="flex justify-center bg-[#CCCCCC] border border-[#676767] rounded h-[40px]  w-[328px] m-auto cursor-pointer ">
+            class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border rounded h-[40px]  w-[328px] m-auto cursor-pointer ">
             <a class="m-auto justify-center text-center"
                 href="https://web.whatsapp.com/send?phone=3454062217&text=¡Hola! Estoy interesado en contratar un espacio de cowork en su ubicación. Me gustaría obtener más información sobre los servicios y las tarifas disponibles. ¿Podrían proporcionarme detalles sobre la disponibilidad de espacios, los servicios incluidos y los precios? ¡Espero su pronta respuesta! Gracias.">Contacta
-                al propietario <fa-icon class="text-sm" [icon]="faPhone"></fa-icon></a>
+                al propietario <fa-icon class="text-sm text-[#015F75]" [icon]="faPhone"></fa-icon></a>
 
         </div>
 
@@ -190,7 +191,7 @@
 
 
                 </div>
-                <div class="flex">
+                <div class="flex mb-4">
                     <input type="checkbox" formControlName="saveCard" class="flex border-none visually-hidden">
                     <fa-icon [icon]="CheckSaveCard ? faToggleOn : faToggleOff" (click)="toggleCheck()"
                         class="cursor-pointer text-2xl pe-1 flex justify-center"></fa-icon>
@@ -206,15 +207,15 @@
 
     </div>
 
-    <div class="flex justify-around bg-[#F4F4F4] py-2 mt-auto">
+    <div class="flex justify-around bg-[#FFFFFF] py-3 mt-auto shadow-[0_-4px_8px_0px_rgba(0,0,0,0.12)]">
         <div class="flex-col m-auto">
             <fa-icon class="text-sm" [icon]="faUser"></fa-icon> {{numberPersons}} nomada <span
                 class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
             jul.
-            <h5>$595</h5>
+            <h5 class="font-extrabold">$595</h5>
         </div>
 
-        <button class="bg-slate-500  w-[153px] h-[43px] rounded-md m-auto"
+        <button class="bg-[#0CA1C2] text-[#FFFFFF]  w-[153px] h-[43px] rounded-md m-auto"
             (click)="detailsOpen ? onLoginFormSubmit() :  openFormDetails()" href="#details">Finalizar</button>
 
     </div>

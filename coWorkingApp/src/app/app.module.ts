@@ -20,6 +20,8 @@ import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { FooterComponent } from './pages/footer/footer.component';
+import { CalendaryComponent } from './components/calendary/calendary.component';
+import { DireccionComponent } from './pages/direccion/direccion.component';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +29,8 @@ import { WorkspaceCardComponent } from './components/workspace-card/workspace-ca
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
 import { ModalPersonsComponent } from './components/modal-persons/modal-persons.component';
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,13 +46,17 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
     MapComponent,
     LoginComponent,
     FooterComponent,
+    CalendaryComponent,
+    DireccionComponent,
     RegistroComponent,
     MapComponent,
     LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe,
     ModalPersonsComponent,
-    AlertsReservationComponent
+    AlertsReservationComponent,
+    NavbarComponent,
+    ScheduleModalComponent
   ],
   imports: [
     BrowserModule,

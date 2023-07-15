@@ -2,7 +2,7 @@
   <div class="h-12 rounded-md bg-gray-200 flex items-center py-2 px-3">
     <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
     <input type="search" [formControl]="searchControl" class="bg-transparent placeholder:text-[#000000] w-full border-none" placeholder="Buscar en...">
-    <fa-icon [icon]="faSlidersH" (click)="openDialog()"></fa-icon>
+    <fa-icon [icon]="faSlidersH" (click)="openDialog()" class="cursor-pointer"></fa-icon>
   </div>
   <div class="w-full flex gap-4 font-thin">
     <div class="flex">
@@ -18,14 +18,5 @@
       <p>Mapa</p>
       <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
     </div>
-  </div>
-</div>
-
-<div *ngFor="let result of searchResults">
-  <div>
-    {{ result.name }}
-  </div>
-  <div>
-    {{ result.id }}
   </div>
 </div>
