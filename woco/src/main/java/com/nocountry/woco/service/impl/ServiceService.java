@@ -5,6 +5,7 @@ import com.nocountry.woco.model.repository.ServiceRepository;
 import com.nocountry.woco.model.request.ServiceRequest;
 import com.nocountry.woco.model.response.ServiceResponse;
 import com.nocountry.woco.service.IServiceService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ServiceService implements IServiceService {
 
     private final ServiceRepository serviceRepository;
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-    public ServiceService(ServiceRepository serviceRepository) {
-        this.serviceRepository = serviceRepository;
-    }
 
     @Override
     public List<ServiceResponse> getAllServices() {

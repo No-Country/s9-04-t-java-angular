@@ -6,18 +6,18 @@ import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.mapper.CoworkMapper;
 import com.nocountry.woco.model.repository.CoworkRepository;
 import com.nocountry.woco.service.CoworkService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
+@RequiredArgsConstructor
 public class CoworkServiceImpl implements CoworkService {
 
-    @Autowired
-    private CoworkRepository coworkRepository;
+    private final CoworkRepository coworkRepository;
 
-    @Autowired
-    private CoworkMapper coworkMapper;
+    private final CoworkMapper coworkMapper;
 
     @Override
     public List<CoworkDto> getAll()

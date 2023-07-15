@@ -2,7 +2,7 @@ package com.nocountry.woco.model.entity;
 
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Entity
 @Getter
 @Setter

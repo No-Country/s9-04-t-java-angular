@@ -6,19 +6,18 @@ import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.model.repository.ContactRepository;
 import com.nocountry.woco.service.ContactService;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
-    @Autowired
-    private ContactRepository contactRepository;
 
-    @Autowired
-    private ContactMapper contactMapper;
+    private final ContactRepository contactRepository;
+
+    private final ContactMapper contactMapper;
 
 
 

@@ -4,11 +4,12 @@ import com.nocountry.woco.auth.model.entity.UserEntity;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@Table(name = "reservation")
 @Getter
 @Setter
 @NoArgsConstructor

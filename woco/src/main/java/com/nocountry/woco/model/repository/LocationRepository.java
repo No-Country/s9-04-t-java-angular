@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface LocationRepository extends JpaRepository<Location,Long > {
 
     @Query(value = "SELECT * FROM locations as l  WHERE l.city LIKE :search OR  l.province LIKE :search OR  l.country LIKE :search", nativeQuery = true)

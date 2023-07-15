@@ -5,6 +5,7 @@ import com.nocountry.woco.model.repository.ReservationRepository;
 import com.nocountry.woco.model.request.ReservationRequest;
 import com.nocountry.woco.model.response.ReservationResponse;
 import com.nocountry.woco.service.IReservationService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class ReservationService implements IReservationService {
-    ModelMapper modelMapper;
-    ReservationRepository reservationRepository;
-
-    public ReservationService(ModelMapper modelMapper, ReservationRepository reservationRepository) {
-        this.modelMapper = modelMapper;
-        this.reservationRepository = reservationRepository;
-    }
+    private final ModelMapper modelMapper;
+    private final ReservationRepository reservationRepository;
 
     @Override
     public ReservationResponse createReservation(ReservationRequest reservationRequest) {

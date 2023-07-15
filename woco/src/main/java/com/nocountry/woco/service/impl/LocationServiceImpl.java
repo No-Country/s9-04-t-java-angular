@@ -7,6 +7,7 @@ import com.nocountry.woco.model.exception.ResourceNotFoundException;
 
 import com.nocountry.woco.model.repository.LocationRepository;
 import com.nocountry.woco.service.LocationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,12 @@ import java.util.stream.Collectors;
 
 
 @Service
+@RequiredArgsConstructor
 public class  LocationServiceImpl implements LocationService {
-    @Autowired
-    private LocationRepository locationRepository;
 
-    @Autowired
-    private LocationMapper locationMapper;
+    private final LocationRepository locationRepository;
+
+    private final LocationMapper locationMapper;
 
 
     @Override

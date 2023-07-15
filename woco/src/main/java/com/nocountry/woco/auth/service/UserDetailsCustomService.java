@@ -1,88 +1,68 @@
 package com.nocountry.woco.auth.service;
 
 
-import com.nocountry.woco.auth.jwt.JwtUtils;
+
+import com.nocountry.woco.auth.model.entity.RoleEntity;
 import com.nocountry.woco.auth.model.entity.UserEntity;
 import com.nocountry.woco.auth.model.repository.RoleRepository;
 import com.nocountry.woco.auth.model.repository.UserRepository;
-import com.nocountry.woco.auth.model.request.AuthenticationRequest;
 import com.nocountry.woco.auth.model.request.UserRequest;
-import com.nocountry.woco.auth.model.response.AuthenticationResponse;
 import com.nocountry.woco.auth.model.response.UserResponse;
+import com.nocountry.woco.auth.security.JwtService;
 import com.nocountry.woco.auth.security.RoleType;
 import com.nocountry.woco.model.mapper.GenericMapper;
 import com.nocountry.woco.service.impl.EmailService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserDetailsCustomService implements UserDetailsService {
+@RequiredArgsConstructor
+public class UserDetailsCustomService  {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private JwtUtils jwtUtil;
-    @Autowired
-    private EmailService emailService;
-    @Lazy
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final EmailService emailService;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
+    private final GenericMapper mapper;
 
-    @Autowired
-    private GenericMapper mapper;
-
-    @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByUsername(userName);
-        if (userEntity == null) {
-            throw new UsernameNotFoundException("Username or password not found");
-        }
-        return new User(userEntity.getUsername(), userEntity.getPassword(), userEntity.getAuthorities());
-    }
 
     public UserResponse save(UserRequest userRequest) throws IOException {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         UserEntity userEntity = new UserEntity();
         userEntity.setFirstName(userRequest.getFirstName());
         userEntity.setLastName(userRequest.getLastName());
         userEntity.setEmail(userRequest.getEmail());
         userEntity.setUsername(userRequest.getEmail());
-        userEntity.setRoles(List.of(roleRepository.findByName(RoleType.ADMIN.getFullRoleName())));
+        RoleEntity role = new RoleEntity();
+        role.setName("Admin");
+        role.setDescription("Algo");
+        List<RoleEntity> roles = new ArrayList<>();
+        roles.add(role);
+        userEntity.setRoles(roles);
         userEntity.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         userRepository.save(userEntity);
         UserResponse result = mapper.map(userEntity, UserResponse.class);
-        result.setToken(jwtUtil.generateToken(userEntity));
+        result.setToken(jwtService.generateToken(userEntity));
 
         //MAIL VALIDATION WHEN AN USER IS CREATED
-        if (userEntity != null) {
+      /*  if (userEntity != null) {
             emailService.send(userEntity.getEmail());
-        }
+        }*/
         return result;
     }
 
-
-    public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
-        UserEntity user = userRepository.findByEmail(authenticationRequest.getUsername()).get();
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
-                        authenticationRequest.getPassword()));
-
-        return new AuthenticationResponse(user.getUsername(), jwtUtil.generateToken(user));
-    }
+    //Pendiente por rescribir
+   /* public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
+        ;
+    }*/
 
 
 }

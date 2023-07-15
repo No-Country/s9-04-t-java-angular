@@ -4,6 +4,7 @@ import com.nocountry.woco.model.dto.ContactDTO;
 import com.nocountry.woco.model.entity.Contact;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 

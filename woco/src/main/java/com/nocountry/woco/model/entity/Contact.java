@@ -1,42 +1,44 @@
 package com.nocountry.woco.model.entity;
 
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
-@Builder()
-@Table(name = "CONTACTS")
+@NoArgsConstructor
+@Builder
+@Table(name = "contacts")
 public class Contact {
 
     @Id
-    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(name = "EMAIL",length = 2048, nullable = false)
-    @NonNull
+    @Column(name = "email",length = 2048, nullable = false)
+    @NotNull
+    @Email
     private String email;
 
-    @Column(name = "WHATSAPP",length = 2048, nullable = false)
-    @NonNull
+    @Column(name = "whatsapp",length = 2048, nullable = false)
+    @NotNull
     private String whatsapp;
 
-    @Column(name = "INSTAGRAM",length = 2048, nullable = false)
-    @NonNull
+    @Column(name = "instagram",length = 2048, nullable = false)
+    @NotNull
     private String instagram;
 
-    @Column(name = "PHONE",length = 350, nullable = false)
-    @NonNull
+    @Column(name = "phone",length = 350, nullable = false)
+    @NotNull
     private String phone;
 
-    @Column(name = "WEBSITE",length = 2048, nullable = false)
-    @NonNull
+    @Column(name = "website",length = 2048, nullable = false)
+    @NotNull
     private String website;
 
 

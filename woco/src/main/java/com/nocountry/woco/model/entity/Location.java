@@ -1,32 +1,32 @@
 package com.nocountry.woco.model.entity;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor(force = true)
-@Builder()
-@Table(name = "LOCATIONS")
+@NoArgsConstructor
+@Builder
+@Table(name = "locations")
 public class  Location {
     @Id
-    @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(name = "CITY", nullable = false)
-    @NonNull
+    @Column(name = "city", nullable = false)
+    @NotNull
     private String city;
 
-    @Column(name = "PROVINCE", nullable = false)
+    @Column(name = "province", nullable = false)
     private String province;
 
 
-    @Column(name = "COUNTRY", nullable = false)
-    @NonNull
+    @Column(name = "country", nullable = false)
+    @NotNull
     private String country;
 /*  @OneToMany
     private List<Cowork> coworkList;

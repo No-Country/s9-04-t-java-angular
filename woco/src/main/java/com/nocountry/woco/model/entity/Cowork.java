@@ -1,16 +1,17 @@
 package com.nocountry.woco.model.entity;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 
 @Entity
-@Table(name = "COWORKS")
+@Table(name = "coworks")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,66 +23,63 @@ public class Cowork {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private int id;
 
-    @Column(name = "NAME", length = 350, nullable = false)
-    @NonNull
+    @Column(name = "name", length = 350, nullable = false)
+    @NotNull
     @Builder.Default
     private String name="Default name";
 
-    @Column(name = "DESCRIPTION", columnDefinition="TEXT", nullable = false)
+    @Column(name = "description", columnDefinition="TEXT", nullable = false)
     @Lob
     private String description;
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "COWORK_ID")
+    @JoinColumn(name = "cowork_id")
     @Builder.Default
     private Set<Photos> photos = new HashSet<>();
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "COWORK_ID")
+    @JoinColumn(name = "cowork_id")
     @Builder.Default
     private Set<Services> services = new HashSet<>();
 
 
     @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "LOCATION_ID", nullable = false)
+    @JoinColumn(name = "location_id", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @NonNull
+    @NotNull
     @Builder.Default
     private Location location=new Location();
 
 
-  @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CONTACT_ID", nullable = false)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "contact_id", nullable = false)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @NonNull
+    @NotNull
     @Builder.Default
     private Contact contact=new Contact();
 
 
-    @Column(name = "ADDRESS", length = 350)
+    @Column(name = "address", length = 350)
     private String address;
 
 
-    @Column(name = "ZIP_CODE")
+    @Column(name = "zip_code")
     private String zipCode;
 
-    @Column(name = "LATITUDE")
     private float latitude;
-    @Column(name = "LONGITUDE")
+
     private float longitude;
 
-    @Column(name = "PRICE")
+    @Column(name = "price")
     private double pricePerDay;
 
-    @Column(name = "CAPACITY")
     private int capacity;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "COWORK_ID")
+    @JoinColumn(name = "cowork_id")
     @Builder.Default
     private Set<Rating> ratings = new HashSet<>();
 
