@@ -3,10 +3,7 @@ package com.nocountry.woco.auth.model.entity;
 import com.nocountry.woco.model.entity.Reservation;
 import com.nocountry.woco.model.entity.Services;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Type;
@@ -24,6 +21,7 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @SQLDelete(sql = "UPDATE users SET soft_delete = true WHERE id=?")

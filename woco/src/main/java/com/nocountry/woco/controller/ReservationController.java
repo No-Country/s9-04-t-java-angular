@@ -3,21 +3,19 @@ package com.nocountry.woco.controller;
 import com.nocountry.woco.model.request.ReservationRequest;
 import com.nocountry.woco.model.response.ReservationResponse;
 import com.nocountry.woco.service.IReservationService;
-import com.nocountry.woco.service.impl.ReservationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/reservations")
+@RequiredArgsConstructor
 public class ReservationController {
     private final IReservationService reservationService;
-
-    public ReservationController(ReservationService reservationService) {
-        this.reservationService = reservationService;
-    }
 
     @GetMapping
     public ResponseEntity<List<ReservationResponse>> getAllReservations() {

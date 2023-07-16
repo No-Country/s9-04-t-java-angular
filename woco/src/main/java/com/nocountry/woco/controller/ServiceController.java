@@ -3,19 +3,18 @@ package com.nocountry.woco.controller;
 import com.nocountry.woco.model.request.ServiceRequest;
 import com.nocountry.woco.model.response.ServiceResponse;
 import com.nocountry.woco.service.IServiceService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/services")
+@RequiredArgsConstructor
 public class ServiceController {
-
     private final IServiceService serviceService;
 
-    public ServiceController(IServiceService serviceService) {
-        this.serviceService = serviceService;
-    }
     @GetMapping
     public List<ServiceResponse> getAllServices() {
         return serviceService.getAllServices();

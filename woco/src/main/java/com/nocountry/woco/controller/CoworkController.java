@@ -4,28 +4,20 @@ import com.nocountry.woco.model.dto.CoworkDto;
 import com.nocountry.woco.model.entity.Cowork;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.service.CoworkService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/coworks")
-@CrossOrigin(origins = "**")
+@RequiredArgsConstructor
+public class CoworkController {
 
-    public class CoworkController {
-
-        @Autowired
-        CoworkService coworkService;
+    private final CoworkService coworkService;
 
         @GetMapping()
         public ResponseEntity<List<CoworkDto>> getAll() {

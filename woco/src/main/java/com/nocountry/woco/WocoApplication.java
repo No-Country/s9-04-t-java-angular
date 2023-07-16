@@ -13,8 +13,9 @@ import java.time.Month;
 import java.util.Arrays;
 
 
-@SpringBootApplication(scanBasePackages={
-		"com.nocountry.woco.mapper", "com.nocountry.woco.model.repository,com.nocountry.woco.auth.security"})
+@SpringBootApplication
+@ComponentScan(basePackages = {"com.nocountry.woco.mapper","com.nocountry.woco.auth",
+		"com.nocountry.woco.model","com.nocountry.woco.config"})
 public class WocoApplication {
 
 	public static void main(String[] args) {

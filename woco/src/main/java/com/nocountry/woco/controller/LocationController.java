@@ -4,29 +4,20 @@ import com.nocountry.woco.model.dto.LocationDto;
 import com.nocountry.woco.model.entity.Location;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.service.LocationService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.http.HttpStatus;
-        import org.springframework.http.ResponseEntity;
-        import org.springframework.web.bind.annotation.*;
-
-        import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/locations")
-@CrossOrigin(origins="**")
-
+@RequiredArgsConstructor
 public class LocationController {
 
-    @Autowired
-    LocationService locationService;
+    private final LocationService locationService;
 
     @GetMapping()
     public ResponseEntity<List<LocationDto>> getAll() {

@@ -19,9 +19,6 @@ public class ContactServiceImpl implements ContactService {
 
     private final ContactMapper contactMapper;
 
-
-
-
     @Override
     public List<ContactDTO> getAll() {
 

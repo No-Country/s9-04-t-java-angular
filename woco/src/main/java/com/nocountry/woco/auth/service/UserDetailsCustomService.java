@@ -6,7 +6,9 @@ import com.nocountry.woco.auth.model.entity.RoleEntity;
 import com.nocountry.woco.auth.model.entity.UserEntity;
 import com.nocountry.woco.auth.model.repository.RoleRepository;
 import com.nocountry.woco.auth.model.repository.UserRepository;
+import com.nocountry.woco.auth.model.request.AuthenticationRequest;
 import com.nocountry.woco.auth.model.request.UserRequest;
+import com.nocountry.woco.auth.model.response.AuthenticationResponse;
 import com.nocountry.woco.auth.model.response.UserResponse;
 import com.nocountry.woco.auth.security.JwtService;
 import com.nocountry.woco.auth.security.RoleType;
@@ -14,7 +16,7 @@ import com.nocountry.woco.model.mapper.GenericMapper;
 import com.nocountry.woco.service.impl.EmailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +30,7 @@ public class UserDetailsCustomService  {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final EmailService emailService;
+    //private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -59,10 +61,20 @@ public class UserDetailsCustomService  {
         return result;
     }
 
-    //Pendiente por rescribir
-   /* public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {
-        ;
-    }*/
+    public AuthenticationResponse login(AuthenticationRequest request) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
+        var user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
 
 
 }

@@ -1,21 +1,16 @@
 package com.nocountry.woco.auth.model.response;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthenticationResponse {
 
-    private String username;
     private String token;
-    public AuthenticationResponse(String username, String token) {
-        this.username = username;
-        this.token = token;
-    }
 
-    public AuthenticationResponse() {
-    }
 }
 

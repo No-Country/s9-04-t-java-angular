@@ -13,10 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/auth")
-@CrossOrigin(origins = "*")
+@RequestMapping("/auth/api")
 public class UserAuthController {
 
     private final UserDetailsCustomService userDetailsService;
@@ -27,11 +27,11 @@ public class UserAuthController {
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
 
     }
-   /* @PostMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login (
             @RequestBody @Valid AuthenticationRequest authenticationRequest)  {
         return ResponseEntity.ok(userDetailsService.login(authenticationRequest));
-    }*/
+    }
 
 
 }
