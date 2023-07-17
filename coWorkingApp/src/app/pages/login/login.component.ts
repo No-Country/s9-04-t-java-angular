@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faEnvelope, faEye } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -17,6 +17,10 @@ export class LoginComponent {
   apiUrl = environment.API_URL;
 
   faArrowLeft = faArrowLeft;
+
+  faEnvelope = faEnvelope;
+
+  faEye = faEye
 
   form: FormGroup;
 

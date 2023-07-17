@@ -55,23 +55,16 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="../login/login.component.html" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Iniciar sesión</a>
-              <a href="../registro/registro.component.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Crear cuenta</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Favoritos</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Mis reservas</a>
+              <a href="../login/login.component.html" class="bg-white-900 text-black rounded-md px-3 py-2 text-sm font-bold" aria-current="page">Iniciar sesión</a>
+              <a href="../registro/registro.component.html" class="text-black-300 hover:bg-white-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Crear cuenta</a>
+              <!-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-black rounded-md px-3 py-2 text-sm font-bold">Favoritos</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-black rounded-md px-3 py-2 text-sm font-bold">Mis reservas</a> -->
             </div>
           </div>
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span class="sr-only">View notifications</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-          </button>
-  
-          <!-- Profile dropdown -->
-        </div>
+        <div class="faq-section">
+      <a href="#" class="btn">Anunciar mi espacio</a>
+    </div>
       </div>
     </div>
   
@@ -79,10 +72,11 @@
     <div class="sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="../login//login.component.html" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Iniciar sesión</a>
-        <a href="../registro/registro.component.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Crear cuenta</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Favoritos</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Mis reservas</a>
+        <a href="../login//login.component.html" class="bg-white-900 text-black block rounded-md px-3 py-2 text-base font-bold" aria-current="page">Iniciar sesión</a>
+        <!-- <a href="../registro/registro.component.html" class="text-black-300 hover:bg-gray-700 hover:text-black block rounded-md px-3 py-2 text-base font-bold">Crear cuenta</a> -->
+        <a routerLink="/register" class="text-black-300 hover:bg-gray-700 hover:text-black block rounded-md px-3 py-2 text-base font-bold">Crear cuenta</a>
+        <!-- <a href="#" class="text-black-300 hover:bg-white-700 hover:text-black block rounded-md px-3 py-2 text-base font-bold">Favoritos</a>
+        <a href="#" class="text-black-300 hover:bg-white-700 hover:text-black block rounded-md px-3 py-2 text-base font-bold">Mis reservas</a> -->
       </div>
     </div>
   </nav>
