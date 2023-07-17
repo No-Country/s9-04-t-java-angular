@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ReservationRequest {
     private Long id;
-    private LocalDate date_before;
-    private LocalDate date_after;
+    private LocalDate dateBefore;
+    private LocalDate dateAfter;
     private Double price;
     private Cowork cowork;
     //private UserRequest userRequest;

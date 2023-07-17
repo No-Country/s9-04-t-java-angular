@@ -13,11 +13,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class ReservationService implements IReservationService {
 
     private ModelMapper modelMapper;
     private final ReservationRepository reservationRepository;
+
+    public ReservationService(ModelMapper modelMapper, ReservationRepository reservationRepository) {
+        this.modelMapper = modelMapper;
+        this.reservationRepository = reservationRepository;
+    }
 
     @Override
     public ReservationResponse createReservation(ReservationRequest reservationRequest) {
