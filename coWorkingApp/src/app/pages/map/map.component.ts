@@ -15,6 +15,7 @@ export class MapComponent implements OnInit {
     if (!navigator.geolocation) {
       console.log('location is not supported');
     }
+
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
       const latLong = [coords.latitude, coords.longitude];
@@ -23,13 +24,30 @@ export class MapComponent implements OnInit {
       );
       let mymap = L.map('map').setView(latLong, 15);
 
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(mymap);;
+      }).addTo(mymap);
 
-      let marker = L.marker(latLong).addTo(mymap);
+      let myMarker = L.icon({
+        iconUrl: './../../assets/marker/red_marker.png',
+        iconSize: [40, 40],
     });
+      let marker = L.marker(latLong,{icon:myMarker}).addTo(mymap);
+
+      mymap.on('click', function (e: { latlng: { lat: any; lng: any; }; }) {
+        console.log(e)
+        var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
+
+        L.Routing.control({
+          waypoints: [
+            L.latLng(marker),
+            L.latLng(newMarker)
+          ]
+        }).addTo(mymap);
+       });
+    });
+
     this.watchPosition();
   }
 
