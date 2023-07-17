@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @SQLDelete(sql = "UPDATE users SET soft_delete = true WHERE id=?")
@@ -48,7 +47,7 @@ public class UserEntity implements UserDetails {
     @OneToMany
     private List<Reservation> reservations;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<RoleEntity> roles;
 
     @CreationTimestamp

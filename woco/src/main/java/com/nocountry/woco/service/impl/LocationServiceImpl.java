@@ -21,7 +21,7 @@ public class  LocationServiceImpl implements LocationService {
 
     private final LocationRepository locationRepository;
 
-    private final LocationMapper locationMapper;
+    private  LocationMapper locationMapper;
 
 
     @Override

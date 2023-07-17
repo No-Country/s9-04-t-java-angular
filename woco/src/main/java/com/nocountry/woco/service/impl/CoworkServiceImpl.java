@@ -7,6 +7,8 @@ import com.nocountry.woco.mapper.CoworkMapper;
 import com.nocountry.woco.model.repository.CoworkRepository;
 import com.nocountry.woco.service.CoworkService;
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ public class CoworkServiceImpl implements CoworkService {
 
     private final CoworkRepository coworkRepository;
 
-    private final CoworkMapper coworkMapper;
+    private CoworkMapper coworkMapper;
 
     @Override
     public List<CoworkDto> getAll()

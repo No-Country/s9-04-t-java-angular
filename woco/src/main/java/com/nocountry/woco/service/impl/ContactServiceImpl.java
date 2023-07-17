@@ -7,6 +7,7 @@ import com.nocountry.woco.model.repository.ContactRepository;
 import com.nocountry.woco.service.ContactService;
 
 import lombok.RequiredArgsConstructor;
+import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository contactRepository;
 
-    private final ContactMapper contactMapper;
+    ContactMapper contactMapper;
 
     @Override
     public List<ContactDTO> getAll() {

@@ -12,10 +12,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 
-
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.nocountry.woco.mapper","com.nocountry.woco.auth",
-		"com.nocountry.woco.model","com.nocountry.woco.config"})
 public class WocoApplication {
 
 	public static void main(String[] args) {

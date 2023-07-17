@@ -3,7 +3,7 @@ package com.nocountry.woco.controller;
 import com.nocountry.woco.model.dto.ContactDTO;
 import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.service.ContactService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/contacts")
+@RequiredArgsConstructor
 public class ContactController {
 
-    @Autowired
-    ContactService contactService;
+    private final ContactService contactService;
 
     @GetMapping()
     public ResponseEntity<List<ContactDTO>> getAll() {

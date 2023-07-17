@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface ContactMapper {
     ContactMapper INSTANCE = Mappers.getMapper( ContactMapper.class );
 

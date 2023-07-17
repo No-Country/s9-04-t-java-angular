@@ -15,7 +15,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ReservationService implements IReservationService {
-    private final ModelMapper modelMapper;
+
+    private ModelMapper modelMapper;
     private final ReservationRepository reservationRepository;
 
     @Override
