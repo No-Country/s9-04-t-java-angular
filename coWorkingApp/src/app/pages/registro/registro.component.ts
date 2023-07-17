@@ -51,14 +51,14 @@ export class RegistroComponent {
     return this.http.post<any>(`${this.apiUrl}/auth/register`, register)
     .subscribe({
       next: (res) => {
-        const username = res.username;
-        console.log(username)
+        const firstName = res.firstName;
+        console.log(firstName)
         Swal.fire({
-          title: `¡Hola! ${username}`,
+          title: `¡Hola! ${firstName}`,
           text: `Registro exitoso!`,
           icon: 'success',
           showConfirmButton: false,
-          timer: 1000,
+          timer: 3000,
         }).then(() => {
           // this.loading = true;
           this.router.navigate(['/home']);

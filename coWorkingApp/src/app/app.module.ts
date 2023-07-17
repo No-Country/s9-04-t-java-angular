@@ -31,7 +31,10 @@ import { ModalPersonsComponent } from './components/modal-persons/modal-persons.
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
+<<<<<<< HEAD
 import { PublicadoComponent } from './pages/publicado/publicado.component';
+=======
+>>>>>>> 88f8c783ea725850ab104e3716d1efc2c0fd3b90
 
 @NgModule({
   declarations: [
@@ -57,8 +60,12 @@ import { PublicadoComponent } from './pages/publicado/publicado.component';
     ModalPersonsComponent,
     AlertsReservationComponent,
     NavbarComponent,
+<<<<<<< HEAD
     ScheduleModalComponent,
     PublicadoComponent,
+=======
+    ScheduleModalComponent
+>>>>>>> 88f8c783ea725850ab104e3716d1efc2c0fd3b90
   ],
   imports: [
     BrowserModule,

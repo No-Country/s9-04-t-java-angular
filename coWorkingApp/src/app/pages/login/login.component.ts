@@ -37,7 +37,7 @@ export class LoginComponent {
 
   login() {
     const body = this.form.getRawValue();
-    console.log('formLogin',body)
+    console.log('formLogin', body)
     return this.http.post<any>(`${this.apiUrl}/auth/login`, body)
     .pipe(first())
       .subscribe({
@@ -49,7 +49,7 @@ export class LoginComponent {
             text: `Iniciaste sesión correctamente!`,
             icon: 'success',
             showConfirmButton: false,
-            timer: 1000,
+            timer: 3000,
           }).then(() => {
             // this.loading = true;
             this.router.navigate(['/home']);
@@ -66,5 +66,4 @@ export class LoginComponent {
         },
       });
   }
-
 }
