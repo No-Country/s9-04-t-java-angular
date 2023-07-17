@@ -2,8 +2,8 @@ import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faCalendarCheck, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
-import { faChevronDown, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarCheck, faCircleCheck, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
 import { ScheduleModalComponent } from 'src/app/components/schedule-modal/schedule-modal.component';
@@ -20,6 +20,10 @@ export class ReservationComponent implements OnInit {
   @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
   @ViewChild(ScheduleModalComponent) modalSchedule!: ScheduleModalComponent;
 
+  focusClass: string[] = ['border-[#015F75]', 'bg-[#F5FDFF]'];
+  errorClass: string[] = ['border-[#C13515', 'bg-[#EB674A]'];
+
+
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
   faUser = faUser;
@@ -29,6 +33,8 @@ export class ReservationComponent implements OnInit {
   faEyeLowVision = faEyeLowVision;
   faToggleOn = faToggleOn;
   faToggleOff = faToggleOff;
+  faEnvelope = faEnvelope;//email
+  faCreditCard = faCreditCard;
 
   tipoContrasena: string = 'password';
   showPassword: boolean = false;
@@ -39,8 +45,7 @@ export class ReservationComponent implements OnInit {
   formErrors: boolean = false;
   formSubmitted = false;
   personalData: FormGroup;
-  
-
+  focusedField: string | null = null;
 
   dateReservation: string = '';
   numberPersons = 1 ;
@@ -53,7 +58,6 @@ export class ReservationComponent implements OnInit {
     });
   }
 
- 
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,10 +78,20 @@ export class ReservationComponent implements OnInit {
       numberPersons: this.numberPersons
     });
     console.log(this.saveCard,'card')
-
-
   }
 
+
+  onFieldFocus(fieldName: string) {
+    this.focusedField = fieldName;
+  }
+
+  onFieldBlur(fieldName: string) {
+    this.focusedField = null;
+  }
+
+  isFieldFocused(fieldName: string): boolean {
+    return this.focusedField === fieldName;
+  }
 
   get email() {
     return this.personalData.get('email');
@@ -144,10 +158,10 @@ export class ReservationComponent implements OnInit {
   onLoginFormSubmit(){
     this.formSubmitted = true;
     if (this.personalData.invalid){
+      this.alertsService.show(4000, 'error');
       this.formErrors = true;
       return;
     }
-  
     this.personalData.get('saveCard')?.setValue(this.CheckSaveCard);
     this.personalData.patchValue({ numberPersons: this.numberPersons });
     this.perDataService.onPersonalData(this.personalData.value)
@@ -155,11 +169,12 @@ export class ReservationComponent implements OnInit {
     .subscribe({
       next: (data: any) => {
         console.log(data);
-      this.alertsService.show(3000, 'confirmation');
+      this.alertsService.show(4000, 'confirmation');
         },
       error: (error) => {
         console.log(error);
-        this.alertsService.show(3000, 'error');
+      
+        this.alertsService.show(4000, 'error');
       }
     });
   }
