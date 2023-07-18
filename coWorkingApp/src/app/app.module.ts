@@ -31,6 +31,8 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
 import { UserDataComponent } from './pages/user-data/user-data.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { UserDataComponent } from './pages/user-data/user-data.component';
     AlertsReservationComponent,
     NavbarComponent,
     ScheduleModalComponent,
+    PaymentComponent,
     UserDataComponent,
   ],
   imports: [
@@ -69,6 +72,7 @@ import { UserDataComponent } from './pages/user-data/user-data.component';
     NgxSliderModule,
     CdkMenuModule,
     // FullCalendarModule
+    NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg')
   ],
   providers: [],
   bootstrap: [AppComponent]
