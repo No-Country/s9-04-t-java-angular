@@ -3,6 +3,17 @@ input[type="text"],[type="password"],[type="email"],[type="number"], imput:focus
     box-shadow: none;
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
 .visually-hidden {
     position: absolute;
     overflow: hidden;
@@ -19,13 +30,3 @@ input[type="text"],[type="password"],[type="email"],[type="number"], imput:focus
   }
   
   
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-}
-
-
-input[type=number] {
-  -moz-appearance:textfield;
-}
