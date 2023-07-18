@@ -62,10 +62,15 @@ footer {
     text-decoration: none;
     border-radius: 8px #015F75;
     justify-content: center;
-    border: 1px #015F75;
+    border-color: #015F75;
     margin-bottom: 1px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
   }
-  
+
+  a.btn
+
   a{
     color: gray;
     font-weight: 100;

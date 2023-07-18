@@ -23,7 +23,6 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
 
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
@@ -45,20 +44,17 @@ import { UserDataComponent } from './pages/user-data/user-data.component';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent,
     FooterComponent,
     CalendaryComponent,
     DireccionComponent,
-    RegistroComponent,
     MapComponent,
-    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe,
     ModalPersonsComponent,
     AlertsReservationComponent,
     NavbarComponent,
     ScheduleModalComponent,
-    UserDataComponent
+    UserDataComponent,
   ],
   imports: [
     BrowserModule,
