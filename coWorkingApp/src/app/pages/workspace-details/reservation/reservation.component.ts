@@ -39,7 +39,7 @@ export class ReservationComponent implements OnInit {
   tipoContrasena: string = 'password';
   showPassword: boolean = false;
   CheckSaveCard: boolean = false;
-  detailsOpen: boolean = false;
+  detailsOpen: boolean = true;
 
   //Form
   formErrors: boolean = false;
