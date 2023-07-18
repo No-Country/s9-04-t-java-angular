@@ -17,18 +17,20 @@
             [attr.id]="'accordion-body-1'" [attr.aria-labelledby]="'accordion-header-1'">
             <div class="flex flex-col py-6 gap-9">
               <div class="flex flex-col gap-2">
-                <label class="font-medium" for="">Nombre</label>
-                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
-                  <input formControlName="name" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
-                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faUser"></fa-icon>
-                </div>
+                <p class="font-medium">Nombre</p>
+                <label for="name" class="focus-within:text-black focus-within:bg-woco-blue-4 focus-within:border focus-within:border-woco-blue-1 text-[#A7A7A7] flex px-4 py-3 bg-[#F4F4F4] rounded-lg border border-transparent">
+                  <input id="name" formControlName="name" class="focus:bg-woco-blue-4 w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl" [icon]="faUser"></fa-icon>
+                </label>
               </div>
               <div class="flex flex-col gap-2">
-                <label class="font-medium" for="">Apellido</label>
-                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
-                  <input formControlName="lastName" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
-                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faUser"></fa-icon>
-                </div>
+                <p class="font-medium">Apellido</p>
+                <label for="last-name"
+                  class="focus-within:text-black focus-within:bg-woco-blue-4 focus-within:border focus-within:border-woco-blue-1 text-[#A7A7A7] flex px-4 py-3 bg-[#F4F4F4] rounded-lg border border-transparent">
+                  <input id="last-name" formControlName="lastName"
+                    class="focus:bg-woco-blue-4 w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl" [icon]="faUser"></fa-icon>
+                </label>
               </div>
             </div>
           </div>
@@ -45,11 +47,13 @@
             [attr.id]="'accordion-body-2'" [attr.aria-labelledby]="'accordion-header-2'">
             <div class="flex flex-col py-6 gap-9">
               <div class="flex flex-col gap-2">
-                <label class="font-medium" for="">Email</label>
-                <div class="flex px-4 py-3 bg-[#F4F4F4] rounded-lg">
-                  <input formControlName="email" class="w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
-                  <fa-icon class="text-xl text-[#A7A7A7]" [icon]="faEnvelope"></fa-icon>
-                </div>
+                <p class="font-medium">Email</p>
+                <label for="email"
+                  class="focus-within:text-black focus-within:bg-woco-blue-4 focus-within:border focus-within:border-woco-blue-1 text-[#A7A7A7] flex px-4 py-3 bg-[#F4F4F4] rounded-lg border border-transparent">
+                  <input id="email" formControlName="email"
+                    class="focus:bg-woco-blue-4 w-full font-medium text-sm bg-[#F4F4F4] outline-none" type="text w-full">
+                  <fa-icon class="text-xl" [icon]="faEnvelope"></fa-icon>
+                </label>
               </div>
             </div>
           </div>
