@@ -23,7 +23,6 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
 
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
@@ -31,9 +30,9 @@ import { ModalPersonsComponent } from './components/modal-persons/modal-persons.
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
+import { UserDataComponent } from './pages/user-data/user-data.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
-
 
 @NgModule({
   declarations: [
@@ -47,20 +46,18 @@ import { NgxStripeModule } from 'ngx-stripe';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent,
     FooterComponent,
     CalendaryComponent,
     DireccionComponent,
-    RegistroComponent,
     MapComponent,
-    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe,
     ModalPersonsComponent,
     AlertsReservationComponent,
     NavbarComponent,
     ScheduleModalComponent,
-    PaymentComponent
+    PaymentComponent,
+    UserDataComponent,
   ],
   imports: [
     BrowserModule,

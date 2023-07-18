@@ -1,26 +1,10 @@
-<!-- <nav class="navbar">
-    <div class="navbar-container">
-        <button class="menu-button" (click)="toggleMenu()">
-            <fa-icon [icon]="faBars" class="cursor-pointer px-18 h-2 w-10"></fa-icon>
-        </button>
-        <h1 class="logo">Logo</h1>
-      <div class="menu" ngClass="{show ? Menu : showMenu}">
-        <h1 class="menu-title">Menú</h1>
-        <button class="menu-item">Iniciar sesión</button>
-        <button class="menu-item">Crear cuenta</button>
-        <button class="menu-item">Favoritos</button>
-        <button class="menu-item">Mis reservas</button>
-      </div>
-      <button class="advertise-button">Anunciar mi espacio</button>
-    </div>
-  </nav> -->
 
   <nav class="bg-gray-800">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          <button (click)="toggleMenu()" type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
             <!--
               Icon when menu is closed.
@@ -41,48 +25,36 @@
           </button>
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-          <div class="flex flex-shrink-0 items-center">
-            <!-- <img class="block h-8 w-auto lg:hidden" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"> -->
-            <!-- <img class="hidden h-8 w-auto lg:block" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company"> -->
-            
+          <div class="flex flex-shrink-0 items-center"> 
             <svg width="38" height="40"  viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M13.1004 27.5575C15.1075 29.7253 17.8135 30.8167 21.1923 30.8167C23.4573 30.8167 25.9054 29.9234 28.5479 28.1331C29.1646 27.7144 29.7814 27.2398 30.4167 26.7202L36.8567 31.3138C35.941 32.5659 34.9467 33.7208 33.8554 34.7711C32.7827 35.8251 31.5492 36.7595 30.1775 37.5145C28.8058 38.2882 27.2734 38.8862 25.5653 39.3235C23.8572 39.7795 21.9473 40 19.8206 40C17.0772 40 14.4945 39.5029 12.0875 38.5087C9.66174 37.5145 7.57616 36.1428 5.78584 34.3525C4.01794 32.5846 2.60512 30.4765 1.55111 28.0321C0.515789 25.6064 0 22.9639 0 20.1009V20C0 17.2155 0.497106 14.5917 1.53243 12.1659C2.56775 9.72155 3.97682 7.59484 5.76714 5.78583C7.55746 3.97683 9.68417 2.56401 12.1697 1.53242C14.6365 0.519529 17.3388 0 20.2616 0C22.25 0 24.0404 0.179406 25.6475 0.575593C27.2585 0.953093 28.7273 1.51 30.0804 2.22388C31.411 2.93777 32.6257 3.775 33.6984 4.7692C34.7711 5.76341 35.7466 6.83611 36.5801 8.00972L30.1177 13.0181C29.5795 12.5995 29.0637 12.2033 28.5479 11.8445C25.9054 10.0542 23.4573 9.1609 21.1923 9.1609C17.8135 9.1609 15.1112 10.256 13.1004 12.4201C11.0933 14.6066 10.099 17.1332 10.099 19.9925C10.099 22.8518 11.0933 25.371 13.1004 27.5575Z" fill="#FE615A"/>
               <path d="M22.8406 18.0938C23.3564 18.6096 23.6367 19.245 23.6367 20.0038C23.6367 20.7401 23.3601 21.3755 22.8406 21.9137C22.3024 22.4295 21.667 22.7098 20.912 22.7098C20.1757 22.7098 19.5403 22.4332 19.002 21.9137C18.4863 21.3755 18.2059 20.7401 18.2059 20.0038C18.2059 19.2488 18.4825 18.6134 19.002 18.0938C19.5403 17.5556 20.1757 17.2977 20.912 17.2977C21.6707 17.3015 22.3061 17.5594 22.8406 18.0938Z" fill="white"/>
               <path d="M13.1003 12.4276C15.1074 10.2598 17.8135 9.1684 21.1923 9.1684C23.4573 9.1684 25.9054 10.0617 28.5479 11.852C29.0637 12.2108 29.5832 12.607 30.1177 13.0256C32.3229 14.7561 34.6701 17.0622 37.1556 20.0038C34.7897 22.7883 32.5434 25.0346 30.4167 26.724C29.7813 27.2398 29.1646 27.7182 28.5479 28.1368C25.9054 29.9271 23.4573 30.8204 21.1923 30.8204C17.8135 30.8204 15.1112 29.7253 13.1003 27.5612C11.0932 25.3747 10.099 22.8705 10.099 20.0075C10.099 17.1445 11.0932 14.6178 13.1003 12.4276ZM20.9119 17.3015C20.1756 17.3015 19.5402 17.5594 19.002 18.0976C18.4862 18.6134 18.2059 19.2488 18.2059 20.0075C18.2059 20.7438 18.4825 21.3792 19.002 21.9174C19.5402 22.4332 20.1756 22.7135 20.9119 22.7135C21.6669 22.7135 22.3023 22.4369 22.8406 21.9174C23.3563 21.3792 23.6367 20.7438 23.6367 20.0075C23.6367 19.2525 23.3601 18.6171 22.8406 18.0976C22.3061 17.5594 21.6707 17.3015 20.9119 17.3015Z" fill="#A94E47"/>
               </svg>
-              
           </div>
+
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="../login/login.component.html" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Iniciar sesión</a>
-              <a href="../registro/registro.component.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Crear cuenta</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Favoritos</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Mis reservas</a>
+              <a routerLink="/login" class="bg-white-900 text-black rounded-md px-3 py-2 text-sm font-bold" aria-current="page">Iniciar sesión</a>
+              <a routerLink="/registro" class="text-black-300 hover:bg-white-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Crear cuenta</a>
+              <!-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-black rounded-md px-3 py-2 text-sm font-bold">Favoritos</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-black rounded-md px-3 py-2 text-sm font-bold">Mis reservas</a> -->
             </div>
           </div>
         </div>
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span class="sr-only">View notifications</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-            </svg>
-          </button>
-  
-          <!-- Profile dropdown -->
-        </div>
+        <div class="faq-section">
+      <a href="#" class="btn">Anunciar mi espacio</a>
+    </div>
       </div>
     </div>
   
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="sm:hidden" id="mobile-menu">
+    <div *ngIf="showMenu" class="sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="../login//login.component.html" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Iniciar sesión</a>
-        <a href="../registro/registro.component.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Crear cuenta</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Favoritos</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Mis reservas</a>
+        <a routerLink="/login" class="bg-white-900 text-black block rounded-md px-3 py-2 text-base font-bold" aria-current="page">Iniciar sesión</a>
+        <a routerLink="/register" class="text-black-300 hover:bg-gray-700 hover:text-black block rounded-md px-3 py-2 text-base font-bold">Crear cuenta</a>
       </div>
     </div>
   </nav>
