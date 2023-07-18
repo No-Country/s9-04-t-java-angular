@@ -80,19 +80,6 @@ export class ReservationComponent implements OnInit {
     console.log(this.saveCard,'card')
   }
 
-
-  onFieldFocus(fieldName: string) {
-    this.focusedField = fieldName;
-  }
-
-  onFieldBlur(fieldName: string) {
-    this.focusedField = null;
-  }
-
-  isFieldFocused(fieldName: string): boolean {
-    return this.focusedField === fieldName;
-  }
-
   get email() {
     return this.personalData.get('email');
   }
