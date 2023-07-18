@@ -7,6 +7,7 @@ import {
   StripeElementsOptions,
 } from '@stripe/stripe-js';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 export class PaymentComponent implements OnInit {
   faUser = faUser;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
+
+
 
   cardOptions: StripeCardElementOptions = {
     style: {
@@ -48,14 +51,15 @@ export class PaymentComponent implements OnInit {
 
   stripeTest: FormGroup;
 
-  constructor(private fb: FormBuilder, private stripeService: StripeService) {}
+  constructor(private fb: FormBuilder, private stripeService: StripeService,
+    private alertService : AlertsReservaService) {}
 
   ngOnInit(): void {
     this.stripeTest = this.fb.group({
       name: ['', [Validators.required]]
     });
   }
-
+ 
   createToken(): void {
     const name = this.stripeTest.get('name').value;
     this.stripeService
@@ -63,10 +67,12 @@ export class PaymentComponent implements OnInit {
       .subscribe((result) => {
         if (result.token) {
           // Use the token
+          this.alertService.show(4000, 'confirmationPago');
           console.log(result.token.id);
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);
+          this.alertService.show(4000, 'errorPago');
         }
       });
   }
