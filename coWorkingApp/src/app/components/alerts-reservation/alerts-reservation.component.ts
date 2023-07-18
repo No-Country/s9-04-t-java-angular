@@ -12,7 +12,8 @@ export class AlertsReservationComponent implements OnInit{
   faCircleExclamation = faCircleExclamation;
   showAlertError = false;
   showAlertConfirmation = false;
-
+  showAlertConfirmationPago = false;
+  showAlertErrorPago = false;
   constructor(private alertsService: AlertsReservaService) {}
 
   ngOnInit() {
@@ -24,7 +25,9 @@ export class AlertsReservationComponent implements OnInit{
   hideAlerts() {
     this.showAlertError = false;
     this.showAlertConfirmation = false;
-  }
+    this.showAlertConfirmationPago = false;
+    this.showAlertErrorPago = false;
+    }
 
   showAlertsDuration(duration: number, alert: string) {
     if (alert === 'error') {
@@ -32,6 +35,11 @@ export class AlertsReservationComponent implements OnInit{
     } else if (alert === 'confirmation') {
       this.showAlertConfirmation = true;
     }
+    if (alert === 'confirmationPago'){
+      this.showAlertConfirmationPago = true;
+    }else if (alert === 'errorPago'){
+      this.showAlertErrorPago = true;
+    } 
     setTimeout(() => {
       this.hideAlerts();
     }, duration);
