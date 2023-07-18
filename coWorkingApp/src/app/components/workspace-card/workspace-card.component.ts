@@ -15,6 +15,8 @@ export class WorkspaceCardComponent {
   faStar = faStar;
   faHeart = faHeart;
 
+  showFavBtn = false; 
+
   thumbnail: number = 0;
   hoverCarouselInterval: any | undefined = undefined;
 

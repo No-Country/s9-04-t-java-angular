@@ -1,5 +1,5 @@
-<div class="duration-300 hover:drop-shadow-md hover:border-1 hover:border-woco-blue-1 hover:border border-transparent border gap-3 relative overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace)" (mouseleave)="clearHover(workspace)">
-  <button class="absolute top-0 right-0 z-10 w-8 m-4 rounded-full aspect-square bg-[#F4F4F4]">
+<div class="duration-300 hover:drop-shadow-md hover:border-1 hover:border-woco-blue-1 hover:border border-transparent border gap-3 relative overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace); showFavBtn = true" (mouseleave)="clearHover(workspace); showFavBtn = false;">
+  <button *ngIf="showFavBtn" class="absolute top-0 right-0 z-10 w-8 m-4 rounded-full aspect-square bg-[#F4F4F4]">
     <fa-icon class="text-[#919191]" [icon]="faHeart"></fa-icon>
   </button>
   <a routerLink="/workspace/{{workspace.id}}">
