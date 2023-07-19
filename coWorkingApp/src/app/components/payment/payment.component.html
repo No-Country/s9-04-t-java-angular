@@ -11,9 +11,10 @@
 
   </div>
 
-  <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions" class="flex flex-col gap-4 bg-woco-blue-4 p-3 rounded-md border border-[#015F75]"   ></ngx-stripe-card>
+  <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions" class="flex flex-col gap-4  bg-[#F4F4F4]  p-3 rounded-lg focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"></ngx-stripe-card>
 
-  <button type="submit" class="bg-[#0CA1C2] text-[#FFFFFF] w-full  sm:w-[153px] h-[43px] rounded-md m-auto">
+  <button type="submit" [disabled]="stripeTest.invalid" [ngClass]="{'cursor-not-allowed': stripeTest.invalid}"  class="bg-[#0CA1C2] text-[#FFFFFF] w-full  sm:w-[153px] h-[43px] rounded-md m-auto">
     Pagar
   </button>
+
 </form>
