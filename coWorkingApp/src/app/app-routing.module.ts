@@ -7,8 +7,8 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
 import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
+import { TokenGuard } from './guards/token.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +19,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    // canActivate: [ TokenGuard ],
     title: 'WOCO'
   },
   {
@@ -50,12 +51,13 @@ const routes: Routes = [
       {
         path: 'details',
         component: DetailsComponent,
+        canActivate: [ TokenGuard ]
       },
       {
         path: 'reservation',
         component: ReservationComponent,
       }
-    ]
+    ],
   },
   {
     path: '**',
