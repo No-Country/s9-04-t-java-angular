@@ -13,6 +13,7 @@ input:focus{
     border-color: #015F75 ;
     background-color: #F5FDFF;
     font: bold;
+    border: 1px solid;
 }
 
 input{
@@ -35,4 +36,9 @@ input{
 button{
     background-color: #0CA1C2;
     color: #fff;
+}
+
+button:hover{
+    background-color: #096e85;
+    color: #c2bcbc;
 }
