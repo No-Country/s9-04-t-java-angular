@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faEnvelope, faUser, faEye  } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -14,6 +14,9 @@ import Swal from 'sweetalert2';
 export class RegistroComponent {
 
   faArrowLeft = faArrowLeft;
+  faEnvelope = faEnvelope;
+  faUser = faUser;
+  faEye = faEye;
 
   form: any;
 

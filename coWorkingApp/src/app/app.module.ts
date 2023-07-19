@@ -22,7 +22,6 @@ import { FooterComponent } from './pages/footer/footer.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
 
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkspaceCardComponent } from './components/workspace-card/workspace-card.component';
 import { AverageRatingPipe } from './pipes/average-rating.pipe';
@@ -31,6 +30,9 @@ import { AlertsReservationComponent } from './components/alerts-reservation/aler
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { UserDataComponent } from './pages/user-data/user-data.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NgxStripeModule } from 'ngx-stripe';
 
 @NgModule({
   declarations: [
@@ -44,19 +46,18 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     LoginComponent,
     RegistroComponent,
     MapComponent,
-    LoginComponent,
     FooterComponent,
     CalendaryComponent,
     DireccionComponent,
-    RegistroComponent,
     MapComponent,
-    LoginComponent,
     WorkspaceCardComponent,
     AverageRatingPipe,
     ModalPersonsComponent,
     AlertsReservationComponent,
     NavbarComponent,
-    ScheduleModalComponent
+    ScheduleModalComponent,
+    PaymentComponent,
+    UserDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,8 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSliderModule,
-    CdkMenuModule
+    CdkMenuModule,
+    NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg')
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

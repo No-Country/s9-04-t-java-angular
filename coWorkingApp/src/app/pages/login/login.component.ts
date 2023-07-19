@@ -2,7 +2,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faEnvelope, faEye } from '@fortawesome/free-solid-svg-icons';
 import { first } from 'rxjs';
 import Swal from 'sweetalert2';
 import { TokenService } from 'src/app/services/token.service';
