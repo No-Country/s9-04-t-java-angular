@@ -39,7 +39,7 @@ export class ReservationComponent implements OnInit {
   tipoContrasena: string = 'password';
   showPassword: boolean = false;
   CheckSaveCard: boolean = false;
-  detailsOpen: boolean = false;
+  detailsOpen: boolean = true;
 
   //Form
   formErrors: boolean = false;
@@ -78,19 +78,6 @@ export class ReservationComponent implements OnInit {
       numberPersons: this.numberPersons
     });
     console.log(this.saveCard,'card')
-  }
-
-
-  onFieldFocus(fieldName: string) {
-    this.focusedField = fieldName;
-  }
-
-  onFieldBlur(fieldName: string) {
-    this.focusedField = null;
-  }
-
-  isFieldFocused(fieldName: string): boolean {
-    return this.focusedField === fieldName;
   }
 
   get email() {

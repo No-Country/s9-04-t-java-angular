@@ -1,32 +1,35 @@
-<div class="gap-3 overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace)" (mouseleave)="clearHover(workspace)">
-
-  <div class="relative bg-slate-500 h-[200px]">
-    <div class="absolute object-cover w-full h-full overflow-hidden">
-      <img id="workspace-thumbnail-{{workspace.id}}" class="object-cover w-full h-full duration-300" src="{{workspace.images[thumbnail]}}" alt="">
-    </div>
-    <div class="absolute flex w-full h-full p-4">
-      <div class="flex justify-between w-full mt-auto font-medium">
-        <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
-          <fa-icon class="text-sm" [icon]="faStar"></fa-icon>
-          <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
-        </div>
-        <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
-          <p class="text-xs">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+<div class="duration-300 hover:drop-shadow-md hover:border-1 hover:border-woco-blue-1 hover:border border-transparent border gap-3 relative overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace); showFavBtn = true" (mouseleave)="clearHover(workspace); showFavBtn = false;">
+  <button [ngClass]="showFavBtn? 'scale-100' : 'scale-0'" class="absolute duration-300 top-0 right-0 z-10 w-8 m-4 rounded-full aspect-square bg-[#F4F4F4]">
+    <fa-icon class="text-[#919191]" [icon]="faHeart"></fa-icon>
+  </button>
+  <a routerLink="/workspace/{{workspace.id}}">
+    <div class="relative bg-slate-500 h-[200px]">
+      <div class="absolute object-cover w-full h-full overflow-hidden">
+        <img id="workspace-thumbnail-{{workspace.id}}" class="object-cover w-full h-full duration-300"
+          src="{{workspace.images[thumbnail]}}" alt="">
+      </div>
+      <div class="absolute flex w-full h-full p-4">
+        <div class="flex justify-between w-full mt-auto font-medium">
+          <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
+            <fa-icon class="text-sm" [icon]="faStar"></fa-icon>
+            <p class="text-xs">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
+          </div>
+          <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
+            <p class="text-xs">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="flex flex-col gap-3 p-3">
-    <div class="flex flex-col">
-      <p class="text-xl font-bold">{{workspace.name}}</p>
-      <p class="text-[#575757] text-xs font-medium">{{workspace.location}}</p>
+    <div class="flex flex-col gap-3 p-3">
+      <div class="flex flex-col">
+        <p class="text-xl font-bold">{{workspace.name}}</p>
+        <p class="text-[#575757] text-xs font-medium">{{workspace.location}}</p>
+      </div>
+      <div class="flex flex-col gap-1 text-xs text-[#919191] font-medium">
+        <p>Fechas disponibles: 20 jul - 25 jul</p>
+        <p><fa-icon class="text-gray-500 me-2" [icon]="faUser"></fa-icon>{{workspace.capacidad}} {{workspace.capacidad > 1?
+          'personas' : 'persona'}}</p>
+      </div>
     </div>
-
-    <div class="flex flex-col gap-1 text-xs text-[#919191] font-medium">
-      <p>Fechas disponibles: 20 jul - 25 jul</p>
-      <p><fa-icon class="text-gray-500 me-2" [icon]="faUser"></fa-icon>{{workspace.capacidad}} {{workspace.capacidad > 1? 'personas' : 'persona'}}</p>
-    </div>
-  </div>
-
+  </a>
 </div>
