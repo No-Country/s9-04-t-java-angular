@@ -88,15 +88,16 @@
 
                 <div class="flex-col flex">
                     <label for="" class="mb-2">Nombre</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]" [ngClass]="{
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': name?.errors && name.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu nombre" formControlName="name"  [ngClass]="{
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:text-black  focus:bg-woco-blue-4  focus:ring-0"
+                            placeholder="Ingresa tu nombre" formControlName="name" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': name?.errors && name.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="name?.errors && name?.touched">
                         <div *ngIf="personalData.get('name')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
                             El nombre es requerido
@@ -106,15 +107,16 @@
 
                 <div class="flex-col flex">
                     <label for="" class="mb-2">Apellido</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]" [ngClass]="{
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': lastName?.errors && lastName.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu apellido" formControlName="lastName" [ngClass]="{
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:ring-0  focus:text-black  focus:bg-woco-blue-4 " 
+                            placeholder="Ingresa tu apellido" formControlName="lastName" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': lastName?.errors && lastName.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="lastName?.errors && lastName?.touched">
                         <div *ngIf="personalData.get('lastName')?.hasError('required')"
                             class="text-[#BB4E4E] text-[13px]">
@@ -125,15 +127,16 @@
 
                 <div class="flex-col flex ">
                     <label for="email" class="mb-2">Email</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75] " [ngClass]="{
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75] "
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': email?.errors && email.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu email" formControlName="email"  [ngClass]="{
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]  focus:text-black  focus:bg-woco-blue-4   focus:ring-0"
+                            placeholder="Ingresa tu email" formControlName="email" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': email?.errors && email.touched
                               }">
-                            <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="email?.errors && email?.touched">
                         <div *ngIf="personalData.get('email')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
                             El correo electrónico es requerido
@@ -150,7 +153,7 @@
             </div>
 
             <div class="flex flex-col gap-4 pt-4">
-            
+
                 <app-payment class="flex flex-col w-full mt-3 "></app-payment>
 
                 <div class="flex mb-3">
