@@ -6,8 +6,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
+
+
+
+
+
 
 
 @Entity
@@ -40,9 +46,7 @@ public class Cowork {
     @Builder.Default
     private Set<Photos> photos = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cowork_id")
-    @Builder.Default
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Services> services = new HashSet<>();
 
 

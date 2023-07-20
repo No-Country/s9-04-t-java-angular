@@ -25,4 +25,5 @@ public interface CoworkService {
 
     List<CoworkDto> getByServiceIdAndLocationId(long ServiceId, long locationId);
 
+    List<CoworkDto> findKoworksByFilters(boolean betters, boolean closer, boolean room, Double minPrice, Double maxPrice, boolean sWifi, boolean sPrinter, boolean sChairs, boolean sParking, boolean sLockers, boolean sCalefaction);
 }

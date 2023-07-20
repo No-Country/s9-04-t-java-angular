@@ -1,14 +1,17 @@
 package com.nocountry.woco.model.repository;
 
 import com.nocountry.woco.model.entity.Cowork;
+import com.nocountry.woco.model.entity.Rating;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 
-public interface CoworkRepository extends JpaRepository<Cowork,Long > {
+public interface CoworkRepository extends JpaRepository<Cowork,Long >, JpaSpecificationExecutor<Cowork> {
     @Query(value = "SELECT * " +
             " FROM experiences " +
             " WHERE (6371 * ACOS(COS(RADIANS(:latitude_param)) " +
@@ -38,5 +41,7 @@ public interface CoworkRepository extends JpaRepository<Cowork,Long > {
     List<Cowork> findByLocation_id(long id);
 
     List<Cowork> findByNameContaining(String name);
+
+    List<Cowork> findAll(Specification<Cowork> spec);
 
 }

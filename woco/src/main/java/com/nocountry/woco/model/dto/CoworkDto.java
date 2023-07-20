@@ -1,6 +1,12 @@
 package com.nocountry.woco.model.dto;
 
+import com.nocountry.woco.model.entity.Rating;
+import com.nocountry.woco.model.response.ServiceResponse;
 import lombok.*;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Getter
@@ -14,13 +20,14 @@ public class CoworkDto {
     private String name;
     private String description;
     //    private Set<PhotosDto> photosDto = new HashSet<>();
-    private LocationDto category;
-    private ContactDTO contact;
-    private String address;
-    private float latitude;
-    private float longitude;
+    //private LocationDto category;
+    //private ContactDTO contact;
+    //private String address;
+    //private float latitude;
+    //private float longitude;
     private double pricePerDay;
     private int capacity;
-    //   private Set<RatingDto> ratingsDto = new HashSet<>();
-    private String zipCode;
+    private Set<Rating> ratingsDto = new HashSet<>();
+    //private String zipCode;
+    private HashSet<ServiceResponse> servicesResponse;
 }

@@ -114,5 +114,41 @@ public class CoworkController {
             }
         }
 
+    @GetMapping("/filters")
+    public ResponseEntity<List<CoworkDto>> getCoworksByFilters(
+            @RequestParam(required = false) boolean betters,
+            @RequestParam(required = false) boolean closer,
+            @RequestParam(required = false) boolean room,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) boolean sWifi,
+            @RequestParam(required = false) boolean sPrinter,
+            @RequestParam(required = false) boolean sChairs,
+            @RequestParam(required = false) boolean sParking,
+            @RequestParam(required = false) boolean sLockers,
+            @RequestParam(required = false) boolean sCalefaction)
+    {
+        List<CoworkDto> coworks= coworkService.findKoworksByFilters(
+                betters,
+                closer,
+                room,
+                minPrice,
+                maxPrice,
+                sWifi,
+                sPrinter,
+                sChairs,
+                sParking,
+                sLockers,
+                sCalefaction
+        );
+        if (coworks.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(coworks, HttpStatus.OK);
+        }
+    }
+
+
+
     }
 

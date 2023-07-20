@@ -6,25 +6,40 @@ import com.nocountry.woco.model.exception.ResourceNotFoundException;
 import com.nocountry.woco.mapper.CoworkMapper;
 import com.nocountry.woco.model.repository.CoworkRepository;
 import com.nocountry.woco.service.CoworkService;
-import lombok.RequiredArgsConstructor;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.nocountry.woco.service.spec.CoworkSpecification;
+import com.nocountry.woco.utils.enums.EnumService;
+import jakarta.persistence.criteria.Expression;
+import org.modelmapper.ModelMapper;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.lang.annotation.Documented;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
-@RequiredArgsConstructor
 public class CoworkServiceImpl implements CoworkService {
 
     private final CoworkRepository coworkRepository;
 
-    private CoworkMapper coworkMapper;
+    private  CoworkMapper coworkMapper;
+
+    private ModelMapper modelMapper;
+
+    public CoworkServiceImpl(CoworkRepository coworkRepository, ModelMapper modelMapper) {
+        this.coworkRepository = coworkRepository;
+        this.modelMapper = modelMapper;
+    }
+
 
     @Override
     public List<CoworkDto> getAll()
     {
-        return coworkMapper.toCoworksDTO(coworkRepository.findAll());
+        List<Cowork> coworks = coworkRepository.findAll();
+        return coworks.stream().map(cowork -> modelMapper.map(cowork, CoworkDto.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -111,5 +126,52 @@ public class CoworkServiceImpl implements CoworkService {
         return coworkMapper.toCoworksDTO(coworkRepository.findByServicesIdAndCityId(serviceId, locationId));
     }
 
+    @Override
+    public List<CoworkDto> findKoworksByFilters(boolean betters, boolean closer, boolean room, Double minPrice, Double maxPrice, boolean sWifi, boolean sPrinter, boolean sChairs, boolean sParking, boolean sLockers, boolean sCalefaction) {
+        Set<String> hasServiceSet = new HashSet<>();
+        Specification<Cowork> spec = Specification.where(null);
+
+        if(betters) {
+            //TODO:cambiar por metodo o crear un atributo calculado para el promedio de rating
+            Double maxRating = 4.00;
+            spec = spec.and(CoworkSpecification.hasBetterRating(maxRating));
+        }
+
+        if(minPrice!= null && maxPrice!= null) {
+            spec=spec.and(CoworkSpecification.hasPricesBetween(minPrice, maxPrice));
+        }
+        if(sWifi) {
+            hasServiceSet.add(EnumService.WIFI.toString());
+        }
+        if(sPrinter) {
+            hasServiceSet.add(EnumService.PRINTER.toString());
+        }
+        if(sChairs) {
+            hasServiceSet.add(EnumService.CHAIRS.toString());
+        }
+        if(sParking) {
+            hasServiceSet.add(EnumService.PARKING.toString());
+        }
+        if(sLockers) {
+            hasServiceSet.add(EnumService.LOCKERS.toString());
+        }
+        if(sCalefaction) {
+            hasServiceSet.add(EnumService.CALEFACTION.toString());
+        }
+        //TODO: hacer el spec cuando compare con el hashSet
+
+        if(!hasServiceSet.isEmpty()){
+            spec= spec.and( (root, query, criteriaBuilder) -> {
+                Expression<String> serviceExpression = root.get("services").get("name");
+                return serviceExpression.in(hasServiceSet);
+            });
+        }
+
+        List<Cowork> coworks = coworkRepository.findAll(spec);
+        if (coworks.isEmpty()) {
+            return Collections.emptyList();
+        }
+        return coworks.stream().map(cowork ->modelMapper.map(cowork, CoworkDto.class)).collect(Collectors.toList());
+    }
 
 }

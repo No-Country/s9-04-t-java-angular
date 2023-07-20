@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 //AGREGAR PhotosMapper.class, ServicesMapper.class,
-@Mapper(componentModel = "spring", uses = { LocationMapper.class, ContactMapper.class})
+@Mapper(componentModel = "spring", uses = { LocationMapper.class, ContactMapper.class,})
 public interface CoworkMapper {
     CoworkMapper INSTANCE = Mappers.getMapper(CoworkMapper.class);
     CoworkDto toCoworkDTO(Cowork cowork);
