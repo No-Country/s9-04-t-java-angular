@@ -20,8 +20,8 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [ TokenGuard ],
-    title: 'WOCO'
+    title: 'WOCO',
+    canActivate: [TokenGuard]
   },
   {
     path: 'map',
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginComponent
   },
   {
     path: 'register',
@@ -51,8 +51,7 @@ const routes: Routes = [
       },
       {
         path: 'details',
-        component: DetailsComponent,
-        canActivate: [ TokenGuard ]
+        component: DetailsComponent
       },
       {
         path: 'reservation',
