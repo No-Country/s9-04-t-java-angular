@@ -2,6 +2,8 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { Month, months } from 'src/app/interfaces/months';
+import { ScheduleData } from 'src/app/interfaces/scheduleData';
+import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
   selector: 'app-schedule-modal',
@@ -15,15 +17,16 @@ export class ScheduleModalComponent implements OnInit{
   private overlayRef: OverlayRef | null = null;
  
 
-  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef) { }
+  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef,
+    private persDataService: PersonalDataService) { }
 
   weekDays: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
   months: Month[] = months;
   daysArray: number[] = [];
   startDayOfWeek: number = 0;
-  selectedMonth: Month | null = null;
+  selectedMonth: Month | undefined = null;
   selectedMonthIndex: number = 0;
-  selectedDayIndex: number | null = null;
+  selectedDayIndex: number | undefined = 0;
   selectedDayName: string | null = null;
  
   selectedDaysMap: { [monthNumber: number]: number[] } = {};
@@ -36,6 +39,7 @@ export class ScheduleModalComponent implements OnInit{
     this.selectedMonth = this.months[currentMonth];
     this.generateDaysArray(this.selectedMonth.days);
     this.calculateStartDayOfWeek(this.selectedMonth);
+   
   }
   
 
@@ -47,16 +51,17 @@ export class ScheduleModalComponent implements OnInit{
     return Array.from({ length: month.days }, (_, i) => i + 1);
   }
 
- 
- 
+  monthName: string | null = '';
+
   selectMonth(monthStartDay){
      this.monthName = monthStartDay.name
     console.log(monthStartDay)
+    console.log(this.monthName, 'monthname')
+    this.onDataSchedule()
   }
  
-  monthName: string | null = null;
   
- 
+  
 
   selectDay(day: number) {
     this.selectedDayIndex = day;
@@ -64,11 +69,21 @@ export class ScheduleModalComponent implements OnInit{
     const dayOfWeek = (day + startDay - 1) % 7;
     this.selectedDayName = this.weekDays[dayOfWeek];
     console.log("Día seleccionado:", day);
-   
+    
 
   }
   
-  
+  data: ScheduleData
+
+  onDataSchedule(){
+    this.data = {
+      date: ' ' + `${this.selectedDayIndex} de ${this.monthName}`,
+      price: 0,
+    }
+    this.persDataService.savescheduleData(this.data)
+    console.log(this.data)
+  }
+
   isDaySelected(day: number): boolean {
     const monthNumber = this.selectedMonth.number;
     return this.selectedDaysMap[monthNumber]?.includes(day) ?? false;
@@ -111,8 +126,9 @@ export class ScheduleModalComponent implements OnInit{
     this.startDayOfWeek = startDay;
     console.log(this.startDayOfWeek); 
   }
-  
 
+ 
+ 
   
   getColumnStart(index: number): number {
     return (index + this.startDayOfWeek) % 7 + 1; 
