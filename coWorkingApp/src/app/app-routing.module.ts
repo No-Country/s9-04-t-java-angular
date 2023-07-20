@@ -8,8 +8,17 @@ import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
+import { AnuncioModule } from './anuncio/anuncio.module';
+import { AnuncioComponent } from './anuncio/anuncio.component';
+import { TituloComponent } from './anuncio/titulo/titulo.component';
+import { DescripcionComponent } from './anuncio/descripcion/descripcion.component';
+import { FotosComponent } from './anuncio/fotos/fotos.component';
+import { ServiciosComponent } from './anuncio/servicios/servicios.component';
+import { EspacioComponent } from './anuncio/espacio/espacio.component';
+import { DireccionSiteComponent } from './anuncio/direccion/direccionSite.component';
 import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
+
 
 const routes: Routes = [
   {
@@ -59,6 +68,30 @@ const routes: Routes = [
       }
     ],
   },
+  {
+    path:'site',
+    component: AnuncioComponent,
+    children: [
+      {path:'espacio', component: EspacioComponent},
+      {path:'titulo', component: TituloComponent},
+      {path:'descripcion', component: DescripcionComponent},
+      {path:'fotos', component: FotosComponent},
+      {path:'servicios', component: ServiciosComponent},
+      {path:'direccionSite', component: DireccionSiteComponent},
+    ],
+  },
+  {
+    path:'site',
+    component: AnuncioComponent,
+    children: [
+      {path:'espacio', component: EspacioComponent},
+      {path:'titulo', component: TituloComponent},
+      {path:'descripcion', component: DescripcionComponent},
+      {path:'fotos', component: FotosComponent},
+      {path:'servicios', component: ServiciosComponent},
+      {path:'direccionSite', component: DireccionSiteComponent},
+    ]
+},
   {
     path: 'my-data',
     component: UserDataComponent
