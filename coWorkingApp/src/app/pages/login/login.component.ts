@@ -3,9 +3,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faArrowLeft, faEnvelope, faEye } from '@fortawesome/free-solid-svg-icons';
-import { first } from 'rxjs';
 import Swal from 'sweetalert2';
-import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -21,56 +19,54 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService,
-    private tokenService: TokenService
+    private authService: AuthService
     ) {
     this.form = this.formBuilder.group({
       email: ['', [
         Validators.email,
         Validators.required,
-        this.NoDoubleAtValidator(),
-        this.invalidEmailValidator()
+        // this.NoDoubleAtValidator(),
+        // this.invalidEmailValidator()
       ]],
       password: ['', [
-        Validators.minLength(8),
-        Validators.maxLength(128),
+        // Validators.minLength(8),
+        // Validators.maxLength(128),
         Validators.required,
-        this.caracterEspecialValidator(),
-        this.letraMinusculaValidator(),
-        this.letraMayusculaValidator(),
-        this.numeroValidator()
+        // this.caracterEspecialValidator(),
+        // this.letraMinusculaValidator(),
+        // this.letraMayusculaValidator(),
+        // this.numeroValidator()
       ]]
     });
   }
 
+  session: any;
+
   login() {
     const credentials = this.form.getRawValue();
     this.authService.login(credentials)
-    .pipe(first())
-      .subscribe({
-        next: (res) => {
-          this.tokenService.saveToken(res.token)
-          const email = this.form.get('email').value;
-          Swal.fire({
-            title: `¡Hola! ${email}`,
-            text: `Iniciaste sesión correctamente!`,
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 3000,
-          }).then(() => {
-            this.router.navigate(['/workspace/reservation']);
-          });
-        },
-        error: (error) => {
-          console.log('Error en el inicio de sesión:', error);
-          Swal.fire({
-            title: 'Error',
-            text: 'Email o contraseña inválida',
-            icon: 'error',
-            confirmButtonText: 'Aceptar',
-          });
-        },
-      })
+    const { email } = credentials;
+    Swal.fire({
+      title: `¡Hola! ${email}`,
+      text: `Iniciaste sesión correctamente!`,
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 3000,
+    })
+    .then(() => {
+      this.router.navigate(['/home']);
+    })
+
+    //     error: (error) => {
+    //       console.log('Error en el inicio de sesión:', error);
+    //       Swal.fire({
+    //         title: 'Error',
+    //         text: 'Email o contraseña inválida',
+    //         icon: 'error',
+    //         confirmButtonText: 'Aceptar',
+    //       });
+    //     },
+    //   })
   }
 
   NoDoubleAtValidator(): ValidatorFn {
