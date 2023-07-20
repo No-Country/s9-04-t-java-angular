@@ -20,8 +20,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    title: 'WOCO',
-    canActivate: [TokenGuard]
+    title: 'WOCO'
   },
   {
     path: 'map',
