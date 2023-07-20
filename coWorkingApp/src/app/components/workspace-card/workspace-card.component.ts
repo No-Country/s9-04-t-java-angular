@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { faUser, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
 
 @Component({
   selector: 'app-workspace-card',
@@ -12,6 +13,9 @@ export class WorkspaceCardComponent {
 
   faUser = faUser;
   faStar = faStar;
+  faHeart = faHeart;
+
+  showFavBtn = false; 
 
   thumbnail: number = 0;
   hoverCarouselInterval: any | undefined = undefined;

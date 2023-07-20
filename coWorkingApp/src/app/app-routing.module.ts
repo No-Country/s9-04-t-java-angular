@@ -9,6 +9,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
+import { UserDataComponent } from './pages/user-data/user-data.component';
 import { AnuncioModule } from './anuncio/anuncio.module';
 import { AnuncioComponent } from './anuncio/anuncio.component';
 import { TituloComponent } from './anuncio/titulo/titulo.component';
@@ -64,19 +65,6 @@ const routes: Routes = [
         component: ReservationComponent,
       }
     ]
-  },
-  {
-    path:'site',
-    component: AnuncioComponent,
-    children: [
-      {path:'espacio', component: EspacioComponent},
-      {path:'titulo', component: TituloComponent},
-      {path:'descripcion', component: DescripcionComponent},
-      {path:'fotos', component: FotosComponent},
-      {path:'servicios', component: ServiciosComponent},
-      {path:'direccionSite', component: DireccionSiteComponent},
-    ]
-
   },
   {
     path: '**',

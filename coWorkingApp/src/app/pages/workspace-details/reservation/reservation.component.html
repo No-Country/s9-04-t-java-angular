@@ -83,25 +83,21 @@
         <form class="flex flex-col  justify-center" [formGroup]="personalData" (ngSubmit)="onLoginFormSubmit()">
 
 
-            <div class="border-b border-dashed flex flex-col gap-4 pb-4">
+            <div class="border-b border-dashed flex flex-col gap-4 pb-10">
                 <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold " #details>Datos personales</h5>
 
                 <div class="flex-col flex">
                     <label for="" class="mb-2">Nombre</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between " [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('name'),
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': name?.errors && name.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu nombre" formControlName="name" (focus)="onFieldFocus('name')"
-                                (blur)="onFieldBlur('name')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('name'),
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:text-black  focus:bg-woco-blue-4  focus:ring-0"
+                            placeholder="Ingresa tu nombre" formControlName="name" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': name?.errors && name.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                                'text-black': isFieldFocused('name') 
-                              }"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="name?.errors && name?.touched">
                         <div *ngIf="personalData.get('name')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
                             El nombre es requerido
@@ -111,20 +107,16 @@
 
                 <div class="flex-col flex">
                     <label for="" class="mb-2">Apellido</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between " [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('lastName'),
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': lastName?.errors && lastName.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu apellido" formControlName="lastName" (focus)="onFieldFocus('lastName')"
-                                (blur)="onFieldBlur('lastName')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('lastName'),
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:ring-0  focus:text-black  focus:bg-woco-blue-4 " 
+                            placeholder="Ingresa tu apellido" formControlName="lastName" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': lastName?.errors && lastName.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                                'text-black': isFieldFocused('lastName')
-                              }"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="lastName?.errors && lastName?.touched">
                         <div *ngIf="personalData.get('lastName')?.hasError('required')"
                             class="text-[#BB4E4E] text-[13px]">
@@ -135,20 +127,16 @@
 
                 <div class="flex-col flex ">
                     <label for="email" class="mb-2">Email</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between " [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('email'),
+                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75] "
+                        [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': email?.errors && email.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu email" formControlName="email" (focus)="onFieldFocus('email')"
-                                (blur)="onFieldBlur('email')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('email'),
+                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]  focus:text-black  focus:bg-woco-blue-4   focus:ring-0"
+                            placeholder="Ingresa tu email" formControlName="email" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': email?.errors && email.touched
                               }">
-                            <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                                'text-black': isFieldFocused('email') 
-                              }"></fa-icon>
-                        </div>
+                        <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                    </div>
                     <div *ngIf="email?.errors && email?.touched">
                         <div *ngIf="personalData.get('email')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
                             El correo electrónico es requerido
@@ -165,96 +153,10 @@
             </div>
 
             <div class="flex flex-col gap-4 pt-4">
-                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Metodo de pago</h5>
-                <div class="flex-col flex ">
-                    <label for="" class="mb-2">Nombre titular</label>
-                    <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between " [ngClass]="{
-                        'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('ownerName'),
-                        'bg-[#FFEBE5] border-[#EB674A] border': ownerName?.errors && ownerName.touched
-                      }">
-                        <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                            placeholder="Ingresa nombre" formControlName="ownerName" (focus)="onFieldFocus('ownerName')"
-                            (blur)="onFieldBlur('ownerName')" [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('ownerName'),
-                            'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': ownerName?.errors && ownerName.touched
-                          }">
-                        <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                            'text-black': isFieldFocused('ownerName') 
-                          }"></fa-icon>
-                    </div>
-                    <div *ngIf="ownerName?.errors && ownerName?.touched">
-                        <div *ngIf="personalData.get('ownerName')?.hasError('required')"
-                            class="text-[#BB4E4E] text-[13px]">
-                            El nombre titular es requerido
-                        </div>
-                    </div>
-                </div>
 
-                <div class="flex-col flex">
-                    <label for="" class="mb-2">Numero de tarjeta</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between " [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('cardNumber'),
-                            'bg-[#FFEBE5] border-[#EB674A] border': cardNumber?.errors && cardNumber.touched
-                          }">
-                            <input type="text" class="w-full  flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="1812 2022 1812 2022" formControlName="cardNumber" (focus)="onFieldFocus('cardNumber')"
-                                (blur)="onFieldBlur('cardNumber')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('cardNumber'),
-                                'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': cardNumber?.errors && cardNumber.touched
-                              }">
-                            <fa-icon [icon]="faCreditCard" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                                'text-black': isFieldFocused('cardNumber')
-                              }"></fa-icon>
-                        </div>
-                    <div *ngIf="cardNumber?.errors && cardNumber?.touched">
-                        <div *ngIf="personalData.get('cardNumber')?.hasError('required')"
-                            class="text-[#BB4E4E] text-[13px]">
-                            El número de tarjeta es requerido
-                        </div>
-                    </div>
-                </div>
+                <app-payment class="flex flex-col w-full mt-3 "></app-payment>
 
-                <div class="flex gap-2 justify-center">
-                    <div class="text-center ">
-                        <label for="" class="text-center flex mb-2 ">CVC/CVV</label>
-                        <div class="flex items-center py-3 rounded-lg  bg-[#F4F4F4] justify-between" [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('cvcCvv'),
-                            'bg-[#FFEBE5] border-[#EB674A] border': cvcCvv?.errors && cvcCvv.touched
-                          }">
-                            <input type="{{ tipoContrasena }}" class=" flex ms-2 w-full  focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="***" formControlName="cvcCvv" (focus)="onFieldFocus('cvcCvv')"
-                                (blur)="onFieldBlur('cvcCvv')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('cvcCvv'),
-                                'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': cvcCvv?.errors && cvcCvv.touched
-                              }">
-                            <fa-icon [icon]="showPassword ?  faEyeLowVision : faEye" class="pe-4 cursor-pointer text-[#A7A7A7]" (click)="togglePasswordVisibility()" [ngClass]="{
-                                'text-black': isFieldFocused('cvcCvv')
-                              }"></fa-icon>
-                        </div>
-                    </div>
-
-                    <div class="text-center ">
-                        <label for="" class="text-center flex mb-2">Vencimiento <span
-                                class="text-[#BB4E4E]">*</span></label>
-                        <div class="flex items-center py-3 rounded-lg  bg-[#F4F4F4] justify-between" [ngClass]="{
-                            'bg-[#F5FDFF] border-[#015F75] border': isFieldFocused('expirationCard'),
-                            'bg-[#FFEBE5] border-[#EB674A] border': expirationCard?.errors && expirationCard.touched
-                          }">
-                            <input type="text" class=" flex ms-2 w-full  focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="12/10" formControlName="expirationCard" (focus)="onFieldFocus('expirationCard')"
-                                (blur)="onFieldBlur('expirationCard')" [ngClass]="{
-                                'bg-[#F5FDFF] border-[#015F75]': isFieldFocused('expirationCard'),
-                                'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': expirationCard?.errors && expirationCard.touched
-                              }">
-                            <fa-icon [icon]="faCalendarCheck" class="pe-4 text-[#A7A7A7]" [ngClass]="{
-                                'text-black': isFieldFocused('expirationCard')
-                              }"></fa-icon>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="flex mb-4">
+                <div class="flex mb-3">
                     <input type="checkbox" formControlName="saveCard" class="flex border-none visually-hidden">
                     <fa-icon [icon]="CheckSaveCard ? faToggleOn : faToggleOff" (click)="toggleCheck()"
                         class="cursor-pointer text-2xl pe-1 flex justify-center text-black"></fa-icon>
@@ -263,7 +165,7 @@
                 </div>
 
             </div>
-            <div *ngIf="formErrors" class="text-[#BB4E4E] text-[13px] flex justify-center mt-2">
+            <div *ngIf="formErrors" class="text-[#BB4E4E] text-[13px] flex justify-center ">
                 Debe completar todos los campos correctamente.
             </div>
         </form>

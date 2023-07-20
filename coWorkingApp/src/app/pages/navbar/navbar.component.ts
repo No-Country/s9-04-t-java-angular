@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['navbar.component.css']
 })
 export class NavbarComponent {
-  // showMenu: boolean = true;
+  showMenu: boolean = false;
 
-  // toggleMenu() {
-  //   this.showMenu = !this.showMenu;
-  // }
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 
   // faBars = faBars;
 }
