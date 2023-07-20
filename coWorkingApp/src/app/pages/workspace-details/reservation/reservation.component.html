@@ -10,14 +10,15 @@
 
                 <div>
                     <h5>Fechas</h5>
-                    <p>1 al 5 de julio</p>
+                    <p class="text-[#575757]" >{{scheduleData.date ? scheduleData.date : 'No hay fecha seleccionada'}}</p>
+
                 </div>
                 <button class="underline-offset-4 underline font-bold" (click)="openModalSchedule()">Editar</button>
             </div>
             <div class="flex justify-between ">
                 <div>
                     <h5>Cantidad de personas</h5>
-                    <p>1 nomada</p>
+                    <p class="text-[#575757]">{{numberPersons}} nomada</p>
                 </div>
                 <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
             </div>
@@ -34,22 +35,33 @@
             <div>
                 <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Detalles del precio</h5>
             </div>
-            <div class="flex pt-6  justify-between  border-b border-dashed">
+            <div class="flex   justify-between  border-b border-dashed">
                 <div>
-                    <h5>$99 por 7 dias</h5>
-                    <p>Tarifa por servicio</p>
+                    <h5 class="font-bold">Jornada</h5>
+                    <p class="text-[#575757]">{{workspace.price | currency:'USD':'symbol':'1.0-0'}} por jornada</p>
                 </div>
 
+                <div >
+                    <h5 class="font-bold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</h5>
+               
+                </div>
+            </div>
+            <div class="flex pt-6  justify-between  border-b border-dashed">
                 <div>
-                    <h5>$499</h5>
+                    <h5 class="font-bold">Tarifa</h5>
+                    <p class="text-[#575757]">Tarifa por servicio</p>
+                </div>
+
+                <div >
+                   
                     <h5>$100</h5>
                 </div>
             </div>
             <div class="flex justify-between mt-2">
                 <div>
-                    <h5>Total Precio ($ Pesos)</h5>
+                    <h5>Total Precio</h5>
                 </div>
-                <p>$595</p>
+                <p>{{100 + workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
             </div>
             <div class="flex justify-center underline underline-offset-2">
                 Más información
@@ -175,9 +187,8 @@
     <div class="flex justify-around bg-[#FFFFFF] py-3 mt-auto shadow-[0_-4px_8px_0px_rgba(0,0,0,0.12)]">
         <div class="flex-col m-auto">
             <fa-icon class="text-sm" [icon]="faUser"></fa-icon> {{numberPersons}} nomada <span
-                class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
-            jul.
-            <h5 class="font-extrabold">$595</h5>
+                class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span>{{scheduleData.date}}
+            <h5 class="font-extrabold">{{workspace.price| currency:'USD':'symbol':'1.0-0'}}</h5>
         </div>
 
         <button class="bg-[#0CA1C2] text-[#FFFFFF]  w-[153px] h-[43px] rounded-md m-auto"
