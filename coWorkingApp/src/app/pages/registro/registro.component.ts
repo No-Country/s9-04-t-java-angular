@@ -49,31 +49,37 @@ export class RegistroComponent {
   register() {
     const register = this.form.getRawValue();
     this.authService.register(register)
-    .subscribe({
-      next: (res) => {
-        const firstName = res.firstName;
-        console.log(firstName)
-        Swal.fire({
-          title: `¡Hola! ${firstName}`,
-          text: `Registro exitoso!`,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 3000,
-        }).then(() => {
-          this.router.navigate(['/home']);
-        });
-      },
-      error: (error) => {
-        console.log('Error en el registro de cuenta:', error);
-        Swal.fire({
-          title: 'Error',
-          text: 'Falló el registro',
-          icon: 'error',
-          confirmButtonText: 'Aceptar',
-        });
-      },
-    });
+    this.router.navigate(['/home'])
   }
+
+  // register() {
+  //   const register = this.form.getRawValue();
+  //   this.authService.register(register)
+  //   .subscribe({
+  //     next: (res) => {
+  //       const firstName = res.firstName;
+  //       console.log(firstName)
+  //       Swal.fire({
+  //         title: `¡Hola! ${firstName}`,
+  //         text: `Registro exitoso!`,
+  //         icon: 'success',
+  //         showConfirmButton: false,
+  //         timer: 3000,
+  //       }).then(() => {
+  //         this.router.navigate(['/home']);
+  //       });
+  //     },
+  //     error: (error) => {
+  //       console.log('Error en el registro de cuenta:', error);
+  //       Swal.fire({
+  //         title: 'Error',
+  //         text: 'Falló el registro',
+  //         icon: 'error',
+  //         confirmButtonText: 'Aceptar',
+  //       });
+  //     },
+  //   });
+  // }
 
   NoDoubleAtValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
