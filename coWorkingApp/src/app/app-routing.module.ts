@@ -7,7 +7,6 @@ import { ReservationComponent } from './pages/workspace-details/reservation/rese
 import { MapComponent } from './pages/map/map.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { CalendaryComponent } from './components/calendary/calendary.component';
 import { DireccionComponent } from './pages/direccion/direccion.component';
 import { AnuncioModule } from './anuncio/anuncio.module';
 import { AnuncioComponent } from './anuncio/anuncio.component';
@@ -17,6 +16,7 @@ import { FotosComponent } from './anuncio/fotos/fotos.component';
 import { ServiciosComponent } from './anuncio/servicios/servicios.component';
 import { EspacioComponent } from './anuncio/espacio/espacio.component';
 import { DireccionSiteComponent } from './anuncio/direccion/direccionSite.component';
+import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 
 
@@ -29,6 +29,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    // canActivate: [ TokenGuard ],
     title: 'WOCO'
   },
   {
@@ -60,12 +61,25 @@ const routes: Routes = [
       {
         path: 'details',
         component: DetailsComponent,
+        canActivate: [ TokenGuard ]
       },
       {
         path: 'reservation',
         component: ReservationComponent,
       }
-    ]
+    ],
+  },
+  {
+    path:'site',
+    component: AnuncioComponent,
+    children: [
+      {path:'espacio', component: EspacioComponent},
+      {path:'titulo', component: TituloComponent},
+      {path:'descripcion', component: DescripcionComponent},
+      {path:'fotos', component: FotosComponent},
+      {path:'servicios', component: ServiciosComponent},
+      {path:'direccionSite', component: DireccionSiteComponent},
+    ],
   },
   {
     path:'site',

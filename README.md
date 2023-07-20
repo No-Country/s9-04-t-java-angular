@@ -32,7 +32,7 @@ Nuestra aplicación está pensada para conectar a los usuarios que ofrecen sus e
 ### **Backend:**
 #### Java, Spring Boot, JWT, Railway
 ### **Developers:** 
-* Braian Apellido | Linkedin | Github
+* Braian Apellido | [Linkedin](https://www.linkedin.com/in/braian-marquez-8741071b2 "Linkedin") | [Github](https://github.com/Braian-Marquez "Github")
 * Armando Apellido | Linkedin | Github
 * Erik Jose | [Linkedin](https://www.linkedin.com/in/erik-jose-73365291 "Linkedin") | [Github](https://github.com/Erik1935 "Github")
 * Analía Apellido | Lindedin | Github
