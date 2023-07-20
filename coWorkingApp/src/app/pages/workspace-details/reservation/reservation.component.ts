@@ -7,7 +7,9 @@ import { faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOf
 import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
 import { ScheduleModalComponent } from 'src/app/components/schedule-modal/schedule-modal.component';
+import { ScheduleData } from 'src/app/interfaces/scheduleData';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
+import { CoworkService } from 'src/app/services/cowork.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
@@ -50,11 +52,24 @@ export class ReservationComponent implements OnInit {
   dateReservation: string = '';
   numberPersons = 1 ;
   totalPrice: number = 0;
+  scheduleData: ScheduleData ={ 
+    date: '',
+    price: 0,
+  } ;
+  workspace: any;
 
-  
   ngOnInit(): void {
       this.perDataService.getNumberPersons().subscribe((numberPersons: number) => {
       this.numberPersons = numberPersons;
+    });
+    this.perDataService.getscheduleData().subscribe((scheduleData: ScheduleData)=> {
+      this.scheduleData = scheduleData
+    });
+    this.coworkService.getWorkspaceById().subscribe((workspace) => {
+      if (workspace) {
+        this.workspace = workspace;
+        // Do whatever you want with the workspace data in the child component
+      }
     });
   }
 
@@ -63,7 +78,8 @@ export class ReservationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
     private perDataService: PersonalDataService,
-    private alertsService: AlertsReservaService
+    private alertsService: AlertsReservaService,
+    private coworkService: CoworkService
   ){
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
