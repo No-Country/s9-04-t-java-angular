@@ -1,8 +1,8 @@
-<div *ngIf="workspace" class="flex flex-col justify-between flex-grow h-max">
-
+<div *ngIf="workspace" class="flex flex-col justify-between flex-grow">
   <div class="p-4">
-    <cdk-accordion class="example-accordion">
-  
+
+    <!-- mobile template -->
+    <cdk-accordion class="example-accordion md:hidden">  
       <cdk-accordion-item #accordionItem1="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
         [attr.id]="'accordion-header-1'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-1'">
@@ -15,7 +15,6 @@
           <p>{{workspace.description}}</p>
         </div>
       </cdk-accordion-item>
-  
       <cdk-accordion-item #accordionItem2="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
         [attr.id]="'accordion-header-2'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-2'">
@@ -28,11 +27,28 @@
           <p>Lunes a domingos de 09 a 21 hs</p>
         </div>
       </cdk-accordion-item>
-  
     </cdk-accordion>
+
+    <!-- desktop template -->
+    <div class="hidden px-4 max-w-[1280px] mx-auto w-full md:grid md:grid-cols-12">
+      <div class="flex flex-col col-span-6 py-4 gap-14">
+
+        <div class="flex flex-col gap-2">
+          <p class="py-4 text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Sobre el lugar</p>
+          <p class="text-[#575757]">{{workspace.description}}</p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <p class="py-4 text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Horarios</p>
+          <p class="text-[#575757]">Lunes a domingos de 09 a 21 hs</p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <div class="flex p-4 bg-white">
+  <div class="flex p-4 bg-white md:hidden">
     <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
   </div>
 
