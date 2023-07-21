@@ -61,11 +61,11 @@ const routes: Routes = [
       {
         path: 'details',
         component: DetailsComponent,
-        canActivate: [ TokenGuard ]
       },
       {
         path: 'reservation',
         component: ReservationComponent,
+        canActivate: [ TokenGuard ]
       }
     ],
   },
