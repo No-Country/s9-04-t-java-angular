@@ -17,6 +17,7 @@ import { ServiciosComponent } from './anuncio/servicios/servicios.component';
 import { EspacioComponent } from './anuncio/espacio/espacio.component';
 import { DireccionSiteComponent } from './anuncio/direccion/direccionSite.component';
 import { TokenGuard } from './guards/token.guard';
+// import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 
 
@@ -29,8 +30,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    title: 'WOCO',
-    canActivate: [TokenGuard]
+    title: 'WOCO'
   },
   {
     path: 'map',
