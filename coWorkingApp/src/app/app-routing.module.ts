@@ -65,6 +65,7 @@ const routes: Routes = [
       {
         path: 'reservation',
         component: ReservationComponent,
+        canActivate: [ TokenGuard ]
       }
     ],
   },
