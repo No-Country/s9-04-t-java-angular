@@ -1,0 +1,11 @@
+.bforward{
+  color:#015F75;
+  background-color: #E6FAFF;
+  border: 1px solid #015F75;
+}
+.bforward:hover{
+  color:#E6FAFF;
+  background-color: #015F75;
+  border: 1px solid #E6FAFF;
+}
+

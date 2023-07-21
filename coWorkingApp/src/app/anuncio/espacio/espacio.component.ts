@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-espacio',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./espacio.component.css']
 })
 export class EspacioComponent {
+
+  faLeft=faArrowLeft;
 
 }

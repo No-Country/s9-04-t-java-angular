@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { environment } from 'src/environments/environment';
+import { faArrowLeft, faEnvelope, faUser, faEye  } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,18 +10,20 @@ import Swal from 'sweetalert2';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
+
 export class RegistroComponent {
 
-  apiUrl = environment.API_URL;
-
   faArrowLeft = faArrowLeft;
+  faEnvelope = faEnvelope;
+  faUser = faUser;
+  faEye = faEye;
 
   form: any;
 
   constructor(
-    private http: HttpClient,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
     ) {
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.maxLength(128)]],
@@ -30,7 +31,8 @@ export class RegistroComponent {
       email: ['', [
         Validators.email,
         Validators.required,
-        this.NoDoubleAtValidator()
+        this.NoDoubleAtValidator(),
+        this.invalidEmailValidator()
       ]],
       password: ['', [
         Validators.minLength(8),
@@ -46,9 +48,7 @@ export class RegistroComponent {
 
   register() {
     const register = this.form.getRawValue();
-    console.log('register', register);
-
-    return this.http.post<any>(`${this.apiUrl}/auth/register`, register)
+    this.authService.register(register)
     .subscribe({
       next: (res) => {
         const firstName = res.firstName;
@@ -60,7 +60,6 @@ export class RegistroComponent {
           showConfirmButton: false,
           timer: 3000,
         }).then(() => {
-          // this.loading = true;
           this.router.navigate(['/home']);
         });
       },
@@ -96,8 +95,6 @@ export class RegistroComponent {
     };
   }
 
-  // Validators para password
-
   letraMinusculaValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const patron = /[a-z]/;
@@ -127,6 +124,14 @@ export class RegistroComponent {
       const patron = /[@#$%^&+=!]/;
       const valid = patron.test(control.value);
       return valid ? null : { caracterEspecial: true };
+    };
+  }
+
+  invalidEmailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const valid = patron.test(control.value);
+      return valid ? null : { invalidEmail: true };
     };
   }
 }

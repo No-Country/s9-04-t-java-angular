@@ -13,7 +13,7 @@ export class CoworkService {
       id: 1,
       name: 'Espacio 1',
       images: [
-        'https://www.lista-office.com/fileadmin/lo/lo-business-solutions/Lista_Office_LO_B2B_Herobackground.jpg',
+        'https://t4.ftcdn.net/jpg/03/13/49/07/360_F_313490735_YCp2jT4wiMTryffcBH59Ysl06j2OVEat.jpg',
         'https://static01.nyt.com/images/2021/05/02/business/00officespace8/00officespace8-superJumbo.jpg',
         'https://media.npr.org/assets/img/2020/04/23/gettyimages-656544055_wide-65e041ed6c0f8e5feec6d3951fa3459431b05519-s1400-c100.jpg'
       ],

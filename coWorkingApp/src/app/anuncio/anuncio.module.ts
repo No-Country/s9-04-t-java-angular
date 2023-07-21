@@ -5,7 +5,11 @@ import { TituloComponent } from './titulo/titulo.component';
 import { DescripcionComponent } from './descripcion/descripcion.component';
 import { FotosComponent } from './fotos/fotos.component';
 import { ServiciosComponent } from './servicios/servicios.component';
-import { DireccionComponent } from './direccion/direccion.component';
+import { DireccionSiteComponent } from './direccion/direccionSite.component';
+import { AnuncioComponent } from './anuncio.component';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 
 
@@ -16,10 +20,14 @@ import { DireccionComponent } from './direccion/direccion.component';
     DescripcionComponent,
     FotosComponent,
     ServiciosComponent,
-    DireccionComponent
+    DireccionSiteComponent,
+    AnuncioComponent,
+
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule
   ]
 })
 export class AnuncioModule { }
