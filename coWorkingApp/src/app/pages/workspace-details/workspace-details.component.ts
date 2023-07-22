@@ -19,6 +19,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
+  headerNavbar = document.getElementById('header-navbar').offsetHeight;
+
   workspace: any;
   workspaceSub: any;
   id: number = 0;
@@ -53,7 +55,6 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     this.workspaceSub = this.coworkService.getWorkspaceById().subscribe({
       next: (res: any) => {
         this.workspace = res;
-        console.log(res);
       },
       error: (error: any) => console.log(error),
       complete: () => { }
