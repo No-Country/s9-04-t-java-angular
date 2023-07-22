@@ -1,10 +1,15 @@
 # s9-04-t-java-angular
 [![APP WOCO](./screenshots/woco-logo.png)](https://s9-04-t-java-angular.web.app)
 ## Aplicación de Co-Working
-<div style="background-image: url(./screenshots/home-screeshot.png); background-size: cover; width: 100%; height: 600px;"></div>
+<div style="background-size: cover; width: 100%; height: 600px;">
+    
+![App Co-working WOCO](./screenshots/home-screeshot.png)
 
----
+</div>
+
 Nuestra aplicación está pensada para conectar a los usuarios que ofrecen sus espacios físicos en nuestra plataforma, con los usuarios que buscan espacios de trabajo colaborativo con los servicios más requeridos por el perfil de nómada digital.
+
+
 
 ---
 
