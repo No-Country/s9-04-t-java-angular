@@ -55,7 +55,6 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     this.workspaceSub = this.coworkService.getWorkspaceById().subscribe({
       next: (res: any) => {
         this.workspace = res;
-        console.log(res);
       },
       error: (error: any) => console.log(error),
       complete: () => { }
