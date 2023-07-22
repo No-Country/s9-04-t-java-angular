@@ -19,6 +19,8 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
+  headerNavbar = document.getElementById('header-navbar').offsetHeight;
+
   workspace: any;
   workspaceSub: any;
   id: number = 0;
