@@ -9,6 +9,9 @@ import { DireccionSiteComponent } from './direccion/direccionSite.component';
 import { AnuncioComponent } from './anuncio.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 
 
@@ -27,7 +30,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    DragDropModule
   ]
 })
 export class AnuncioModule { }
