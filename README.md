@@ -34,7 +34,7 @@ Nuestra aplicación está pensada para conectar a los usuarios que ofrecen sus e
 #### Java, Spring Boot, JWT, Railway
 ### **Developers:** 
 * Analía Casali | [Linkedin](https://www.linkedin.com/in/analiacasali "Linkedin") | [Github](https://github.com/AnaliaCasali "Github")
-* Armando Ruiz
+* Armando Ruiz [Linkedin](https://www.linkedin.com/in/ruizarmandoariel "Linkedin") | [Github](https://github.com/ArielRzz "Github")
 ---
 ### **UXUI:**
 #### Figma
