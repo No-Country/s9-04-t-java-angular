@@ -11,7 +11,7 @@
         </h3>
       </div>
     </div>
-  <div class="p-4 flex flex-col relative top-[-10vh]">
+  <div class="h-1/3 p-4 flex flex-col relative top-[-20vh]">
     <div class="w-full  text-xl font-bold">
       <h5>Agregá algunas fotos de tu espacio</h5>
     </div>
@@ -20,7 +20,7 @@
       </p>
     </div>
     <div class="drag-drop-container" cdkDropList (cdkDropListDropped)="dropFile($event)">
-      <div class="square flex flex-col flex-nowrap justify-center w-[80vw] h-[30vh] " (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+      <div class="square flex flex-col flex-nowrap justify-center w-[80vw] h-[24vh] " (dragover)="onDragOver($event)" (drop)="onDrop($event)">
         <input type="file" (change)="uploadFiles($event)" multiple />
         <div class="file-name" *ngIf="file">{{ file.name }}</div>
       </div>

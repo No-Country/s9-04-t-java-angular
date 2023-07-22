@@ -82,18 +82,6 @@ const routes: Routes = [
     ],
   },
   {
-    path:'site',
-    component: AnuncioComponent,
-    children: [
-      {path:'espacio', component: EspacioComponent},
-      {path:'titulo', component: TituloComponent},
-      {path:'descripcion', component: DescripcionComponent},
-      {path:'fotos', component: FotosComponent},
-      {path:'servicios', component: ServiciosComponent},
-      {path:'direccionSite', component: DireccionSiteComponent},
-    ]
-},
-  {
     path: 'my-data',
     component: UserDataComponent
   },

@@ -10,4 +10,15 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 export class ServiciosComponent {
   faLeft=faArrowLeft;
 
+  services:any[]=[
+    'Sala de reunion',
+    'Wifi',
+    'Estacionamiento',
+    'Lockers',
+    'Calefacción',
+    'Aire acondicionado',
+    'Impresora',
+    'Espacio exterior',
+  ]
+
 }
