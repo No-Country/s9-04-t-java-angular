@@ -7,6 +7,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CdkMenuModule } from '@angular/cdk/menu';
 
+
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './pages/home/home.component';

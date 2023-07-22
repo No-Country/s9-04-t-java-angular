@@ -1,26 +1,30 @@
-<main class="w-full min-h-screen flex-col flex justify-around">
-  <div class="flex flex-row justify-left p-4">
-    <div class="w-1/4">
-      <button class="w-full h-full">
-        <fa-icon class="text-2xl" [icon]="faLeft"></fa-icon>
-      </button>
+<main class="w-full min-h-screen flex-col flex justify-between">
+    <div class="flex flex-row justify-left p-4">
+      <div class="w-1/4">
+        <button class="w-full h-full">
+          <fa-icon class="text-2xl" [icon]="faLeft"></fa-icon>
+        </button>
+      </div>
+      <div class="text-2xl font-bold w-3/4 ">
+        <h3>
+          Fotos del espacio
+        </h3>
+      </div>
     </div>
-    <div class="text-2xl font-bold w-3/4">
-      <h3>
-        Fotos del espacio
-      </h3>
+  <div class="p-4 flex flex-col relative top-[-10vh]">
+    <div class="w-full  text-xl font-bold">
+      <h5>Agregá algunas fotos de tu espacio</h5>
     </div>
-  </div>
-  <div class="">
-    <div class="">
-      <h5></h5>
+    <div class="mt-5 text-lg font-normal w-full flex justify-center">
+      <p >Vas a necesitar agregar algunas fotos de buenas calidad, para promocionar y mostrar tu espacio.
+      </p>
     </div>
-    <div class="">
-      <p></p>
+    <div class="drag-drop-container" cdkDropList (cdkDropListDropped)="dropFile($event)">
+      <div class="square flex flex-col flex-nowrap justify-center w-[80vw] h-[30vh] " (dragover)="onDragOver($event)" (drop)="onDrop($event)">
+        <input type="file" (change)="uploadFiles($event)" multiple />
+        <div class="file-name" *ngIf="file">{{ file.name }}</div>
+      </div>
     </div>
-    <form action="">
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-    </form>
   </div>
 
   <div class="flex flex-row justify-around w-full bg-gray-200 p-3">
