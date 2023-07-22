@@ -7,7 +7,7 @@
         [attr.id]="'accordion-header-1'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-1'">
         <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem1.toggle()">
-          <p class="text-xl font-semibold">Sobre el lugar</p>
+          <p class="text-xl font-semibold font-playfair">Sobre el lugar</p>
           <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem1.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
         <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem1.expanded ? '' : 'none'"
@@ -19,7 +19,7 @@
         [attr.id]="'accordion-header-2'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-2'">
         <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem2.toggle()">
-          <p class="text-xl font-semibold">Horarios</p>
+          <p class="text-xl font-semibold font-playfair">Horarios</p>
           <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem2.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
         <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem2.expanded ? '' : 'none'"
@@ -49,7 +49,7 @@
   </div>
 
   <div class="flex p-4 bg-white md:hidden">
-    <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
+    <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2 hover:bg-woco-blue-2/50" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
   </div>
 
 </div>
