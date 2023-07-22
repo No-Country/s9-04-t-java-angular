@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { OverlayModule } from '@angular/cdk/overlay';
-// import { FullCalendarModule } from '@fullcalendar/angular';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CdkMenuModule } from '@angular/cdk/menu';
@@ -31,6 +30,7 @@ import { ModalPersonsComponent } from './components/modal-persons/modal-persons.
 import { AlertsReservationComponent } from './components/alerts-reservation/alerts-reservation.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ScheduleModalComponent } from './components/schedule-modal/schedule-modal.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
@@ -72,10 +72,11 @@ import { NgxStripeModule } from 'ngx-stripe';
     HttpClientModule,
     NgxSliderModule,
     CdkMenuModule,
-    // FullCalendarModule
     NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg')
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

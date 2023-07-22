@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, ValidatorFn, Validators  } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faArrowLeft, faEnvelope, faUser, faEye } from '@fortawesome/free-solid-svg-icons';
-import { environment } from 'src/environments/environment';
+import { faArrowLeft, faEnvelope, faUser, faEye  } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,9 +10,8 @@ import Swal from 'sweetalert2';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
 
-  apiUrl = environment.API_URL;
+export class RegistroComponent {
 
   faArrowLeft = faArrowLeft;
   faEnvelope = faEnvelope;
@@ -23,9 +21,9 @@ export class RegistroComponent {
   form: any;
 
   constructor(
-    private http: HttpClient,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
     ) {
     this.form = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.maxLength(128)]],
@@ -33,7 +31,8 @@ export class RegistroComponent {
       email: ['', [
         Validators.email,
         Validators.required,
-        this.NoDoubleAtValidator()
+        this.NoDoubleAtValidator(),
+        this.invalidEmailValidator()
       ]],
       password: ['', [
         Validators.minLength(8),
@@ -49,35 +48,38 @@ export class RegistroComponent {
 
   register() {
     const register = this.form.getRawValue();
-    console.log('register', register);
-
-    return this.http.post<any>(`${this.apiUrl}/auth/register`, register)
-    .subscribe({
-      next: (res) => {
-        const firstName = res.firstName;
-        console.log(firstName)
-        Swal.fire({
-          title: `¡Hola! ${firstName}`,
-          text: `Registro exitoso!`,
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 3000,
-        }).then(() => {
-          // this.loading = true;
-          this.router.navigate(['/home']);
-        });
-      },
-      error: (error) => {
-        console.log('Error en el registro de cuenta:', error);
-        Swal.fire({
-          title: 'Error',
-          text: 'Falló el registro',
-          icon: 'error',
-          confirmButtonText: 'Aceptar',
-        });
-      },
-    });
+    this.authService.register(register)
+    this.router.navigate(['/home'])
   }
+
+  // register() {
+  //   const register = this.form.getRawValue();
+  //   this.authService.register(register)
+  //   .subscribe({
+  //     next: (res) => {
+  //       const firstName = res.firstName;
+  //       console.log(firstName)
+  //       Swal.fire({
+  //         title: `¡Hola! ${firstName}`,
+  //         text: `Registro exitoso!`,
+  //         icon: 'success',
+  //         showConfirmButton: false,
+  //         timer: 3000,
+  //       }).then(() => {
+  //         this.router.navigate(['/home']);
+  //       });
+  //     },
+  //     error: (error) => {
+  //       console.log('Error en el registro de cuenta:', error);
+  //       Swal.fire({
+  //         title: 'Error',
+  //         text: 'Falló el registro',
+  //         icon: 'error',
+  //         confirmButtonText: 'Aceptar',
+  //       });
+  //     },
+  //   });
+  // }
 
   NoDoubleAtValidator(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
@@ -98,8 +100,6 @@ export class RegistroComponent {
       return null;
     };
   }
-
-  // Validators para password
 
   letraMinusculaValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -130,6 +130,14 @@ export class RegistroComponent {
       const patron = /[@#$%^&+=!]/;
       const valid = patron.test(control.value);
       return valid ? null : { caracterEspecial: true };
+    };
+  }
+
+  invalidEmailValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const valid = patron.test(control.value);
+      return valid ? null : { invalidEmail: true };
     };
   }
 }
