@@ -1,0 +1,24 @@
+<div class="min-h-[calc(100vh-64px)] max-w-[1280px] mx-auto md:py-10">
+  <div class="flex flex-col gap-2 px-4">
+    <div class="py-5">
+      <a routerLink="/home" class="text-2xl font-bold"><fa-icon class="text-xl me-4" [icon]="faArrowLeft"></fa-icon>Mi perfil</a>
+    </div>
+    <p class="text-sm md:text-base">nombre y mail del usuario</p>
+  </div>
+  <div class="flex flex-col gap-6 px-4 py-6 md:flex-row md:justify-center md:flex-wrap">
+    <a routerLink="/my-data" class="flex flex-col gap-2 md:w-[411px] md:bg-[#F4F4F4] md:rounded-lg md:p-6">
+      <div class="flex justify-between py-3 border-b border-[#CCCCCC]">
+        <p class="flex font-semibold"><fa-icon class="hidden me-2 md:block" [icon]="faUser"></fa-icon>Mis datos</p>
+        <fa-icon class="px-3 md:hidden" [icon]="faChevronRight"></fa-icon>
+      </div>
+      <p class="text-[#919191] text-sm">Acá observarás tus datos personales.</p>
+    </a>
+    <a routerLink="/my-workspaces" class="flex flex-col gap-2 md:w-[411px] md:bg-[#F4F4F4] md:rounded-lg md:p-6">
+      <a class="flex justify-between py-3 border-b border-[#CCCCCC]">
+        <p class="flex font-semibold"><fa-icon class="hidden me-2 md:block" [icon]="faBuildingUser"></fa-icon>Mis espacios</p>
+        <fa-icon class="px-3 md:hidden" [icon]="faChevronRight"></fa-icon>
+      </a>
+      <p class="text-[#919191] text-sm">Acá gestionarás tus espacios publicados.</p>
+    </a>
+  </div>
+</div>
