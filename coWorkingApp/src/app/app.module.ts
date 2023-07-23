@@ -34,6 +34,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { NgxStripeModule } from 'ngx-stripe';
     ScheduleModalComponent,
     PaymentComponent,
     UserDataComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
