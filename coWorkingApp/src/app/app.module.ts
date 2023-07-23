@@ -34,6 +34,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { NgxStripeModule } from 'ngx-stripe';
     HttpClientModule,
     NgxSliderModule,
     CdkMenuModule,
-    NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg')
+    NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg'),
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

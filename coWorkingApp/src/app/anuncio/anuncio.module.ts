@@ -1,4 +1,11 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {MatFormFieldModule}  from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 import { CommonModule } from '@angular/common';
 import { EspacioComponent } from './espacio/espacio.component';
 import { TituloComponent } from './titulo/titulo.component';
@@ -9,8 +16,10 @@ import { DireccionSiteComponent } from './direccion/direccionSite.component';
 import { AnuncioComponent } from './anuncio.component';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FechasComponent } from './fechas/fechas.component';
+import { FinishComponent } from './finish/finish.component';
 
 
 
@@ -25,6 +34,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ServiciosComponent,
     DireccionSiteComponent,
     AnuncioComponent,
+    FechasComponent,
+    FinishComponent,
 
   ],
   imports: [
@@ -32,7 +43,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     RouterModule,
     FontAwesomeModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AnuncioModule { }
