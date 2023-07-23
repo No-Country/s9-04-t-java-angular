@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { CoworkService } from 'src/app/services/cowork.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class HomeComponent implements OnInit {
   workspaces: any[] = [];
 
   coworkService = inject(CoworkService);
+
+  constructor(private alertsService: AlertsReservaService,){}
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
