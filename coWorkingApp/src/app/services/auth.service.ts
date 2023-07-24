@@ -14,7 +14,7 @@ export class AuthService {
 
   session: any;
 
-  constructor(){ }
+  constructor(){}
 
   async login(credentials: Credentials) {
     const { email, password} = credentials;
@@ -60,7 +60,10 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    const authToken = JSON.parse(localStorage.getItem('sb-yhhcifsgfjyrxhnitiwq-auth-token'));
+    const accessToken = authToken.access_token;
+    console.log(accessToken)
+    return !!localStorage.getItem('[sb-yhhcifsgfjyrxhnitiwq-auth-token].access_token');
   }
 
   // Get User
