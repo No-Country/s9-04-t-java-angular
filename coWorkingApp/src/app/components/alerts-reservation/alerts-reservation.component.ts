@@ -21,7 +21,7 @@ export class AlertsReservationComponent implements OnInit{
       this.showAlertsDuration(duration, alert);
     });
   }
-  
+
   isAlertVisible(alertType: string): boolean {
     switch (alertType) {
       case 'confirmation':
@@ -67,10 +67,10 @@ export class AlertsReservationComponent implements OnInit{
     this.showAlertError = true;
   } else if (alert === 'confirmation') {
     this.showAlertConfirmation = true;
-  } 
+  }
 
   setTimeout(() => {
-    this.hideAlerts(alert); 
+    this.hideAlerts(alert);
   }, duration);
 }
 
