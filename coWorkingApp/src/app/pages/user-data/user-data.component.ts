@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { faArrowLeft, faChevronDown, faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faChevronDown, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-user-data',
