@@ -106,3 +106,49 @@ footer {
     color: #333;
     font-size: 20px;
   }
+
+  @media(min-width: 800px) {
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #E6FAFF;
+      color: #015F75;
+      text-decoration: none;
+      border-radius: 8px #015F75;
+      justify-content: left;
+      border-color: #015F75;
+      margin-bottom: 1px;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 8px;
+      align-items: left;
+      align-content: left;
+    }
+
+    .social-section {
+      text-align: center;
+    }
+
+    .social-section p{
+      color: gray;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin: 0 5px;
+      color: #333;
+      font-size: 50px;
+    }
+
+    .faq-section {
+      margin-bottom: 20px;
+      text-align: left;
+      color: #015F75;
+    }
+
+  }
