@@ -1,0 +1,82 @@
+<ng-container *ngIf="workspace; else loading">
+  <div class="flex md:items-start min-h-[calc(100vh-64px)]">
+    <div class="md:gap-4 md:grid md:grid-cols-12 w-full flex flex-col flex-grow md:max-w-[1280px] md:mx-auto md:px-4 md:py-10">
+      <!-- carrusel -->
+      <div class="sticky top-0 z-10 w-full row-start-auto overflow-hidden md:z-0 md:static xl:col-span-8 md:col-span-7 md:rounded-lg">
+        <div class="relative">
+          <div class="absolute md:hidden text-[#919191] top-0 z-40 flex justify-between w-full p-4 py-3 backdrop-blur-sm bg-white/25">
+            <a *ngIf="!(detailsOpen | async)"  [routerLink]="shouldNavigateToHome() ? '/home' : 'details'" class="cursor-pointer flex items-center justify-center w-8 rounded-full aspect-square bg-[#D9D9D9]">
+              <fa-icon [icon]="faArrowLeft"></fa-icon>
+            </a>
+            <a *ngIf="detailsOpen| async" (click)="toggleDetails()"  class="cursor-pointer flex items-center justify-center w-8 rounded-full aspect-square bg-[#D9D9D9]">
+              <fa-icon [icon]="faArrowLeft"></fa-icon>
+            </a>
+            <div class="flex gap-3">
+              <button class="w-8 rounded-full aspect-square bg-[#D9D9D9]"><fa-icon [icon]="faShareNodes"></fa-icon>
+              </button>
+              <button class="w-8 rounded-full aspect-square bg-[#D9D9D9]"><fa-icon [icon]="faHeart"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <div class="absolute z-30 flex justify-between w-full h-full p-5 md:text-3xl">
+            <button class="pr-10 text-white sm:pr-20" (click)="previo()">
+              <fa-icon [icon]="faChevronLeft"></fa-icon>
+            </button>
+            <button class="pl-10 text-white sm:pl-20" (click)="next()">
+              <fa-icon [icon]="faChevronRight"></fa-icon>
+            </button>
+          </div>
+          <div class="absolute z-30 flex justify-center w-full gap-2 bottom-4">
+            <div [ngClass]="displayedImage == i? 'bg-white' : 'bg-white/40'" class="w-2 h-2 rounded-full drop-shadow-lg" *ngFor="let image of workspace.images; let i = index"></div>
+          </div>
+          <div class="absolute px-2 py-1 bottom-4 right-4 text-[8px] text-black font-medium backdrop-blur-sm bg-white/20 rounded-xl">
+            {{displayedImage +1}} / {{workspace.images.length}}
+          </div>
+          <div id="carousel" class="flex w-full">
+            <img class="w-full h-[284px] sm:h-[350px] md:h-[300px] lg:h-[400px] xl:h-[462px] object-cover" src="{{workspace.images[displayedImage]}}" alt="">
+          </div>
+        </div>
+      </div>
+      <!-- columna de info principal -->
+      <div class="col-start-9 row-span-2 xl:col-span-4 md:col-span-5">
+        <div class="flex sticky top-[104px] flex-col gap-2 md:gap-3 px-4 py-2 md:py-4 text-sm md:border md:border-[#CCCCCC] md:rounded-lg md:shadow-md">
+          <div class="justify-end hidden md:flex">
+            <div class="flex gap-4 text-[#919191] text-lg">
+              <button class="shadow-md pt-1 w-8 md:w-10 rounded-full aspect-square bg-[#D9D9D9]">
+                <fa-icon [icon]="faShareNodes"></fa-icon>
+              </button>
+              <button class="shadow-md pt-1 w-8 md:w-10 rounded-full aspect-square bg-[#D9D9D9]">
+                <fa-icon [icon]="faHeart"></fa-icon>
+              </button>
+            </div>
+          </div>
+          <p class="text-xl font-bold font-playfair lg:text-2xl">{{workspace.name}}</p>
+          <div class="flex flex-col-reverse gap-2 md:gap-3 md:flex-col">
+            <div class="flex flex-col gap-2 md:gap-3">
+              <p class="text-[#919191] lg:text-base"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
+              <div class="flex items-center gap-2 text-sm">
+                <div class="flex items-center gap-2 p-1 px-2 rounded-lg text-woco-blue-1 bg-woco-blue-3">
+                  <fa-icon [icon]="faStar"></fa-icon>
+                  <p class="text-xs font-semibold">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
+                </div>
+                <p class="text-[#3D3D3D]">{{workspace.rating.length}} calificaciones</p>
+              </div>
+            </div>
+            <p class="font-semibold lg:text-xl text-woco-blue-1">{{workspace.price | currency:'USD':'symbol':'1.0-0'}} por jornada</p>
+          </div>
+          <a routerLink="reservation" (click)="openDetailsAndOnForm()" role="button" class="hidden p-3 font-bold text-center text-white rounded-lg hover:bg-black hover:text-woco-blue-2 md:block bg-woco-blue-2">Reservar</a>
+        </div>
+      </div>
+      <!-- subrutas -->
+      <div class="flex flex-grow md:col-span-7 xl:col-span-6">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <div class="flex items-center justify-center min-h-screen bg-red-200">
+    <p>cargando...</p>
+  </div>
+</ng-template>

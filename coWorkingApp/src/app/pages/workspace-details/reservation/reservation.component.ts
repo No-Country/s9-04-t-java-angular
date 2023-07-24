@@ -1,31 +1,31 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
-import { ViewportScroller } from '@angular/common';
+import { ViewportScroller, Location } from '@angular/common';
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { faCalendarCheck, faCircleCheck, faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
 import { ScheduleModalComponent } from 'src/app/components/schedule-modal/schedule-modal.component';
 import { ScheduleData } from 'src/app/interfaces/scheduleData';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { CoworkService } from 'src/app/services/cowork.service';
+import { PaymentServiceService } from 'src/app/services/paymentService.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
-  styleUrls: ['./reservation.component.css']
+  styleUrls: ['./reservation.component.css'],
+  host: {'class': 'w-full'}
+  
 })
 export class ReservationComponent implements OnInit {
 
   @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
   @ViewChild(ScheduleModalComponent) modalSchedule!: ScheduleModalComponent;
-
-  focusClass: string[] = ['border-[#015F75]', 'bg-[#F5FDFF]'];
-  errorClass: string[] = ['border-[#C13515', 'bg-[#EB674A]'];
-
-
+  faArrowLeft =  faArrowLeft;
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
   faUser = faUser;
@@ -68,8 +68,13 @@ export class ReservationComponent implements OnInit {
     this.coworkService.getWorkspaceById().subscribe((workspace) => {
       if (workspace) {
         this.workspace = workspace;
-        // Do whatever you want with the workspace data in the child component
       }
+    });
+    this.perDataService.detailsOpen$.subscribe((detailsOpen) => {
+      this.detailsOpen = detailsOpen;
+    });
+    this.perDataService.formSubmit$.subscribe(() => {
+      this.onLoginFormSubmit();
     });
   }
 
@@ -79,16 +84,19 @@ export class ReservationComponent implements OnInit {
     private viewportScroller: ViewportScroller,
     private perDataService: PersonalDataService,
     private alertsService: AlertsReservaService,
-    private coworkService: CoworkService
+    private coworkService: CoworkService,
+    private paymentService: PaymentServiceService,
+    private router: Router,
+    private _location: Location
   ){
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
       name:['',[Validators.required, Validators.minLength(3)]],
       lastName:['',[Validators.required, Validators.minLength(3)]],
-      ownerName:['',[Validators.required]],
-      cardNumber:['',[Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      cvcCvv:['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      expirationCard:['',[Validators.required]],
+      // ownerName:['',[Validators.required]],
+      // cardNumber:['',[Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      // cvcCvv:['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+      // expirationCard:['',[Validators.required]],
       saveCard: false,
       receiveNotifications: false,
       numberPersons: this.numberPersons
@@ -141,6 +149,8 @@ export class ReservationComponent implements OnInit {
     this.modalSchedule.openModalSchedule();
   }
 
+ 
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.tipoContrasena = this.showPassword ? 'number' : 'password';
@@ -152,32 +162,46 @@ export class ReservationComponent implements OnInit {
   }
 
 
-  openFormDetails(){
+  openFormDetails() {
     this.detailsOpen = !this.detailsOpen;
-    this.viewportScroller.scrollToAnchor('end');
+    this.perDataService.setDetailsOpen(this.detailsOpen);
   }
-  
 
-  onLoginFormSubmit(){
-    this.formSubmitted = true;
-    if (this.personalData.invalid){
-      this.alertsService.show(4000, 'error');
-      this.formErrors = true;
-      return;
-    }
+  back(){
+    this._location.back();
+  }
+
+  onLoginFormSubmit() {
+    if (this.personalData.valid){
+      this.paymentService.createTokenEvent.emit();
+    this.paymentService.token$.subscribe((tokenReturned: boolean) => {
+      if (tokenReturned) {
+        // Token was returned successfully
+        this.proceedWithFormSubmission();
+      } else {
+        // Token was not returned
+        console.log('Token was not returned.');
+      }
+    });
+  }
+  }
+
+  proceedWithFormSubmission(){
     this.personalData.get('saveCard')?.setValue(this.CheckSaveCard);
     this.personalData.patchValue({ numberPersons: this.numberPersons });
     this.perDataService.onPersonalData(this.personalData.value)
-      
     .subscribe({
       next: (data: any) => {
         console.log(data);
-      this.alertsService.show(4000, 'confirmation');
-        },
+        this.alertsService.show(4000, 'confirmation');
+        this.paymentService.setTokenValue(false)
+        this.router.navigate(['/home'])
+        
+      },
       error: (error) => {
         console.log(error);
-      
         this.alertsService.show(4000, 'error');
+        
       }
     });
   }

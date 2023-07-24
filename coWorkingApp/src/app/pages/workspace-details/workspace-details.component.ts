@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { faArrowLeft, faShareNodes, faLocationDot, faStar, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CoworkService } from 'src/app/services/cowork.service';
-
+import { PersonalDataService } from 'src/app/services/personal-data.service';
+import { Location } from '@angular/common'
+import { ReservationComponent } from './reservation/reservation.component';
 @Component({
   selector: 'app-workspace-details',
   templateUrl: './workspace-details.component.html',
@@ -19,8 +21,6 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
 
-  headerNavbar = document.getElementById('header-navbar').offsetHeight;
-
   workspace: any;
   workspaceSub: any;
   id: number = 0;
@@ -28,11 +28,32 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
 
   _activatedRoute = inject(ActivatedRoute);
   coworkService = inject(CoworkService);
+  detailsOpen: any =  this.personalDataServ.getDetailsOpenValue(); 
+  
+  constructor(private personalDataServ: PersonalDataService, private router:Router){}
+ 
+  shouldNavigateToHome(): boolean {
+    const currentUrl = this.router.url;
+    return currentUrl.endsWith('details');
+  }
+
+  toggleDetails(): void {
+   const detailsOpen = this.personalDataServ.getDetailsOpenValue(); 
+    if (detailsOpen) {
+      this.personalDataServ.setDetailsOpen(false);
+    } 
+  }
+
+  openDetailsAndOnForm(): void {
+      this.personalDataServ.setDetailsOpen(true);
+      this.personalDataServ.setFormSubmit();
+  }
 
   ngOnInit(): void {
     window.scrollTo({ top: 0 });
     this.getIdParam();
     this.getSelectedWorkspace(this.id);
+    this.personalDataServ
   }
 
   ngOnDestroy(): void {
