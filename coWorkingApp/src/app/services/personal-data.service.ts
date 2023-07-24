@@ -12,7 +12,7 @@ export class PersonalDataService {
     private numberPersonsSubject: Subject<number> = new Subject<number>();
     private scheduleData: Subject<ScheduleData> = new Subject<ScheduleData>()
 
-    apiUrl = "https://eopvbi88r5ylyo5.m.pipedream.net";
+    apiUrl = "https://eojtern9xpfjuhk.m.pipedream.net";
 
     constructor(private http: HttpClient) {}
 
