@@ -60,10 +60,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    const authToken = JSON.parse(localStorage.getItem('sb-yhhcifsgfjyrxhnitiwq-auth-token'));
-    const accessToken = authToken.access_token;
-    console.log(accessToken)
-    return !!localStorage.getItem('[sb-yhhcifsgfjyrxhnitiwq-auth-token].access_token');
+    return !!localStorage.getItem('token');
   }
 
   // Get User
