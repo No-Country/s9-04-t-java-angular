@@ -6,8 +6,9 @@ import {
   StripeCardElementOptions,
   StripeElementsOptions,
 } from '@stripe/stripe-js';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
+import { PaymentServiceService } from 'src/app/services/paymentService.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,48 +16,43 @@ import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  faUser = faUser;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
-
-
-
+  faUser = faUser;
+  token: string | null = null;
+  faChevronDown = faChevronDown;
+  
   cardOptions: StripeCardElementOptions = {
     style: {
-     
       base:{
         color: '#31325F',
         fontWeight: '300',
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSize: '18px',
         '::placeholder': {
-          color: '#CFD7E0'
+          color: '#CFD7E0',
         },
-       
       },
-      
     },
     classes:{
      base: 'stripe',
-
     },
-
   };
-
-
 
   elementsOptions: StripeElementsOptions = {
     locale: 'es',
-    
   };
 
   stripeTest: FormGroup;
 
   constructor(private fb: FormBuilder, private stripeService: StripeService,
-    private alertService : AlertsReservaService) {}
+    private alertService : AlertsReservaService, private paymentService: PaymentServiceService) {}
 
   ngOnInit(): void {
     this.stripeTest = this.fb.group({
       name: ['', [Validators.required]]
+    });
+    this.paymentService.createTokenEvent.subscribe(() => {
+      this.createToken();
     });
   }
  
@@ -67,12 +63,12 @@ export class PaymentComponent implements OnInit {
       .subscribe((result) => {
         if (result.token) {
           // Use the token
-          this.alertService.show(4000, 'confirmationPago');
+          this.paymentService.setTokenValue(true);
           console.log(result.token.id);
         } else if (result.error) {
-          // Error creating the token
+          this.alertService.show(4000, 'error');
           console.log(result.error.message);
-          this.alertService.show(4000, 'errorPago');
+    
         }
       });
   }

@@ -1,180 +1,211 @@
-<div class="w-full  flex-col flex container mx-auto min-h-screen">
-    <app-alerts-reservation></app-alerts-reservation>
-    <div *ngIf="!detailsOpen">
-        <div class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px]">
-            <div>
-                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Tu reserva</h5>
-                <p>Añade fechas y dantidad de personas para ver el precio total.</p>
-            </div>
-            <div class="flex  justify-between ">
+<div class=" mx-auto w-full  flex-col flex  min-h-screen">
 
-                <div>
-                    <h5>Fechas</h5>
-                    <p>1 al 5 de julio</p>
-                </div>
-                <button class="underline-offset-4 underline font-bold" (click)="openModalSchedule()">Editar</button>
+    <app-alerts-reservation></app-alerts-reservation>
+    <div class="md:flex items-center cursor-pointer mt-[44px]  mb-[44px] hidden ">
+        <fa-icon [icon]="faArrowLeft" class="text-md me-4"></fa-icon>
+        <p class="font-bold text-[24px]" (click)="detailsOpen ? openFormDetails() : back()">{{detailsOpen ? 'Tu reserva'
+            : 'Checkout'}}</p>
+    </div>
+
+    <div *ngIf="!detailsOpen" class="flex-col flex gap-[24px] px-4 py-3 bg-[#F4F4F4] mb-[15px] ">
+        <div>
+            <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold text-center font-playfair">Tu reserva</h5>
+            <p>Añade fechas y cantidad de personas para ver el precio total.</p>
+        </div>
+        <div class="flex  justify-between ">
+
+            <div>
+                <h5>Fechas</h5>
+                <p class="text-[#575757]">{{scheduleData.date ? scheduleData.date : 'No hay fecha seleccionada'}}</p>
+
             </div>
-            <div class="flex justify-between ">
-                <div>
-                    <h5>Cantidad de personas</h5>
-                    <p>1 nomada</p>
-                </div>
-                <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
+            <button class="underline-offset-4 underline font-bold" (click)="openModalSchedule()">Editar</button>
+        </div>
+        <div class="flex justify-between ">
+            <div>
+                <h5>Cantidad de personas</h5>
+                <p class="text-[#575757]">{{numberPersons}} nomada</p>
             </div>
-            <div class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border  rounded h-[40px] ">
-                <p class="m-auto justify-center text-center">
-                    <fa-icon class="text-xl text-[#015F75]" [icon]="faCircleCheck"></fa-icon> Las fechas están
-                    disponibles
-                </p>
+            <button class="underline-offset-4 underline font-bold" (click)="openModalPerson()">Editar</button>
+        </div>
+        <div class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border  rounded h-[40px] "
+            *ngIf="!detailsOpen && scheduleData.date">
+            <p class="m-auto justify-center text-center">
+                <fa-icon class="text-xl text-[#015F75]" [icon]="faCircleCheck"></fa-icon> Las fechas están
+                disponibles
+            </p>
+
+        </div>
+        <div class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border rounded h-[40px]  w-[328px] m-auto cursor-pointer "
+            *ngIf="detailsOpen">
+            <a class="m-auto justify-center text-center"
+                href="https://web.whatsapp.com/send?phone=3454062217&text=¡Hola! Estoy interesado en contratar un espacio de cowork en su ubicación. Me gustaría obtener más información sobre los servicios y las tarifas disponibles. ¿Podrían proporcionarme detalles sobre la disponibilidad de espacios, los servicios incluidos y los precios? ¡Espero su pronta respuesta! Gracias.">Contacta
+                al propietario <fa-icon class="text-sm text-[#015F75]" [icon]="faPhone"></fa-icon></a>
+
+        </div>
+    </div>
+    <app-schedule-modal></app-schedule-modal>
+    <app-modal-persons></app-modal-persons>
+
+
+    <div class="flex-col px-4 py-3 bg-[#F4F4F4] flex mb-4">
+        <div class="p-4">
+        <div>
+            <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold text-center font-playfair">Detalles de la
+                reserva</h5>
+        </div>
+        <div class="flex   justify-between  border-b border-dashed">
+            <div>
+                <h5 class="font-bold">Jornada</h5>
+                <p class="text-[#575757]">{{workspace.price | currency:'USD':'symbol':'1.0-0'}} por jornada</p>
+            </div>
+
+            <div>
+                <h5 class="font-bold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</h5>
+
             </div>
         </div>
-        <app-schedule-modal></app-schedule-modal>
-        <app-modal-persons></app-modal-persons>
-        <div class="flex-col px-4 py-3 bg-[#F4F4F4] flex mb-4">
+        <div class="flex pt-6  justify-between  border-b border-dashed">
             <div>
-                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold ">Detalles del precio</h5>
-            </div>
-            <div class="flex pt-6  justify-between  border-b border-dashed">
-                <div>
-                    <h5>$99 por 7 dias</h5>
-                    <p>Tarifa por servicio</p>
-                </div>
-
-                <div>
-                    <h5>$499</h5>
-                    <h5>$100</h5>
-                </div>
-            </div>
-            <div class="flex justify-between mt-2">
-                <div>
-                    <h5>Total Precio ($ Pesos)</h5>
-                </div>
-                <p>$595</p>
-            </div>
-            <div class="flex justify-center underline underline-offset-2">
-                Más información
+                <h5 class="font-bold">Tarifa</h5>
+                <p class="text-[#575757]">Tarifa por servicio</p>
             </div>
 
+            <div>
+
+                <h5>$100</h5>
+            </div>
+        </div>
+        <div class="flex justify-between mt-2">
+            <div>
+                <h5>Total Precio</h5>
+            </div>
+            <p>{{100 + workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
+        </div>
+        <div class="flex justify-center underline underline-offset-2 my-5">
+            Más información
         </div>
 
         <div class="flex justify-center  rounded h-[40px] bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border   w-[328px] m-auto cursor-pointer "
-            *ngIf="!detailsOpen">
+            *ngIf="detailsOpen">
             <a class="m-auto justify-center text-center"
                 href="https://web.whatsapp.com/send?phone=3454062217&text=¡Hola! Estoy interesado en contratar un espacio de cowork en su ubicación. Me gustaría obtener más información sobre los servicios y las tarifas disponibles. ¿Podrían proporcionarme detalles sobre la disponibilidad de espacios, los servicios incluidos y los precios? ¡Espero su pronta respuesta! Gracias.">Contacta
                 al propietario <fa-icon class="text-sm text-[#015F75]" [icon]="faPhone"></fa-icon></a>
         </div>
-
+    </div>
     </div>
 
-    <div class="container mx-auto w-full px-4" *ngIf="detailsOpen">
-        <div class="border-b pb-[16px] flex justify-between m-4">
-            <h5>Detalles de tu reserva</h5>
-            <fa-icon [icon]="faChevronDown"></fa-icon>
-        </div>
 
-        <div
-            class="flex justify-center bg-[#E6FAFF] text-[#015F75]  border-[#015F75] border rounded h-[40px]  w-[328px] m-auto cursor-pointer ">
-            <a class="m-auto justify-center text-center"
-                href="https://web.whatsapp.com/send?phone=3454062217&text=¡Hola! Estoy interesado en contratar un espacio de cowork en su ubicación. Me gustaría obtener más información sobre los servicios y las tarifas disponibles. ¿Podrían proporcionarme detalles sobre la disponibilidad de espacios, los servicios incluidos y los precios? ¡Espero su pronta respuesta! Gracias.">Contacta
-                al propietario <fa-icon class="text-sm text-[#015F75]" [icon]="faPhone"></fa-icon></a>
 
-        </div>
+    <div class="w-full" *ngIf="detailsOpen">
 
         <form class="flex flex-col  justify-center" [formGroup]="personalData" (ngSubmit)="onLoginFormSubmit()">
 
+            <h5 class="border-b pb-[16px] mb-2 text-[20px] sm:border-none  font-semibold text-center sm:text-start font-playfair"
+                #details>Datos de pago</h5>
+            <div class="sm:border sm:p-4 sm:rounded-lg">
+                <div class="p-4">
+                    <div class="border-b border-dashed flex flex-col  gap-4 pb-10">
 
-            <div class="border-b border-dashed flex flex-col gap-4 pb-10">
-                <h5 class="border-b pb-[16px] mb-2 text-[20px] font-semibold " #details>Datos personales</h5>
 
-                <div class="flex-col flex">
-                    <label for="" class="mb-2">Nombre</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]" [ngClass]="{
+                        <div class="flex-col flex">
+                            <label for="" class="mb-2">Nombre</label>
+                            <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                                [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': name?.errors && name.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu nombre" formControlName="name"  [ngClass]="{
+                                <input type="text"
+                                    class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:text-black  focus:bg-woco-blue-4  focus:ring-0"
+                                    placeholder="Ingresa tu nombre" formControlName="name" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': name?.errors && name.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                                <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                            </div>
+                            <div *ngIf="name?.errors && name?.touched">
+                                <div *ngIf="personalData.get('name')?.hasError('required')"
+                                    class="text-[#BB4E4E] text-[13px]">
+                                    El nombre es requerido
+                                </div>
+                            </div>
                         </div>
-                    <div *ngIf="name?.errors && name?.touched">
-                        <div *ngIf="personalData.get('name')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
-                            El nombre es requerido
-                        </div>
-                    </div>
-                </div>
 
-                <div class="flex-col flex">
-                    <label for="" class="mb-2">Apellido</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]" [ngClass]="{
+                        <div class="flex-col flex">
+                            <label for="" class="mb-2">Apellido</label>
+                            <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75]"
+                                [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': lastName?.errors && lastName.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu apellido" formControlName="lastName" [ngClass]="{
+                                <input type="text"
+                                    class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4] focus:ring-0  focus:text-black  focus:bg-woco-blue-4 "
+                                    placeholder="Ingresa tu apellido" formControlName="lastName" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': lastName?.errors && lastName.touched
                               }">
-                            <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                                <fa-icon [icon]="faUser" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                            </div>
+                            <div *ngIf="lastName?.errors && lastName?.touched">
+                                <div *ngIf="personalData.get('lastName')?.hasError('required')"
+                                    class="text-[#BB4E4E] text-[13px]">
+                                    El apellido es requerido
+                                </div>
+                            </div>
                         </div>
-                    <div *ngIf="lastName?.errors && lastName?.touched">
-                        <div *ngIf="personalData.get('lastName')?.hasError('required')"
-                            class="text-[#BB4E4E] text-[13px]">
-                            El apellido es requerido
-                        </div>
-                    </div>
-                </div>
 
-                <div class="flex-col flex ">
-                    <label for="email" class="mb-2">Email</label>
-                        <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75] " [ngClass]="{
+                        <div class="flex-col flex ">
+                            <label for="email" class="mb-2">Email</label>
+                            <div class="flex items-center rounded-lg bg-[#F4F4F4] justify-between focus-within:text-black focus-within:border focus-within:bg-woco-blue-4 focus-within:border-[#015F75] "
+                                [ngClass]="{
                             'bg-[#FFEBE5] border-[#EB674A] border': email?.errors && email.touched
                           }">
-                            <input type="text" class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]   focus:ring-0"
-                                placeholder="Ingresa tu email" formControlName="email"  [ngClass]="{
+                                <input type="text"
+                                    class="w-full flex ms-2 focus:outline-none bg-[#F4F4F4]  focus:text-black  focus:bg-woco-blue-4   focus:ring-0"
+                                    placeholder="Ingresa tu email" formControlName="email" [ngClass]="{
                                 'bg-[#FFEBE5] border-[#EB674A]  placeholder:text-black': email?.errors && email.touched
                               }">
-                            <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]"></fa-icon>
-                        </div>
-                    <div *ngIf="email?.errors && email?.touched">
-                        <div *ngIf="personalData.get('email')?.hasError('required')" class="text-[#BB4E4E] text-[13px]">
-                            El correo electrónico es requerido
+                                <fa-icon [icon]="faEnvelope" class="pe-4 text-[#A7A7A7]"></fa-icon>
+                            </div>
+                            <div *ngIf="email?.errors && email?.touched">
+                                <div *ngIf="personalData.get('email')?.hasError('required')"
+                                    class="text-[#BB4E4E] text-[13px]">
+                                    El correo electrónico es requerido
+                                </div>
+                            </div>
+                            <div class="flex mt-2">
+                                <div class="flex">
+                                    <input type="checkbox" class="text-start rounded m-auto flex me-1 "
+                                        formControlName="receiveNotifications">
+                                </div>
+                                <p> Recibir notificaciones y ofertas.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex mt-2">
-                        <div class="flex">
-                            <input type="checkbox" class="text-start rounded m-auto flex me-1 "
-                                formControlName="receiveNotifications">
+
+                    <div class="flex flex-col gap-4  pt-4">
+
+                        <app-payment class="flex flex-col w-full mt-3 "></app-payment>
+
+                        <div class="flex mb-3">
+                            <input type="checkbox" formControlName="saveCard" class="flex border-none visually-hidden">
+                            <fa-icon [icon]="CheckSaveCard ? faToggleOn : faToggleOff" (click)="toggleCheck()"
+                                class="cursor-pointer text-2xl pe-1 flex justify-center text-black"></fa-icon>
+
+                            <p>Guardar tarjeta para futuras compras.</p>
                         </div>
-                        <p> Recibir notificaciones y ofertas.</p>
+
+                    </div>
+                    <div *ngIf="formErrors" class="text-[#BB4E4E] text-[13px] flex justify-center ">
+                        Debe completar todos los campos correctamente.
                     </div>
                 </div>
-            </div>
-
-            <div class="flex flex-col gap-4 pt-4">
-            
-                <app-payment class="flex flex-col w-full mt-3 "></app-payment>
-
-                <div class="flex mb-3">
-                    <input type="checkbox" formControlName="saveCard" class="flex border-none visually-hidden">
-                    <fa-icon [icon]="CheckSaveCard ? faToggleOn : faToggleOff" (click)="toggleCheck()"
-                        class="cursor-pointer text-2xl pe-1 flex justify-center text-black"></fa-icon>
-
-                    <p>Guardar tarjeta para futuras compras.</p>
-                </div>
-
-            </div>
-            <div *ngIf="formErrors" class="text-[#BB4E4E] text-[13px] flex justify-center ">
-                Debe completar todos los campos correctamente.
             </div>
         </form>
 
     </div>
 
-    <div class="flex justify-around bg-[#FFFFFF] py-3 mt-auto shadow-[0_-4px_8px_0px_rgba(0,0,0,0.12)]">
+    <div class="justify-around bg-[#FFFFFF] py-3 mt-auto shadow-[0_-4px_8px_0px_rgba(0,0,0,0.12)] flex  md:hidden ">
         <div class="flex-col m-auto">
             <fa-icon class="text-sm" [icon]="faUser"></fa-icon> {{numberPersons}} nomada <span
-                class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span> 1 al 5 de
-            jul.
-            <h5 class="font-extrabold">$595</h5>
+                class="inline-block align-middle rounded-full w-[4px] h-[4px] caret-lime-50 bg-black"></span>{{scheduleData.date}}
+            <h5 class="font-extrabold">{{100 + workspace.price | currency:'USD':'symbol':'1.0-0'}}</h5>
         </div>
 
         <button class="bg-[#0CA1C2] text-[#FFFFFF]  w-[153px] h-[43px] rounded-md m-auto"

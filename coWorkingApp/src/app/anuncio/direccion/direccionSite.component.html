@@ -1,0 +1,78 @@
+<main class="w-full min-h-screen flex-col flex justify-around">
+  <div class="flex flex-row justify-left p-4">
+    <div class="w-1/4">
+      <button class="w-full h-full">
+        <fa-icon class="text-2xl" [icon]="faLeft"></fa-icon>
+      </button>
+    </div>
+    <div class="text-2xl font-bold w-3/4">
+      <h3>
+        Dirección del espacio
+      </h3>
+    </div>
+  </div>
+  <div class="h-1/3 p-4">
+    <div class="w-full  text-xl font-bold">
+      <h5>Confirma tu direccion</h5>
+    </div>
+    <div class="">
+      <p>
+        Vamos a compartir tu dirección con los nómadas cercanos a tu espacio.
+      </p>
+    </div>
+    <!--ngfor-->
+   <div class="" >
+    <form group="" class="space-y-6">
+      <form action="" class="flex flex-col mt-5">
+        <label for="direccion" class="block text-sm font-bold leading-5 my-2 text-gray-900">Dirección</label>
+        <input type="text" name="direccion" placeholder="Ingresa dirección" required class="block w-full rounded-md
+        border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2
+        focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+      </form>
+      <form action="" class="flex flex-col mt-5">
+        <label for="ciudad-pueblo" class="block text-sm font-bold leading-5 my-2 text-gray-900">Ciudad/Pueblo</label>
+        <input type="text" name="ciudad-pueblo" placeholder="Ingresa Ciudad/Pueblo " required class="block w-full rounded-md
+        border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2
+        focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+      </form>
+      <form action="" class="flex flex-col mt-5">
+        <label for="calle-numero" class="block text-sm font-bold leading-5 my-2 text-gray-900">Calle/Número</label>
+        <input type="text" name="calle-numero" placeholder="Ingresa Calle/Número" required class="block w-full rounded-md
+        border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2
+        focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+      </form>
+      <form action="" class="flex flex-col mt-5">
+        <label for="provincia" class="block text-sm font-bold leading-5 my-2 text-gray-900">Provincia</label>
+        <input type="text" name="provincia" placeholder="Ingresa Provincia" required class="block w-full rounded-md
+        border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2
+        focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+      </form>
+      <form action="" class="flex flex-col mt-5">
+        <label for="codigo-postal" class="block text-sm font-bold leading-5 my-2 text-gray-900">Codigo postal</label>
+        <input type="text" name="codigo-postal" placeholder="Ingresa Codigo postal" required class="block w-full rounded-md
+        border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 placeholder:text-gray-400 focus:ring-2
+        focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">
+      </form>
+
+    </form>
+   </div>
+
+  </div>
+
+  <div class="flex flex-row justify-around w-full bg-gray-200 p-3">
+    <button class="bback w-1/3 justify-center rounded-md px-3 py-1.5
+    text-sm font-semibold leading-6 shadow-sm  focus-visible:outline
+    focus-visible:outline-2 focus-visible:outline-offset-2"
+    routerLink="/site/servicios">
+      Atras
+    </button>
+    <button class="bforward flex w-1/3 justify-center rounded-md px-3 py-1.5
+    text-sm font-semibold leading-6 shadow-sm  focus-visible:outline
+    focus-visible:outline-2 focus-visible:outline-offset-2"
+    routerLink="/site/finalizar">
+    Siguiente
+    </button>
+  </div>
+
+
+</main>
