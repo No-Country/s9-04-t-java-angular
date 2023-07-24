@@ -39,7 +39,7 @@ export class AlertsReservationComponent implements OnInit{
       this.showAlertConfirmationPago = true;
     }else if (alert === 'errorPago'){
       this.showAlertErrorPago = true;
-    } 
+    }
     setTimeout(() => {
       this.hideAlerts();
     }, duration);

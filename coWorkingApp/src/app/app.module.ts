@@ -8,6 +8,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CdkMenuModule } from '@angular/cdk/menu';
 
 
+
+
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './pages/home/home.component';
@@ -74,7 +76,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxSliderModule,
     CdkMenuModule,
     NgxStripeModule.forRoot('pk_test_51NVGYhGIEEAsvBMUekPdJic0JYgOQ1M8ywO3EfZY2VeSNDvLaRc6m6qWQMokH6wuvx8SCrMbfEUEBGZn7s1P5z3900RVpcvUCg'),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

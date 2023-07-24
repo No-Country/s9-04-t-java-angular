@@ -19,6 +19,7 @@ import { DireccionSiteComponent } from './anuncio/direccion/direccionSite.compon
 import { TokenGuard } from './guards/token.guard';
 // import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
+import { FinishComponent } from './anuncio/finish/finish.component';
 
 
 const routes: Routes = [
@@ -79,6 +80,7 @@ const routes: Routes = [
       {path:'fotos', component: FotosComponent},
       {path:'servicios', component: ServiciosComponent},
       {path:'direccionSite', component: DireccionSiteComponent},
+      {path:'finalizar', component: FinishComponent}
     ],
   },
   {
