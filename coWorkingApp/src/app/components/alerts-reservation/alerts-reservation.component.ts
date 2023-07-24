@@ -21,28 +21,59 @@ export class AlertsReservationComponent implements OnInit{
       this.showAlertsDuration(duration, alert);
     });
   }
-
-  hideAlerts() {
-    this.showAlertError = false;
-    this.showAlertConfirmation = false;
-    this.showAlertConfirmationPago = false;
-    this.showAlertErrorPago = false;
+  
+  isAlertVisible(alertType: string): boolean {
+    switch (alertType) {
+      case 'confirmation':
+        return this.showAlertConfirmation;
+      case 'error':
+        return this.showAlertError;
+      default:
+        return false;
     }
-
-  showAlertsDuration(duration: number, alert: string) {
-    if (alert === 'error') {
-      this.showAlertError = true;
-    } else if (alert === 'confirmation') {
-      this.showAlertConfirmation = true;
-    }
-    if (alert === 'confirmationPago'){
-      this.showAlertConfirmationPago = true;
-    }else if (alert === 'errorPago'){
-      this.showAlertErrorPago = true;
-    } 
-    setTimeout(() => {
-      this.hideAlerts();
-    }, duration);
   }
+
+  hideAlerts(alertType: string) {
+    switch (alertType) {
+      case 'confirmation':
+        this.showAlertConfirmation = false;
+        break;
+      case 'error':
+        this.showAlertError = false;
+        break;
+      default:
+        break;
+    }
+  }
+
+  topPosition: number = 0;
+  showAlert(type: string, duration: number) {
+   switch (type) {
+     case 'confirmation':
+       this.showAlertConfirmation = true;
+       break;
+     case 'error':
+       this.showAlertError = true;
+       break;
+     default:
+       break;
+   }
+
+     this.showAlertsDuration(duration, type);
+ }
+
+ showAlertsDuration(duration: number, alert: string) {
+  if (alert === 'error') {
+    this.showAlertError = true;
+  } else if (alert === 'confirmation') {
+    this.showAlertConfirmation = true;
+  } 
+
+  setTimeout(() => {
+    this.hideAlerts(alert); 
+  }, duration);
+}
+
+
 
 }
