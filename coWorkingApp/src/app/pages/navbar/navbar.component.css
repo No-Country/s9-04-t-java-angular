@@ -1,3 +1,4 @@
+
 .faq-section {
   margin-bottom: 20px;
   text-align: right;
@@ -18,10 +19,61 @@
   border-width: 2px;
   border-style: solid;
   border-radius: 8px;
-
 }
 
 nav{
   background-color: #fff;
+  
+}
+
+.logo{
+  transition: 0.3s ease-in-out;
+}
+
+.logo-large{
+  opacity: 0;
+}
+
+@media(min-width: 800px) { 
+  nav{
+    width: 100%;
+    background-color: #fff;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #E6FAFF;
+    color: #015F75;
+    text-decoration: none;
+    border-radius: 8px #015F75;
+    justify-content: center;
+    border-color: #015F75;
+    margin-top: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 8px;
+  }
+
+  .faq-section {
+    margin-bottom: 20px;
+    text-align: right;
+    color: #015F75;
+  }
+
+  .iniciar-desktop{
+    align-items: right;
+    align-content: right;
+  }
+  
+  .logo{
+    opacity: 0;
+  }
+
+  .logo-large{
+    opacity: 1;
+    align-items: left;
+    align-content: left;
+  }
   
 }
