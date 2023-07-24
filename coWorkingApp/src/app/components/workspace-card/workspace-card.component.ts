@@ -5,7 +5,8 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 @Component({
   selector: 'app-workspace-card',
   templateUrl: './workspace-card.component.html',
-  styleUrls: ['./workspace-card.component.css']
+  styleUrls: ['./workspace-card.component.css'],
+  host: {'class': 'flex'}
 })
 export class WorkspaceCardComponent {
 
