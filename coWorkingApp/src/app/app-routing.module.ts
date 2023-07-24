@@ -20,6 +20,7 @@ import { TokenGuard } from './guards/token.guard';
 // import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 import { FinishComponent } from './anuncio/finish/finish.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -82,6 +83,10 @@ const routes: Routes = [
       {path:'direccionSite', component: DireccionSiteComponent},
       {path:'finalizar', component: FinishComponent}
     ],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: 'my-data',

@@ -8,6 +8,7 @@ import {
 } from '@stripe/stripe-js';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
+import { PaymentServiceService } from 'src/app/services/paymentService.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,9 +16,10 @@ import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  faUser = faUser;
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
-
+  faUser = faUser;
+  token: string | null = null;
+  
   cardOptions: StripeCardElementOptions = {
     style: {
       base:{
@@ -42,11 +44,14 @@ export class PaymentComponent implements OnInit {
   stripeTest: FormGroup;
 
   constructor(private fb: FormBuilder, private stripeService: StripeService,
-    private alertService : AlertsReservaService) {}
+    private alertService : AlertsReservaService, private paymentService: PaymentServiceService) {}
 
   ngOnInit(): void {
     this.stripeTest = this.fb.group({
       name: ['', [Validators.required]]
+    });
+    this.paymentService.createTokenEvent.subscribe(() => {
+      this.createToken();
     });
   }
  
@@ -57,12 +62,12 @@ export class PaymentComponent implements OnInit {
       .subscribe((result) => {
         if (result.token) {
           // Use the token
-          this.alertService.show(4000, 'confirmationPago');
+          this.paymentService.setTokenValue(true);
           console.log(result.token.id);
         } else if (result.error) {
-          // Error creating the token
+          this.alertService.show(4000, 'error');
           console.log(result.error.message);
-          this.alertService.show(4000, 'errorPago');
+    
         }
       });
   }

@@ -37,6 +37,7 @@ import { UserDataComponent } from './pages/user-data/user-data.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { NgxStripeModule } from 'ngx-stripe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ScheduleModalComponent,
     PaymentComponent,
     UserDataComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

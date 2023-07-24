@@ -1,9 +1,9 @@
-<div class="duration-300 hover:drop-shadow-md hover:border-1 hover:border-woco-blue-1 hover:border border-transparent border gap-3 relative overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace); showFavBtn = true" (mouseleave)="clearHover(workspace); showFavBtn = false;">
+<div class="duration-300 flex flex-col flex-grow hover:drop-shadow-md hover:border-1 hover:border-woco-blue-1 hover:border border-transparent border gap-3 relative overflow-hidden bg-[#F4F4F4] rounded-lg cursor-pointer" (mouseenter)="hoverCarousel(workspace); showFavBtn = true" (mouseleave)="clearHover(workspace); showFavBtn = false;">
   <button [ngClass]="showFavBtn? 'scale-100' : 'scale-0'" class="absolute duration-300 top-0 right-0 z-10 w-8 m-4 rounded-full aspect-square bg-[#F4F4F4]">
     <fa-icon class="text-[#919191]" [icon]="faHeart"></fa-icon>
   </button>
   <a routerLink="/workspace/{{workspace.id}}">
-    <div class="relative bg-slate-500 h-[200px]">
+    <div class="relative bg-slate-500 aspect-video">
       <div class="absolute object-cover w-full h-full overflow-hidden">
         <img id="workspace-thumbnail-{{workspace.id}}" class="object-cover w-full h-full duration-300"
           src="{{workspace.images[thumbnail]}}" alt="">
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-3 p-3">
-      <div class="flex flex-col">
+      <div class="flex flex-col gap-1">
         <p class="text-xl font-bold font-playfair">{{workspace.name}}</p>
         <p class="text-[#575757] text-xs font-medium">{{workspace.location}}</p>
       </div>
