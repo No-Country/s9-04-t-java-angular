@@ -6,7 +6,7 @@ import {
   StripeCardElementOptions,
   StripeElementsOptions,
 } from '@stripe/stripe-js';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { PaymentServiceService } from 'src/app/services/paymentService.service';
 
@@ -19,6 +19,7 @@ export class PaymentComponent implements OnInit {
   @ViewChild(StripeCardComponent) card: StripeCardComponent;
   faUser = faUser;
   token: string | null = null;
+  faChevronDown = faChevronDown;
   
   cardOptions: StripeCardElementOptions = {
     style: {

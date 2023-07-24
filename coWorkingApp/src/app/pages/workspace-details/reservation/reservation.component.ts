@@ -1,10 +1,10 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
-import { ViewportScroller } from '@angular/common';
+import { ViewportScroller, Location } from '@angular/common';
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCalendarCheck, faCircleCheck, faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faChevronDown, faCreditCard, faEye, faEyeLowVision, faPhone, faToggleOff, faToggleOn, faUser } from '@fortawesome/free-solid-svg-icons';
 import { AlertsReservationComponent } from 'src/app/components/alerts-reservation/alerts-reservation.component';
 import { ModalPersonsComponent } from 'src/app/components/modal-persons/modal-persons.component';
 import { ScheduleModalComponent } from 'src/app/components/schedule-modal/schedule-modal.component';
@@ -18,14 +18,14 @@ import { PersonalDataService } from 'src/app/services/personal-data.service';
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css'],
-  
+  host: {'class': 'w-full'}
   
 })
 export class ReservationComponent implements OnInit {
 
   @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
   @ViewChild(ScheduleModalComponent) modalSchedule!: ScheduleModalComponent;
-
+  faArrowLeft =  faArrowLeft;
   faCircleCheck = faCircleCheck ;
   faPhone = faPhone;
   faUser = faUser;
@@ -68,8 +68,13 @@ export class ReservationComponent implements OnInit {
     this.coworkService.getWorkspaceById().subscribe((workspace) => {
       if (workspace) {
         this.workspace = workspace;
-        // Do whatever you want with the workspace data in the child component
       }
+    });
+    this.perDataService.detailsOpen$.subscribe((detailsOpen) => {
+      this.detailsOpen = detailsOpen;
+    });
+    this.perDataService.formSubmit$.subscribe(() => {
+      this.onLoginFormSubmit();
     });
   }
 
@@ -81,7 +86,8 @@ export class ReservationComponent implements OnInit {
     private alertsService: AlertsReservaService,
     private coworkService: CoworkService,
     private paymentService: PaymentServiceService,
-    private router: Router
+    private router: Router,
+    private _location: Location
   ){
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
@@ -143,6 +149,8 @@ export class ReservationComponent implements OnInit {
     this.modalSchedule.openModalSchedule();
   }
 
+ 
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
     this.tipoContrasena = this.showPassword ? 'number' : 'password';
@@ -154,11 +162,14 @@ export class ReservationComponent implements OnInit {
   }
 
 
-  openFormDetails(){
+  openFormDetails() {
     this.detailsOpen = !this.detailsOpen;
-    this.viewportScroller.scrollToAnchor('end');
+    this.perDataService.setDetailsOpen(this.detailsOpen);
   }
-  
+
+  back(){
+    this._location.back();
+  }
 
   onLoginFormSubmit() {
     if (this.personalData.valid){
@@ -172,7 +183,6 @@ export class ReservationComponent implements OnInit {
         console.log('Token was not returned.');
       }
     });
-    
   }
   }
 
