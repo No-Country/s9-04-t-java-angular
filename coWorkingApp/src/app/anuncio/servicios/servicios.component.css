@@ -13,3 +13,21 @@
   background-color: #015F75;
   border: 1px solid #E6FAFF;
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.checkbox-card-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.checkbox-card-item input {
+  margin-right: 10px;
+}

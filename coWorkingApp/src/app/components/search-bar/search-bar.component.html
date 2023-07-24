@@ -1,22 +1,30 @@
-<div class="flex flex-col p-4 shadow-md gap-3">
-  <div class="h-12 rounded-md bg-gray-200 flex items-center py-2 px-3">
-    <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
-    <input type="search" [formControl]="searchControl" class="bg-transparent placeholder:text-[#000000] w-full border-none" placeholder="Buscar en...">
-    <fa-icon [icon]="faSlidersH" (click)="openDialog()" class="cursor-pointer"></fa-icon>
+<div class="max-w-[1280px] w-full mx-auto md:p-4">
+
+  <div class="flex flex-col gap-6 p-4 mx-auto shadow-md md:px-8 md:rounded-lg md:flex-row">
+  
+    <div class="flex items-center w-full h-12 px-3 py-2 bg-[#F4F4F4] rounded-md text-[#A7A7A7]">
+      <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
+      <input type="search" [formControl]="searchControl"
+        class="w-full bg-transparent border-none" placeholder="Buscar en...">
+      <fa-icon [icon]="faSlidersH" (click)="openDialog()" class="cursor-pointer"></fa-icon>
+    </div>
+  
+    <div class="flex items-center w-full gap-4 text-[#A7A7A7]">
+      <div class="flex">
+        <p>Ordenar</p>
+        <fa-icon [icon]="faChevronDown" class="pl-2"></fa-icon>
+      </div>
+      <div class="w-full"></div>
+      <div class="flex">
+        <p>Lista</p>
+        <fa-icon [icon]="faTableList" class="pl-2"></fa-icon>
+      </div>
+      <div class="flex text-[#A7A7A7]">
+        <p>Mapa</p>
+        <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
+      </div>
+    </div>
+  
   </div>
-  <div class="w-full flex gap-4 font-thin">
-    <div class="flex">
-      <p>Ordenar</p>
-      <fa-icon [icon]="faChevronDown" class="pl-2"></fa-icon>
-    </div>
-    <div class="w-full"></div>
-    <div class="flex">
-      <p>Lista</p>
-      <fa-icon [icon]="faTableList" class="pl-2"></fa-icon>
-    </div>
-    <div class="flex text-[#A7A7A7]">
-      <p>Mapa</p>
-      <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
-    </div>
-  </div>
+
 </div>

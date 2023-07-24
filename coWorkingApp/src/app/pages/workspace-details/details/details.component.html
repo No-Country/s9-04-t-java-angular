@@ -1,5 +1,5 @@
 <div *ngIf="workspace" class="flex flex-col justify-between flex-grow">
-  <div class="p-4">
+  <div class="p-4 md:p-0">
 
     <!-- mobile template -->
     <cdk-accordion class="example-accordion md:hidden">  
@@ -7,7 +7,7 @@
         [attr.id]="'accordion-header-1'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-1'">
         <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem1.toggle()">
-          <p class="text-xl font-semibold">Sobre el lugar</p>
+          <p class="text-xl font-semibold font-playfair">Sobre el lugar</p>
           <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem1.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
         <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem1.expanded ? '' : 'none'"
@@ -19,7 +19,7 @@
         [attr.id]="'accordion-header-2'" [attr.aria-expanded]="accordionItem1.expanded"
         [attr.aria-controls]="'accordion-body-2'">
         <div class="flex justify-between py-3 border-b-2 border-[#CCCCCC]" (click)="accordionItem2.toggle()">
-          <p class="text-xl font-semibold">Horarios</p>
+          <p class="text-xl font-semibold font-playfair">Horarios</p>
           <fa-icon class="duration-200" [icon]="faChevronDown" [ngClass]="accordionItem2.expanded ? 'rotate-[-180deg]' : ''"></fa-icon>
         </div>
         <div class="pt-2 text-sm text-[#575757]" role="region" [style.display]="accordionItem2.expanded ? '' : 'none'"
@@ -30,17 +30,17 @@
     </cdk-accordion>
 
     <!-- desktop template -->
-    <div class="hidden px-4 max-w-[1280px] mx-auto w-full md:grid md:grid-cols-12">
-      <div class="flex flex-col col-span-6 py-4 gap-14">
+    <div class="hidden max-w-[1280px] mx-auto w-full md:flex">
+      <div class="flex flex-col col-span-6 py-4 md:gap-10 lg:gap-14">
 
         <div class="flex flex-col gap-2">
-          <p class="py-4 text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Sobre el lugar</p>
-          <p class="text-[#575757]">{{workspace.description}}</p>
+          <p class="py-4 md:text-xl lg:text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Sobre el lugar</p>
+          <p class="text-[#575757] md:text-sm lg:text-base">{{workspace.description}}</p>
         </div>
 
         <div class="flex flex-col gap-2">
-          <p class="py-4 text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Horarios</p>
-          <p class="text-[#575757]">Lunes a domingos de 09 a 21 hs</p>
+          <p class="py-4 md:text-xl lg:text-2xl font-bold border-b border-[#CCCCCC] font-playfair">Horarios</p>
+          <p class="text-[#575757] md:text-sm lg:text-base">Lunes a domingos de 09 a 21 hs</p>
         </div>
 
       </div>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="flex p-4 bg-white md:hidden">
-    <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
+    <a class="w-full p-3 text-center text-white rounded-lg bg-woco-blue-2 hover:bg-black hover:text-woco-blue-2" routerLink="/workspace/{{workspace.id}}/reservation">Reservar</a>
   </div>
 
 </div>
