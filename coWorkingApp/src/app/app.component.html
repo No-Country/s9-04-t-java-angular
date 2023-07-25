@@ -1,4 +1,57 @@
 <app-alerts-reservation></app-alerts-reservation>
-<app-navbar class="sticky top-0 z-10"></app-navbar>
+<!-- <app-navbar class="sticky top-0 z-10"></app-navbar> -->
+
+<div class="sticky top-0 z-10 bg-white md:shadow-md">
+  <div class="mx-auto max-w-[1280px] md:h-[90px] p-4 justify-between flex items-center">
+    <div class="flex gap-2">
+      <button (click)="toggleNavbar()" class="block px-2 md:hidden">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </button>
+      <a routerLink="/home">
+        <img class="hidden md:block" src="../assets/img/icon+logo.png" alt="">
+        <img class="block md:hidden" src="../assets/img/Group.png" alt="">
+      </a>        
+    </div>
+    <div class="hidden gap-4 md:flex">
+      <a class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+        routerLink="/login">Iniciar sesión</a>
+      <a class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+        routerLink="/register">Crear cuenta</a>
+      <a class="duration-300 p-3 text-xs w-[186px] flex items-center justify-center font-semibold border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
+        routerLink="/site">Anunciar mi espacio</a>
+    </div>
+  </div>
+</div>
+<div *ngIf="navbarMenu" class="fixed top-0 z-40 flex w-full min-h-screen pr-4 pt-[72px] md:hidden">
+  <div class="absolute top-0 right-0 w-screen h-screen bg-black/50" (click)="toggleNavbar()"></div>
+  <div *ngIf="navbarMenu" class="z-50 flex flex-col px-4 pb-4 gap-4 max-w-[344px] w-full bg-white rounded-tr-2xl">
+    <div class="flex items-center justify-between border border-transparent border-b-black">
+      <p class="text-xl font-bold">nombre y apellido</p>
+      <button class="p-4 pr-0" (click)="toggleNavbar()">
+        <fa-icon class="text-xl" [icon]="faXmark"></fa-icon>
+      </button>
+    </div>
+    <div class="flex flex-col justify-between flex-grow font-semibold">
+      <div class="flex flex-col gap-4">
+        <a (click)="toggleNavbar()" routerLink="/"
+          class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Favoritos</a>
+        <a (click)="toggleNavbar()" routerLink="/"
+          class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Mis
+          reservas</a>
+        <a (click)="toggleNavbar()" routerLink="/profile"
+          class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Mi
+          perfil</a>
+      </div>
+      <div class="flex flex-col gap-6">
+        <a (click)="toggleNavbar()" routerLink="/profile"
+          class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Cerrar
+          sesión</a>
+        <a class="flex items-center justify-center w-full p-3 text-sm font-semibold text-center duration-300 border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
+          routerLink="/site">Anunciar mi espacio</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
 <app-footer></app-footer>

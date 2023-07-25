@@ -1,6 +1,13 @@
 <app-search-bar></app-search-bar>
-<div class="max-w-[1280px] mx-auto min-h-screen p-4">
-  <div class="grid gap-x-6 gap-y-10 sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-    <app-workspace-card *ngFor="let item of workspaces" [workspace]="item"></app-workspace-card>
+<ng-container *ngIf="workspaces; else loading">
+  <div class="max-w-[1280px] mx-auto min-h-[100vh-200px] md:min-h-[calc(100vh-202px)] p-4">
+    <div class="grid gap-x-6 gap-y-10 sm:grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <app-workspace-card *ngFor="let item of workspaces" [workspace]="item"></app-workspace-card>
+    </div>
   </div>
-</div>
+</ng-container>
+<ng-template #loading>
+  <div class="flex items-center justify-center min-h-[100vh-200px] md:min-h-[calc(100vh-202px)] bg-white">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>
