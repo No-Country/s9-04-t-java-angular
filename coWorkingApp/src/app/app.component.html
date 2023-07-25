@@ -23,8 +23,8 @@
   </div>
 </div>
 <div *ngIf="navbarMenu" class="fixed top-0 z-40 flex w-full min-h-screen pr-4 pt-[72px] md:hidden">
-  <div class="absolute top-0 right-0 w-screen h-screen bg-black/50" (click)="toggleNavbar()"></div>
-  <div *ngIf="navbarMenu" class="z-50 flex flex-col px-4 pb-4 gap-4 max-w-[344px] w-full bg-white rounded-tr-2xl">
+  <div class="absolute top-0 right-0 w-screen h-screen animate-fade animate-duration-300 bg-black/50" (click)="toggleNavbar()"></div>
+  <div *ngIf="navbarMenu" class="animate-fade-right animate-duration-300 z-50 flex flex-col px-4 pb-4 gap-4 max-w-[344px] w-full bg-white rounded-tr-2xl">
     <div class="flex items-center justify-between border border-transparent border-b-black">
       <p class="text-xl font-bold">nombre y apellido</p>
       <button class="p-4 pr-0" (click)="toggleNavbar()">
