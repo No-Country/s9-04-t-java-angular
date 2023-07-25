@@ -19,7 +19,7 @@
             </div>
           </div>
           <div class="absolute z-30 flex justify-between w-full h-full p-5 md:text-3xl">
-            <button class="pr-10 text-white sm:pr-20" (click)="previo()">
+            <button class="pr-10 text-white sm:pr-20" (click)="previous()">
               <fa-icon [icon]="faChevronLeft"></fa-icon>
             </button>
             <button class="pl-10 text-white sm:pl-20" (click)="next()">
@@ -50,10 +50,10 @@
               </button>
             </div>
           </div>
-          <p class="text-xl font-bold font-playfair lg:text-2xl">{{workspace.name}}</p>
+          <p class="text-xl font-bold font-playfair lg:text-2xl">{{workspace.title}}</p>
           <div class="flex flex-col-reverse gap-2 md:gap-3 md:flex-col">
             <div class="flex flex-col gap-2 md:gap-3">
-              <p class="text-[#919191] lg:text-base"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.location}}</p>
+              <p class="text-[#919191] lg:text-base"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.direction}}</p>
               <div class="flex items-center gap-2 text-sm">
                 <div class="flex items-center gap-2 p-1 px-2 rounded-lg text-woco-blue-1 bg-woco-blue-3">
                   <fa-icon [icon]="faStar"></fa-icon>
