@@ -5,11 +5,13 @@
   <div class="sticky top-0 z-10 bg-white md:shadow-md">
     <div class="mx-auto max-w-[1280px] md:h-[90px] p-4 justify-between flex items-center">
       <div class="flex gap-2">
-        <img class="hidden md:block" src="../assets/img/icon+logo.png" alt="">
         <button (click)="toggleNavbar()" class="block px-2 md:hidden">
           <fa-icon [icon]="faBars"></fa-icon>
         </button>
-        <img class="block md:hidden" src="../assets/img/Group.png" alt="">
+        <a routerLink="/home">
+          <img class="hidden md:block" src="../assets/img/icon+logo.png" alt="">
+          <img class="block md:hidden" src="../assets/img/Group.png" alt="">
+        </a>        
       </div>
       <div class="hidden gap-4 md:flex">
         <a class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
