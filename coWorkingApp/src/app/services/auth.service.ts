@@ -14,7 +14,7 @@ export class AuthService {
 
   session: any;
 
-  constructor(){ }
+  constructor(){}
 
   async login(credentials: Credentials) {
     const { email, password} = credentials;
