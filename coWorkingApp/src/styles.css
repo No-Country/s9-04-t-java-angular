@@ -12,6 +12,10 @@
   font-family: 'Inter', sans-serif;
 }
 
+body.hidden-scroll {
+  overflow: hidden;
+}
+
 .font-playfair {
   font-family: 'Playfair Display', serif;
 }
