@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { PersonalDataReserva } from '../interfaces/personal-data-reserva';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { ScheduleData } from '../interfaces/scheduleData';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,26 @@ export class PersonalDataService {
 
     private detailsOpenSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     detailsOpen$ = this.detailsOpenSubject.asObservable();
-
-    apiUrl = "https://eojtern9xpfjuhk.m.pipedream.net";
-
-    constructor(private http: HttpClient) {}
-
+    
     private formSubmitSubject: BehaviorSubject<void> = new BehaviorSubject<void>(null);
     formSubmit$ = this.formSubmitSubject.asObservable();
 
+    apiUrl = environment.supabaseUrl;
+    apiKey = environment.supabaseKey
+
+    constructor(private http: HttpClient) {}
+
+    
+    onPersonalData(perData: PersonalDataReserva): Observable<any> {
+      const headers = {
+        'apikey': this.apiKey 
+      };
+      return this.http.post<any>(`${this.apiUrl}/rest/v1/reservation?select=created_at`, perData, { headers });
+    }
+    
+
     setFormSubmit() {
-    this.formSubmitSubject.next();
+      this.formSubmitSubject.next();
     }
 
     setDetailsOpen(value: boolean) {
@@ -34,9 +45,6 @@ export class PersonalDataService {
       return this.detailsOpenSubject.asObservable();
     }
 
-    onPersonalData(perData: PersonalDataReserva): Observable<any> {
-      return this.http.post<any>(`${this.apiUrl}`, perData);
-    }
 
     saveNumberPersons(numberPersons: number) {
       this.numberPersonsSubject.next(numberPersons);

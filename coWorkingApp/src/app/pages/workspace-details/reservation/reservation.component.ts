@@ -51,13 +51,13 @@ export class ReservationComponent implements OnInit {
 
   dateReservation: string = '';
   numberPersons = 1 ;
-  totalPrice: number = 0;
+ 
   scheduleData: ScheduleData ={ 
     date: '',
     price: 0,
   } ;
-  workspace: any;
-
+  workspace: any = {};
+ 
   ngOnInit(): void {
       this.perDataService.getNumberPersons().subscribe((numberPersons: number) => {
       this.numberPersons = numberPersons;
@@ -92,14 +92,17 @@ export class ReservationComponent implements OnInit {
     this.personalData = this.formBuilder.group({
       email:['',[Validators.required, Validators.email]],
       name:['',[Validators.required, Validators.minLength(3)]],
-      lastName:['',[Validators.required, Validators.minLength(3)]],
+      last_name:['',[Validators.required, Validators.minLength(3)]],
       // ownerName:['',[Validators.required]],
       // cardNumber:['',[Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       // cvcCvv:['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
       // expirationCard:['',[Validators.required]],
-      saveCard: false,
-      receiveNotifications: false,
-      numberPersons: this.numberPersons
+      save_card: false,
+      receive_notifications: false,
+      number_persons: this.numberPersons,
+      price: this.workspace.price + 100,
+      schedule_data: this.scheduleData.date,
+      workspace_id: this.workspace.id
     });
     console.log(this.saveCard,'card')
   }
@@ -112,8 +115,8 @@ export class ReservationComponent implements OnInit {
     return this.personalData.get('name');
   }
   
-  get lastName() {
-    return this.personalData.get('lastName');
+  get last_name() {
+    return this.personalData.get('last_name');
   }
   
   get ownerName() {
@@ -129,7 +132,7 @@ export class ReservationComponent implements OnInit {
   }
   
   get receiveNotificationsControl() {
-    return this.personalData.get('receiveNotifications');
+    return this.personalData.get('receive_notifications');
   }
 
   get expirationCard() {
@@ -137,7 +140,7 @@ export class ReservationComponent implements OnInit {
   }
   
   get saveCard() {
-    return this.personalData.get('saveCard');
+    return this.personalData.get('save_card');
   }
 
 
@@ -187,8 +190,11 @@ export class ReservationComponent implements OnInit {
   }
 
   proceedWithFormSubmission(){
-    this.personalData.get('saveCard')?.setValue(this.CheckSaveCard);
-    this.personalData.patchValue({ numberPersons: this.numberPersons });
+    this.personalData.get('save_card')?.setValue(this.CheckSaveCard);
+    this.personalData.patchValue({ number_persons: this.numberPersons });
+    this.personalData.patchValue({ price: this.workspace.price + 100 });
+    this.personalData.patchValue({ schedule_data: this.scheduleData.date});
+    this.personalData.patchValue({ workspace_id: this.workspace.id});
     this.perDataService.onPersonalData(this.personalData.value)
     .subscribe({
       next: (data: any) => {
