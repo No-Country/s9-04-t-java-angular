@@ -90,7 +90,7 @@ export class WorkspaceDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  previo() {
+  previous() {
     if (this.displayedImage == 0) {
       this.displayedImage = this.workspace.images.length - 1;
     } else {
