@@ -13,6 +13,8 @@ import { AlertsReservaService } from 'src/app/services/alerts-reserva.service';
 import { CoworkService } from 'src/app/services/cowork.service';
 import { PaymentServiceService } from 'src/app/services/paymentService.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
+import { MyReservationsComponent } from '../../my-reservations/my-reservations.component';
+import { MyReservationsService } from 'src/app/services/my-reservations.service';
 
 @Component({
   selector: 'app-reservation',
@@ -78,7 +80,7 @@ export class ReservationComponent implements OnInit {
     });
   }
 
-
+  user: any;
   constructor(
     private formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
@@ -87,12 +89,19 @@ export class ReservationComponent implements OnInit {
     private coworkService: CoworkService,
     private paymentService: PaymentServiceService,
     private router: Router,
-    private _location: Location
+    private _location: Location,
+    private myReservations: MyReservationsService
   ){
+    const userString = localStorage.getItem("sb-yhhcifsgfjyrxhnitiwq-auth-token");
+  const data = JSON.parse(userString);
+  if (data && data.user && data.user.user_metadata) {
+    this.user = data.user;
+    
+  }const userMetadata = data.user.user_metadata;
     this.personalData = this.formBuilder.group({
-      email:['',[Validators.required, Validators.email]],
-      name:['',[Validators.required, Validators.minLength(3)]],
-      last_name:['',[Validators.required, Validators.minLength(3)]],
+      email:[this.user?.email || '',[Validators.required, Validators.email]],
+      name:[userMetadata?.name || '',[Validators.required, Validators.minLength(3)]],
+      last_name:[userMetadata?.lastname || '',[Validators.required, Validators.minLength(3)]],
       // ownerName:['',[Validators.required]],
       // cardNumber:['',[Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       // cvcCvv:['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
@@ -104,6 +113,7 @@ export class ReservationComponent implements OnInit {
       schedule_data: this.scheduleData.date,
       workspace_id: this.workspace.id,
       workspace_name: this.workspace.name,
+      user_id: this.myReservations.getUserIdFromLocalStorage()
     });
     console.log(this.saveCard,'card')
   }
@@ -196,7 +206,8 @@ export class ReservationComponent implements OnInit {
     this.personalData.patchValue({ price: this.workspace.price + 100 });
     this.personalData.patchValue({ schedule_data: this.scheduleData.date});
     this.personalData.patchValue({ workspace_id: this.workspace.id});
-    this.personalData.patchValue({ workspace_name: this.workspace.title});
+    this.personalData.patchValue({ workspace_name: this.workspace.title}); 
+    this.personalData.patchValue({ user_id: this.myReservations.getUserIdFromLocalStorage()});
     this.perDataService.onPersonalData(this.personalData.value)
     .subscribe({
       next: (data: any) => {
