@@ -10,16 +10,16 @@ export class TokenService {
     private router: Router
   ) { }
 
-  saveToken(token: string) {
-    localStorage.setItem('token', token);
-  }
+  // saveToken(token: string) {
+  //   localStorage.setItem('token', token);
+  // }
 
-  getToken(): string {
-    return localStorage.getItem('token');
-  }
+  // getToken(): string {
+  //   return localStorage.getItem('token');
+  // }
 
-  clearToken() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/login']);
-  }
+  // clearToken() {
+  //   localStorage.removeItem('token');
+  //   this.router.navigate(['/login']);
+  // }
 }
