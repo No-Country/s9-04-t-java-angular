@@ -13,6 +13,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 export class AuthService {
 
   session: any;
+  userData: any;
+  emailData: any;
 
   constructor(){}
 
@@ -42,8 +44,6 @@ export class AuthService {
       this.session = data.session
       localStorage.setItem('email', this.session?.user?.email ?? '');
       localStorage.setItem('token', this.session?.accessToken ?? '');
-
-      localStorage.setItem('sb-yhhcifsgfjyrxhnitiwq-auth-token', this.session?.acc);
     }
   }
 
@@ -63,13 +63,6 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  // Get User
-  async getUser() {
-    const { data: { user } } = await supabase.auth.getUser()
-    this.session = user;
-    console.log('getUser()',this.session)
-  }
-
   // Password Recovery
   // let { data, error } = await supabase.auth.resetPasswordForEmail(email)
 
@@ -79,4 +72,22 @@ export class AuthService {
   //   password: "new-password",
   //   data: { hello: 'world' }
   // })
+
+  // Get User
+  async getUser() {
+    const { data: { user } } = await supabase.auth.getUser()
+    this.session = user;
+    console.log('getUser()',this.session)
+  }
+
+  async getUserId() {
+    const { data: { user } } = await supabase.auth.getUser()
+    this.userData = user.identities[0].user_id;
+    return this.userData;
+  }
+
+  async getEmail() {
+    const { data: { user } } = await supabase.auth.getUser()
+    this.userData = user.email;
+  }
 }
