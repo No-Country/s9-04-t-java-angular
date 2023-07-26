@@ -30,7 +30,7 @@
       <div class="grid grid-rows-4 grid-flow-col gap-4 grid-cols-2 mt-5">
         <div class="card" *ngFor="let service of services">
           <label class="checkbox-card-item">
-            <input type="checkbox"  />
+            <input type="checkbox" value="{{service}}" (change)="handleServices($event)" />
             <span>{{ service }}</span>
           </label>
         </div>
@@ -71,8 +71,8 @@
     </div>
     <div class="flex flex-col f-flex mt-3 lg:hidden">
       <div class="card" *ngFor="let service of services">
-        <label class="checkbox-card-item">
-          <input type="checkbox"  />
+        <label class="checkbox-card-item" >
+          <input type="checkbox" value="{{service}}" (change)="handleServices($event)"  />
           <span>{{ service }}</span>
         </label>
       </div>
@@ -93,6 +93,5 @@
     Siguiente
     </button>
   </div>
-
 
 </main>

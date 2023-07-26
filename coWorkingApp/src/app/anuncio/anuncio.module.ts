@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -41,7 +42,8 @@ import { FinishComponent } from './finish/finish.component';
     FontAwesomeModule,
     FormsModule,
     DragDropModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule
   ]
 })
 export class AnuncioModule { }

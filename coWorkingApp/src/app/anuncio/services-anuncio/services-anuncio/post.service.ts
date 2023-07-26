@@ -6,19 +6,30 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'https://woco-production.up.railway.app/'; // Replace with your API URL
+  private coworkingData: any[] = [];
+  private apiUrl = 'https://example.com/api'; // Replace with your API endpoint URL
 
   constructor(private http: HttpClient) { }
 
-  // Method to perform a POST request to the API
-  postToApi(data: any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-
-    const options = { headers: headers };
-
-    return this.http.post<any>(`${this.apiUrl}/api/coworking`, data, options);
-    // Replace 'endpoint' with the actual API endpoint you want to send the data to.
+  addData(data: any) {
+    this.coworkingData.push(data);
   }
+
+  getTotalDataAsJSON(): string {
+    const totalData = {
+      collectedData: this.coworkingData
+    };
+    return JSON.stringify(totalData);
+  }
+
+  sendDataToApi() {
+    const coworking = this.getTotalDataAsJSON();
+
+    // Assuming your API expects JSON data in the request body
+    const headers = { 'Content-Type': 'application/json' };
+
+    return this.http.post<any>(this.apiUrl, coworking, { headers });
+  }
+
 }
+

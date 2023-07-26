@@ -27,15 +27,15 @@
           no te preocupes, podés modificarlo más adelante.
         </p>
       </div>
-      <form action="" class="mt-5 w-full">
-        <input type="text" [(ngModel)]="inputData" [ngModelOptions]="{ standalone: true }" class="w-full outline-none">
+      <form action="" class="mt-5 w-full" [formGroup]="userForm" (ngSubmit)="submitForm()" >
+        <input type="text" id="name" id="firstName" formControlName="firstName" class="w-full outline-none">
       </form>
     </div>
     <div class="w-full flex justify-end">
       <button class=" bforward flex w-[20vw] justify-center rounded-md px-3 py-1.5
       text-sm font-semibold leading-6 shadow-sm  focus-visible:outline
       focus-visible:outline-2 focus-visible:outline-offset-2"
-      routerLink="/site/descripcion">
+      routerLink="/site/descripcion" type="submit" (click)="submitForm()"   [disabled]="userForm.invalid">
       Siguiente
     </button>
     </div>
@@ -64,8 +64,9 @@
         no te preocupes, podés modificarlo más adelante.
       </p>
     </div>
-    <form action="" class="mt-5 w-full">
-      <input type="text" [(ngModel)]="inputData" [ngModelOptions]="{ standalone: true }" class="w-full outline-none">
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <input type="text" id="firstName" formControlName="firstName">
+
     </form>
   </div>
 
@@ -76,10 +77,10 @@
     routerLink="/site/espacio">
       Atras
     </button>
-    <button type="submit" class="bforward flex w-1/3 justify-center rounded-md px-3 py-1.5
+    <button form="myForm" type="submit" (click)="submitForm()"   [disabled]="userForm.invalid" class="bforward flex w-1/3 justify-center rounded-md px-3 py-1.5
     text-sm font-semibold leading-6 shadow-sm  focus-visible:outline
     focus-visible:outline-2 focus-visible:outline-offset-2"
-    routerLink="/site/descripcion">
+   >
     Siguiente
     </button>
   </div>

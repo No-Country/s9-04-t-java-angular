@@ -27,8 +27,8 @@
           nómadas de tu zona.
         </p>
       </div>
-      <form action="" class="mt-5">
-        <textarea class="w-full resize-none h-[24vh]" cols="30" ></textarea>
+      <form action="" class="mt-5" [formGroup]="userDescription" (ngSubmit)="submitForm()" >
+        <textarea class="w-full resize-none h-[24vh]" cols="30" id="description" formControlName="description"></textarea>
       </form>
     </div>
     <div class="w-full flex justify-end mt-[10vh]">
@@ -64,8 +64,8 @@
         nómadas de tu zona.
       </p>
     </div>
-    <form action="" class="mt-5">
-      <textarea class="w-full resize-none h-[24vh]" cols="30" ></textarea>
+    <form action="" class="mt-5" [formGroup]="userDescription" (ngSubmit)="submitForm()">
+      <textarea class="w-full resize-none h-[24vh]" cols="30" id="description" formControlName="description" ></textarea>
     </form>
   </div>
   <div class="flex flex-row justify-around w-full bg-gray-200 p-3 lg:hidden">
