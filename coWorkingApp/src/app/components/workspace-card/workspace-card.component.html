@@ -10,11 +10,11 @@
       </div>
       <div class="absolute flex w-full h-full p-4">
         <div class="flex justify-between w-full mt-auto font-medium">
-          <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
+          <div *ngIf="workspace.rating" class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
             <fa-icon class="text-sm" [icon]="faStar"></fa-icon>
             <p class="text-xs font-semibold">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
           </div>
-          <div class="flex items-center gap-2 p-1 rounded-lg text-woco-blue-1 bg-woco-blue-3">
+          <div class="flex items-center gap-2 p-1 rounded-lg ms-auto text-woco-blue-1 bg-woco-blue-3">
             <p class="text-xs font-semibold">{{workspace.price | currency:'USD':'symbol':'1.0-0'}}</p>
           </div>
         </div>
