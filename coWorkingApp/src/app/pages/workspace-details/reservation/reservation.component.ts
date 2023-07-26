@@ -1,6 +1,6 @@
 import { validateHorizontalPosition } from '@angular/cdk/overlay';
 import { ViewportScroller, Location } from '@angular/common';
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCalendarCheck, faCircleCheck, faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -15,6 +15,7 @@ import { PaymentServiceService } from 'src/app/services/paymentService.service';
 import { PersonalDataService } from 'src/app/services/personal-data.service';
 import { MyReservationsComponent } from '../../my-reservations/my-reservations.component';
 import { MyReservationsService } from 'src/app/services/my-reservations.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reservation',
@@ -23,7 +24,7 @@ import { MyReservationsService } from 'src/app/services/my-reservations.service'
   host: {'class': 'w-full'}
   
 })
-export class ReservationComponent implements OnInit {
+export class ReservationComponent implements OnInit, OnDestroy  {
 
   @ViewChild(ModalPersonsComponent) modalComponent!: ModalPersonsComponent;
   @ViewChild(ScheduleModalComponent) modalSchedule!: ScheduleModalComponent;
@@ -81,6 +82,7 @@ export class ReservationComponent implements OnInit {
   }
 
   user: any;
+  userMetadata: any;
   constructor(
     private formBuilder: FormBuilder,
     private viewportScroller: ViewportScroller,
@@ -96,16 +98,12 @@ export class ReservationComponent implements OnInit {
   const data = JSON.parse(userString);
   if (data && data.user && data.user.user_metadata) {
     this.user = data.user;
-    
-  }const userMetadata = data.user.user_metadata;
+    this.userMetadata = data.user.user_metadata;
+    }
     this.personalData = this.formBuilder.group({
       email:[this.user?.email || '',[Validators.required, Validators.email]],
-      name:[userMetadata?.name || '',[Validators.required, Validators.minLength(3)]],
-      last_name:[userMetadata?.lastname || '',[Validators.required, Validators.minLength(3)]],
-      // ownerName:['',[Validators.required]],
-      // cardNumber:['',[Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      // cvcCvv:['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      // expirationCard:['',[Validators.required]],
+      name:[this.userMetadata?.name || '',[Validators.required, Validators.minLength(3)]],
+      last_name:[this.userMetadata?.lastname || '',[Validators.required, Validators.minLength(3)]],
       save_card: false,
       receive_notifications: false,
       number_persons: this.numberPersons,
@@ -185,22 +183,50 @@ export class ReservationComponent implements OnInit {
     this._location.back();
   }
 
-  onLoginFormSubmit() {
-    if (this.personalData.valid){
-      this.paymentService.createTokenEvent.emit();
-    this.paymentService.token$.subscribe((tokenReturned: boolean) => {
-      if (tokenReturned) {
-        // Token was returned successfully
-        this.proceedWithFormSubmission();
-      } else {
-        // Token was not returned
-        console.log('Token was not returned.');
-      }
-    });
+  ngOnDestroy() {
+    if (this.tokenSubscription) {
+      this.tokenSubscription.unsubscribe();
+    }
   }
+  
+  private isSubmitting: boolean = false;
+  private tokenSubscription: Subscription | undefined;
+  private isWaitingForToken: boolean = false;
+  onLoginFormSubmit() {
+    console.log('Submitting form...');
+    if (this.isSubmitting || this.isWaitingForToken) {
+      console.log('Form already submitting or waiting for token, exiting...');
+      return;
+    }
+    if (this.personalData.valid){
+      this.isSubmitting = true;
+      this.isWaitingForToken = true;
+      this.paymentService.createTokenEvent.emit();
+  
+      if (this.tokenSubscription) {
+        this.tokenSubscription.unsubscribe();
+      }
+  
+      setTimeout(() => {
+        this.isWaitingForToken = false;
+      }, 1000); 
+  
+      this.tokenSubscription = this.paymentService.token$.subscribe((tokenReturned: boolean) => {
+        this.isSubmitting = false;
+        if (tokenReturned) {
+          this.proceedWithFormSubmission();
+        } else {
+          console.log('Token was not returned.');
+        }
+      });
+    }
   }
 
   proceedWithFormSubmission(){
+    if (this.isSubmitting) {
+      console.log('Form already submitting, exiting...');
+      return;
+    }
     this.personalData.get('save_card')?.setValue(this.CheckSaveCard);
     this.personalData.patchValue({ number_persons: this.numberPersons });
     this.personalData.patchValue({ price: this.workspace.price + 100 });

@@ -12,12 +12,12 @@ export class MyReservationsService {
 
 constructor(private http: HttpClient) { }
 
-  getAllReservations(): Observable<any> {
-    const headers = {
-      'apikey': this.apiKey,
-    };
-    return this.http.get<any[]>(`${this.apiUrl}/rest/v1/reservation?select=*'`, { headers });
-  }
+  // getAllReservations(): Observable<any> {
+  //   const headers = {
+  //     'apikey': this.apiKey,
+  //   };
+  //   return this.http.get<any[]>(`${this.apiUrl}/rest/v1/reservation?select=*'`, { headers });
+  // }
 
    getUserIdFromLocalStorage(): string | null {
     const authToken = localStorage.getItem('sb-yhhcifsgfjyrxhnitiwq-auth-token');
@@ -31,16 +31,16 @@ constructor(private http: HttpClient) { }
     return null;
   }
 
-  // getAllReservations(): Observable<any> {
-  //   const userId = this.getUserIdFromLocalStorage();
-  //   if (!userId) {
-  //     throw new Error('No se pudo obtener el user_id desde localStorage.');
-  //   }
+  getAllReservations(): Observable<any> {
+    const userId = this.getUserIdFromLocalStorage();
+    if (!userId) {
+      throw new Error('No se pudo obtener el user_id desde localStorage.');
+    }
 
-  //   const headers = {
-  //     'apikey': this.apiKey,
-  //   };
-  //   return this.http.get<any[]>(`${this.apiUrl}/rest/v1/reservation?select=*user_id.eq.${userId}`, { headers });
-  // }
+    const headers = {
+      'apikey': this.apiKey,
+    };
+    return this.http.get<any[]>(`${this.apiUrl}/rest/v1/reservation?select=*user_id.eq.${userId}`, { headers });
+  }
 
 }
