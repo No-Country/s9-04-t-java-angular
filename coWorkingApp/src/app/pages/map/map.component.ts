@@ -34,18 +34,9 @@ export class MapComponent implements OnInit {
         iconSize: [40, 40],
     });
       let marker = L.marker(latLong,{icon:myMarker}).addTo(mymap);
-
-      mymap.on('click', function (e: { latlng: { lat: any; lng: any; }; }) {
-        console.log(e)
-        var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(mymap);
-
-        L.Routing.control({
-          waypoints: [
-            L.latLng(marker),
-            L.latLng(newMarker)
-          ]
-        }).addTo(mymap);
-       });
+      L.marker([-34.58837118754845, -58.42251759060455]).addTo(mymap)
+        .bindPopup('Coworking .<br> ¡Encontrado!')
+        .openPopup();
     });
 
     this.watchPosition();
