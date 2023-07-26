@@ -16,21 +16,21 @@ export class TokenInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    request = this.addHeaders(request)
+    // request = this.addHeaders(request)
     return next.handle(request);
   }
 
-  private addHeaders(request: HttpRequest<any>) {
-		let token: string | null = '';
-    token = this.tokenService.getToken();
-		if (token) {
-		  return request.clone({
-        setHeaders: {
-            Authorization: `Bearer ${token}`
-          }
-      });
-    } else {
-		  return request;
-		}
-  }
+  // private addHeaders(request: HttpRequest<any>) {
+	// 	let token: string | null = '';
+  //   token = this.tokenService.getToken();
+	// 	if (token) {
+	// 	  return request.clone({
+  //       setHeaders: {
+  //           Authorization: `Bearer ${token}`
+  //         }
+  //     });
+  //   } else {
+	// 	  return request;
+	// 	}
+  // }
 }
