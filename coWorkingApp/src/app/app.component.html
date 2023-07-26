@@ -13,12 +13,18 @@
       </a>        
     </div>
     <div class="hidden gap-4 md:flex">
-      <a class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+      <a *ngIf="user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/my-reservations">Mis reservas</a>
+      <a *ngIf="user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+        routerLink="/favorites">Favoritos</a>
+      <a *ngIf="user"
+        class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+        routerLink="/profile">Mi perfil</a>
+      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
         routerLink="/login">Iniciar sesión</a>
-      <a class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
         routerLink="/register">Crear cuenta</a>
       <a class="duration-300 p-3 text-xs w-[186px] flex items-center justify-center font-semibold border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
-        routerLink="/site/espacio">Anunciar mi espacio</a>
+        [routerLink]="user? '/site/espacio' : 'login'">Anunciar mi espacio</a>
     </div>
   </div>
 </div>
@@ -26,13 +32,13 @@
   <div class="absolute top-0 right-0 w-screen h-screen animate-fade animate-duration-300 bg-black/50" (click)="toggleNavbar()"></div>
   <div *ngIf="navbarMenu" class="animate-fade-right animate-duration-300 z-50 flex flex-col px-4 pb-4 gap-4 max-w-[344px] w-full bg-white rounded-tr-2xl">
     <div class="flex items-center justify-between border border-transparent border-b-black">
-      <p class="text-xl font-bold">nombre y apellido</p>
+      <p class="text-xl font-bold">{{user? user.user_metadata.name + ' ' + user.user_metadata.lastname : 'Menú'}}</p>
       <button class="p-4 pr-0" (click)="toggleNavbar()">
         <fa-icon class="text-xl" [icon]="faXmark"></fa-icon>
       </button>
     </div>
     <div class="flex flex-col justify-between flex-grow font-semibold">
-      <div class="flex flex-col gap-4">
+      <div *ngIf="user" class="flex flex-col gap-4">
         <a (click)="toggleNavbar()" routerLink="/"
           class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Favoritos</a>
         <a (click)="toggleNavbar()" routerLink="/my-reservations"
@@ -42,12 +48,15 @@
           class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Mi
           perfil</a>
       </div>
+      <div *ngIf="!user" class="flex flex-col gap-4">
+        <a (click)="toggleNavbar()" routerLink="/login" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Iniciar sesión</a>
+        <a (click)="toggleNavbar()" routerLink="/register" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Crear cuenta</a>
+      </div>
       <div class="flex flex-col gap-6">
-        <a (click)="toggleNavbar()" routerLink="/profile"
-          class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Cerrar
+        <a *ngIf="user" (click)="toggleNavbar(); logOut()" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Cerrar
           sesión</a>
         <a (click)="toggleNavbar()" class="flex items-center justify-center w-full p-3 text-sm font-semibold text-center duration-300 border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
-          routerLink="/site/espacio">Anunciar mi espacio</a>
+          [routerLink]="user? '/site/espacio' : '/login'">Anunciar mi espacio</a>
       </div>
     </div>
   </div>
