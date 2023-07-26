@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faClose, faChevronDown, faStar, faLocationDot, faUsers} from '@fortawesome/free-solid-svg-icons';
 import { Options } from '@angular-slider/ngx-slider';
 import { DialogService } from 'src/app/services/dialog.service';
+import { environment } from 'src/environments/environment';
+import { createClient } from '@supabase/supabase-js';
+import { CoworkService } from 'src/app/services/cowork.service';
 
+const supabaseUrl = environment.supabaseUrl;
+const supabaseKey = environment.supabaseKey;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 @Component({
   selector: 'app-search-filters',
@@ -19,6 +25,9 @@ export class SearchFiltersComponent {
   }
 
   form: any;
+  filtros: any;
+
+  coworkService = inject(CoworkService);
 
   faClose = faClose;
   faChevronDown = faChevronDown;
@@ -43,7 +52,7 @@ export class SearchFiltersComponent {
     this.form = this.fb.group({
       betters: false,
       closer: false,
-      room: false,
+      room: this.isRoom,
       minPrice: [0],
       maxPrice: [500],
       // minKm: [0],
@@ -60,6 +69,7 @@ export class SearchFiltersComponent {
   ngOnInit(): void {}
 
   showResults(){
+    this.filtrar()
     console.log(this.form.value);
     this.onCloseModal();
     this.dialogService.close();
@@ -89,5 +99,20 @@ export class SearchFiltersComponent {
 
   close() {
     this.dialogService.close()
+  }
+
+  async filtrar() {
+    const room = this.form.value.room;
+    let { data: coworking_spaces, error } = await supabase
+    .from('coworking_spaces')
+    .select("*")
+    .eq('room', `${room}`)
+    // .ilike('services', `%${this.filtros}%`)
+    // .in('services', ['Array', 'Values'])
+
+    this.filtros = coworking_spaces;
+    console.log(this.filtros)
+
+    this.coworkService.workspacesSubject.next(this.filtros)
   }
 }

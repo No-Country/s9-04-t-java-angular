@@ -21,6 +21,7 @@ import { TokenGuard } from './guards/token.guard';
 import { UserDataComponent } from './pages/user-data/user-data.component';
 import { FinishComponent } from './anuncio/finish/finish.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
 
 
 const routes: Routes = [
@@ -91,6 +92,10 @@ const routes: Routes = [
   {
     path: 'my-data',
     component: UserDataComponent
+  },
+  {
+    path: 'my-reservations',
+    component: MyReservationsComponent
   },
   {
     path: '**',

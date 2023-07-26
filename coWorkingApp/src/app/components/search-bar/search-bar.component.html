@@ -4,8 +4,10 @@
 
     <div class="flex items-center w-full h-12 px-3 py-2 bg-[#F4F4F4] rounded-md text-[#A7A7A7]">
       <fa-icon [icon]="faSearch" class="pr-4 "></fa-icon>
-      <input type="search" [formControl]="searchControl"
-        class="w-full bg-transparent border-none" placeholder="Buscar en...">
+      <input type="search"
+        class="w-full bg-transparent border-none" placeholder="Buscar en..."
+        [formControl]="searchControl"
+      >
       <fa-icon [icon]="faSlidersH" (click)="openDialog()" class="cursor-pointer"></fa-icon>
     </div>
 
@@ -24,7 +26,8 @@
         <fa-icon [icon]="faLocationDot" class="pl-2"></fa-icon>
       </div>
     </div>
-
   </div>
 
 </div>
+
+<!-- <button (click)="addCowork()">Add Cowork</button> -->

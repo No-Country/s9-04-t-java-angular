@@ -5,6 +5,7 @@ import { DialogService } from 'src/app/services/dialog.service';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { createClient } from '@supabase/supabase-js';
+import { debounceTime } from 'rxjs/operators';
 
 const supabaseUrl = environment.supabaseUrl;
 const supabaseKey = environment.supabaseKey;
@@ -37,50 +38,33 @@ export class SearchBarComponent {
     private dialogService: DialogService,
     private formBuilder: FormBuilder
   ) {
-    this.searchControl.valueChanges.subscribe(value => {
-      this.query = value;
-      console.log('query', this.query)
-    })
-
     this.formAddCowork = this.formBuilder.group({
-      title: 'Hola23',
-      description: 'Hola23',
-      services: 'Hola23',
-      direction: '',
+      title: 'Coworking Spot True',
+      description: 'Lorem',
+      images: [['https://t4.ftcdn.net/jpg/03/13/49/07/360_F_313490735_YCp2jT4wiMTryffcBH59Ysl06j2OVEat.jpg',
+      'https://static01.nyt.com/images/2021/05/02/business/00officespace8/00officespace8-superJumbo.jpg',
+      'https://media.npr.org/assets/img/2020/04/23/gettyimages-656544055_wide-65e041ed6c0f8e5feec6d3951fa3459431b05519-s1400-c100.jpg'
+    ]],
+      direction: 'Buenos Aires CABA',
+      capacity: 20,
+      rating: 1,
+      services: [['wifi','tv']],
       price: 10,
-      capacity: 20
+      user_id: '61ae7ddd-11ff-4106-9654-1b9ca8367daa',
+      room: true
     })
-  }
 
-  // ngOnInit(): void {
-  //   window.scrollTo({ top: 0 });
-  //   this.coworkService.getAllWorkspaces().subscribe({
-  //     next: (res: any) => {
-  //       if(this.searchControl.value === '') {
-  //         this.workspaces = res;
-  //         console.log('workspaces desde search-bar', this.workspaces)
-  //       } else {
-  //         this.workspaces = res.filter(item =>
-  //           item.name.includes(this.query) ||
-  //           item.location.includes(this.query) ||
-  //           item.capacidad.toString().includes(this.query) ||
-  //           item.description.includes(this.query) ||
-  //           item.id.toString().includes(this.query) ||
-  //           item.price.toString().includes(this.query) ||
-  //           item.rating.toString().includes(this.query)
-  //         );
-  //         console.log('elci', this.workspaces);
-  //       }
-  //     },
-  //     error: (err) => console.log(err),
-  //     complete: () => {}
-  //   });
-  // }
+    this.searchControl.valueChanges.pipe(debounceTime(600)).subscribe((query) => {
+      console.log(query);
+      this.query = query;
+      this.buscar();
+    });
+
+  }
 
   openDialog() {
     this.dialogService.open();
   }
-
 
   // Supabase Table Coworking Spaces
 
@@ -93,16 +77,12 @@ export class SearchBarComponent {
     .select('id, title, description, price')
 
     this.coworks = coworking_spaces;
-
-    console.log(coworking_spaces)
-
   }
 
 
   async addCowork() {
-
     const addCowork = this.formAddCowork.getRawValue();
-
+    // console.log('addCowork', addCowork)
 
     const { data, error } = await supabase
     .from('coworking_spaces')
@@ -110,17 +90,67 @@ export class SearchBarComponent {
       {
         title: addCowork.title,
         description: addCowork.description,
+        images: addCowork.images,
         services: addCowork.services,
         direction: addCowork.direction,
         price: addCowork.price,
-        capacity: addCowork.capacity
+        capacity: addCowork.capacity,
+        user_id: addCowork.user_id,
+        room: addCowork.room
 
       },
     ])
 
-    // this.step++;
-
     console.log(data, error)
+  }
+
+
+  // Update User
+  async updateUser() {
+    const { data, error } = await supabase.auth.updateUser({
+      // email: "user@mail.com",
+      // password: "123456",
+      // data: { hello: 'world' }
+      data: {
+        phone: '12345678',
+        name: 'Cris',
+        lastname: 'Morena'
+      }
+    })
+    console.log('data',data)
+  }
+
+  userData: any;
+  async getUserId() {
+    const { data: { user } } = await supabase.auth.getUser()
+    this.userData = user.identities[0].user_id;
+    return this.userData;
+  }
+
+  async logout() {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      // Ha ocurrido un error al cerrar sesión
+    } else {
+      // La sesión se ha cerrado correctamente
+      localStorage.removeItem('email');
+      localStorage.removeItem('token');
+    }
+  }
+
+  resultadosDeBuscar: any;
+
+  async buscar() {
+
+    let { data: coworking_spaces, error } = await supabase
+    .from('coworking_spaces')
+    .select("*")
+    .ilike('title', `%${this.query}%`)
+
+    this.resultadosDeBuscar = coworking_spaces;
+
+    this.coworkService.workspacesSubject.next(this.resultadosDeBuscar)
   }
 
 }

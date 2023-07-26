@@ -1,0 +1,31 @@
+<div class="min-h-screen flex-col flex  items-center ">
+    <div class="pb-5 mt-10 flex  w-full">
+        <a routerLink="/home" class="text-2xl font-bold ms-4 hover:text-woco-blue-2 hover:border-b-woco-blue-2"><fa-icon class="text-xl me-4" [icon]="faArrowLeft"></fa-icon>Home</a>
+        <div class="text-2xl font-playfair flex m-auto font-bold">Mis reservas</div>
+      </div>
+    
+<div class="grid w-full justify-center lg:max-w-[1280px] sm:grid-cols-2 md:grid-cols-4 grid-row-4  gap-4 p-4 ">
+    <div *ngFor="let reservation of reservations" class="max-w-sm w-full p-6 gap-2 flex flex-col bg-white border border-gray-200 rounded-lg shadow">
+          <h5 class="mb-3 border-b pb-1 text-2xl text-center font-bold tracking-tight border-gray-200 font-playfair">{{ reservation.workspace_name }}</h5>
+        <div class="flex justify-between">
+          Fecha de reserva:
+          <span class="flex text-right text-[#575757]">{{ reservation.schedule_data }}</span><p>
+        </div>
+        <div class="flex justify-between">
+          Nomadas:
+          <span class="flex text-[#575757]">{{ reservation.number_persons }}</span>
+        </div>
+        <div class="flex justify-between mb-3">
+          Precio:
+          <span class="flex text-[#575757]">${{ reservation.price }}</span>
+        </div>
+        <div class="flex justify-center mt-2 bg-[#E6FAFF] text-[#015F75] border-[#015F75] border px-3 py-2 m-auto cursor-pointer rounded-lg">
+          <a class="text-center flex items-center hover:text-woco-blue-2 hover:border-b-woco-blue-2"
+          [routerLink]="['/workspace', reservation.workspace_id, 'details']">
+            Ir a detalle<svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg></a>
+        </div>
+      </div>
+</div>
+</div>
