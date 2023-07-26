@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { MyReservationsService } from 'src/app/services/my-reservations.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { MyReservationsService } from 'src/app/services/my-reservations.service'
 })
 export class MyReservationsComponent implements OnInit{
   faPhone = faPhone;
+  faArrowLeft = faArrowLeft;
   reservations: any[];
 
   constructor(private reservationService: MyReservationsService){}
