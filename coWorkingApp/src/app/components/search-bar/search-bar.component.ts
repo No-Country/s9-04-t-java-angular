@@ -39,7 +39,7 @@ export class SearchBarComponent {
     private formBuilder: FormBuilder
   ) {
     this.formAddCowork = this.formBuilder.group({
-      title: 'Coworking Spot',
+      title: 'Coworking Spot True',
       description: 'Lorem',
       images: [['https://t4.ftcdn.net/jpg/03/13/49/07/360_F_313490735_YCp2jT4wiMTryffcBH59Ysl06j2OVEat.jpg',
       'https://static01.nyt.com/images/2021/05/02/business/00officespace8/00officespace8-superJumbo.jpg',
@@ -50,7 +50,8 @@ export class SearchBarComponent {
       rating: 1,
       services: [['wifi','tv']],
       price: 10,
-      user_id: '61ae7ddd-11ff-4106-9654-1b9ca8367daa'
+      user_id: '61ae7ddd-11ff-4106-9654-1b9ca8367daa',
+      room: true
     })
 
     this.searchControl.valueChanges.pipe(debounceTime(600)).subscribe((query) => {
@@ -94,7 +95,8 @@ export class SearchBarComponent {
         direction: addCowork.direction,
         price: addCowork.price,
         capacity: addCowork.capacity,
-        user_id: addCowork.user_id
+        user_id: addCowork.user_id,
+        room: addCowork.room
 
       },
     ])
