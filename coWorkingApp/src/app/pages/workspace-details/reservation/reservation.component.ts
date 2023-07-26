@@ -102,7 +102,8 @@ export class ReservationComponent implements OnInit {
       number_persons: this.numberPersons,
       price: this.workspace.price + 100,
       schedule_data: this.scheduleData.date,
-      workspace_id: this.workspace.id
+      workspace_id: this.workspace.id,
+      workspace_name: this.workspace.name,
     });
     console.log(this.saveCard,'card')
   }
@@ -195,6 +196,7 @@ export class ReservationComponent implements OnInit {
     this.personalData.patchValue({ price: this.workspace.price + 100 });
     this.personalData.patchValue({ schedule_data: this.scheduleData.date});
     this.personalData.patchValue({ workspace_id: this.workspace.id});
+    this.personalData.patchValue({ workspace_name: this.workspace.title});
     this.perDataService.onPersonalData(this.personalData.value)
     .subscribe({
       next: (data: any) => {
