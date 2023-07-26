@@ -39,6 +39,7 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { MyReservationsComponent } from './pages/my-reservations/my-reservations.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     UserDataComponent,
     ProfileComponent,
     SpinnerComponent,
+    MyReservationsComponent,
   ],
   imports: [
     BrowserModule,
