@@ -54,7 +54,7 @@
           <div class="flex flex-col-reverse gap-2 md:gap-3 md:flex-col">
             <div class="flex flex-col gap-2 md:gap-3">
               <p class="text-[#919191] lg:text-base"><fa-icon class="me-2" [icon]="faLocationDot"></fa-icon>{{workspace.direction}}</p>
-              <div *ngIf="workspace.rating.length > 0" class="flex items-center gap-2 text-sm">
+              <div *ngIf="workspace.rating" class="flex items-center gap-2 text-sm">
                 <div class="flex items-center gap-2 p-1 px-2 rounded-lg text-woco-blue-1 bg-woco-blue-3">
                   <fa-icon [icon]="faStar"></fa-icon>
                   <p class="text-xs font-semibold">{{workspace.rating | averageRating | number:'1.1-1'}}</p>
