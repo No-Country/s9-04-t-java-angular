@@ -23,6 +23,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUser();
     this.getUserObservable();
+    console.log(`
+          .~?P#@#                          &@#P?^.          
+    .^?P#&@@@@@@@^                        ~@@@@@@@&#P7^.    
+:7P#@@@@@@@@@@@@@@B~                    ~#@@@@@@@@@@@@@@#5!.
+~^..:~JPB&@@@@@@@@@@&J^.    A  A    .^Y&@@@@@@@@@@&BP?~:..^~
+          .G@@@@@@@@@@@@#J.P@PG@5:J#@@@@@@@@@@@@P.          
+            YGBB##&&&@@@@@@@@@@@@@@@@@@&&&##BBGJ            
+                     .~P&@@@@@@@@@@&P~                      
+                         ^P@@@@@@5^                         
+    `)
   }
 
   toggleNavbar() {
