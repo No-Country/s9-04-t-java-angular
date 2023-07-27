@@ -1,5 +1,5 @@
 # s9-04-t-java-angular
-[![APP WOCO](./screenshots/woco-logo.png)](https://s9-04-t-java-angular.web.app)
+[![APP WOCO](./screenshots/woco-ss-1.png)](https://s9-04-t-java-angular.web.app)
 ## Aplicación de Co-Working
 <div style="background-size: cover; width: 100%; height: 600px;">
     
