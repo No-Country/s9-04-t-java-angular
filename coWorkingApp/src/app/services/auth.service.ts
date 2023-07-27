@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { createClient } from '@supabase/supabase-js';
 import { Credentials } from '../interfaces/credentials.interface';
+import { BehaviorSubject } from 'rxjs';
 
 const supabaseUrl = environment.supabaseUrl;
 const supabaseKey = environment.supabaseKey;
@@ -16,6 +17,8 @@ export class AuthService {
   userData: any;
   emailData: any;
 
+  userObservable: BehaviorSubject<any> = new BehaviorSubject(undefined);
+
   constructor(){}
 
   async login(credentials: Credentials) {
@@ -27,8 +30,9 @@ export class AuthService {
     if (error) {
       console.log('error de inicio de sesión',error)
     } else {
-      this.session = data.session
-      console.log(this.session)
+      this.session = data.session;
+      this.getUser()
+      console.log(this.session);
     }
   }
 
@@ -56,6 +60,7 @@ export class AuthService {
       // La sesión se ha cerrado correctamente
       localStorage.removeItem('email');
       localStorage.removeItem('token');
+      this.userObservable.next(undefined);
     }
   }
 
@@ -77,6 +82,7 @@ export class AuthService {
   async getUser() {
     const { data: { user } } = await supabase.auth.getUser()
     this.session = user;
+    this.userObservable.next(user);
     console.log('getUser()',this.session)
   }
 
@@ -90,4 +96,9 @@ export class AuthService {
     const { data: { user } } = await supabase.auth.getUser()
     this.userData = user.email;
   }
+
+  getUserObservable() {
+    return this.userObservable.asObservable();
+  }
+
 }
