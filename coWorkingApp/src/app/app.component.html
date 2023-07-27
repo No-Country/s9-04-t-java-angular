@@ -12,19 +12,13 @@
         <img class="block md:hidden" src="../assets/img/Group.png" alt="">
       </a>        
     </div>
-    <div class="hidden gap-4 md:flex">
+    <div class="hidden gap-4 md:flex md:text-sm lg:text-base">
       <a *ngIf="user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/my-reservations">Mis reservas</a>
-      <a *ngIf="user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
-        routerLink="/favorites">Favoritos</a>
-      <a *ngIf="user"
-        class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
-        routerLink="/profile">Mi perfil</a>
-      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
-        routerLink="/login">Iniciar sesión</a>
-      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2"
-        routerLink="/register">Crear cuenta</a>
-      <a class="duration-300 p-3 text-xs w-[186px] flex items-center justify-center font-semibold border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
-        [routerLink]="user? '/site/espacio' : 'login'">Anunciar mi espacio</a>
+      <a *ngIf="user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/profile">Mi perfil</a>
+      <a *ngIf="user" (click)="logOut()" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/home">Cerrar sesión</a>
+      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/login">Iniciar sesión</a>
+      <a *ngIf="!user" class="duration-300 text-[#919191] px-2 py-3 font-semibold border-y-2 border-transparent hover:text-woco-blue-2 hover:border-b-woco-blue-2" routerLink="/register">Crear cuenta</a>
+      <a class="duration-300 p-3 text-xs w-[186px] flex items-center justify-center font-semibold border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2" [routerLink]="user? '/site/espacio' : 'login'">Anunciar mi espacio</a>
     </div>
   </div>
 </div>
@@ -53,7 +47,7 @@
         <a (click)="toggleNavbar()" routerLink="/register" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Crear cuenta</a>
       </div>
       <div class="flex flex-col gap-6">
-        <a *ngIf="user" (click)="toggleNavbar(); logOut()" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Cerrar
+        <a *ngIf="user" (click)="toggleNavbar(); logOut()"  routerLink="/home" class="py-3 border border-transparent border-b-[#919191] text-[#919191] hover:text-woco-blue-2 hover:border-b-woco-blue-2 hover:pl-3 duration-300">Cerrar
           sesión</a>
         <a (click)="toggleNavbar()" class="flex items-center justify-center w-full p-3 text-sm font-semibold text-center duration-300 border rounded-lg border-woco-blue-1 text-woco-blue-1 bg-woco-blue-3 hover:bg-black hover:border-black hover:text-woco-blue-2"
           [routerLink]="user? '/site/espacio' : '/login'">Anunciar mi espacio</a>
