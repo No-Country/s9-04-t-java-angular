@@ -4,6 +4,7 @@
 <div style="background-size: cover; width: 100%; height: 600px;">
     
 ![App Co-working WOCO](./screenshots/woco-ss-1.png)
+![App Co-working WOCO](./screenshots/woco-ss-2.png)
 
 </div>
 
